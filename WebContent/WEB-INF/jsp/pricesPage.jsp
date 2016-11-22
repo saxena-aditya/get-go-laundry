@@ -65,16 +65,7 @@
 </div>
 </div>
 <div class = "col-md-3"></div>
-<script type = "text/javascript">
-	
-	var doc = "${itm.hoodie}"
 
-  $(document).ready(function(){
-	alert(doc);
-});
-
-
-</script>
 
 </body>
 </html>

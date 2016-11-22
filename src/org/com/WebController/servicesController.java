@@ -24,5 +24,13 @@ public class servicesController {
 		return m;
 		}
 	
+	@RequestMapping(value = "order_history", method = RequestMethod.GET)
+	protected String orderHistory(){
+		
+		
+		
+		return "order_history";
+	}
+	
 
 }

@@ -5,14 +5,17 @@
 	left: 0px;
 	height: 100%;
 	width: 100%;
-	background: #000002;
+	background: #a7ece7;
 	display: none;
 
-}#myForm{
+}.totalSum{color : #000;
+}#myForm1{
+	left : 27%;
+}#myForm,#myForm2{
     left: 27.99%;
     top: 9%;
 
-}.Myform{
+}.Myform,.Myform2{
 
 	border-radius:12px;
 	padding:20px 30px;
@@ -21,16 +24,16 @@
 	font-weight:bold;
 	width:350px;
 	margin:20px 250px 0 35px;
-	float:left;
+	float:right;
 
-}#myForm{
+}#myForm, #myForm2{
 	width: 570px;
 	margin:0px;
 	color: white;
 	font-size: 20px;
  background-color: rgba(0, 255, 111, 0.84);
 	font-family: sans-serif;
-	position: relative;
+	position: absolute;
 	border: 0.5px solid rgb(90, 158, 181);
 }.userInput{
 	width: inherit;
@@ -44,6 +47,9 @@
   padding: 3px 0 0 0;
   text-align: center;
   color : #000;
+} input[type = 'date'], #timeSpan{
+ color : #000;
+	
 }label{
 	
 	width: 7em;
@@ -97,4 +103,19 @@ input[type=number]::-webkit-outer-spin-button {
 
 }.buttonl:hover, .button:hover {
     color: black;
+}#btnSWash{
+	    width: 21%;
+	    margin-top : 20px;
+    margin-left: 378px;
+}#btnDWash{width : 21%; 
+margin-top : 20px;
+}input[type = 'date']{    
+	margin-left: 36px;
+    margin-bottom: 46px;
+    width: 200px;
+}select{
+	    margin-left: 42px;
+    padding-top: 5px;
+    padding-bottom: 5px;
+    width: 200px;
 }
