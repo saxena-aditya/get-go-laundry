@@ -1,5 +1,7 @@
 package org.com.WebController;
 
+
+
 import javax.servlet.http.HttpSession;
 
 import org.com.ItemPrices.ItemPrices;
@@ -11,6 +13,8 @@ import org.springframework.web.servlet.ModelAndView;
 
 @Controller
 public class servicesController {
+
+	
 	ItemPrices itm = new ItemPrices();
 	@RequestMapping(value = "prices", method = RequestMethod.GET)
 	protected ModelAndView pricesPage(HttpSession session, Model model){
@@ -24,13 +28,14 @@ public class servicesController {
 		return m;
 		}
 	
-	@RequestMapping(value = "order_history", method = RequestMethod.GET)
-	protected String orderHistory(){
-		
-		
-		
-		return "order_history";
+	@RequestMapping(value = "home", method = RequestMethod.GET)
+	protected String returnHome(){
+		return "mainPage";
 	}
+	
+	
+	
+	
 	
 
 }

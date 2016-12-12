@@ -4,15 +4,18 @@ package org.com.WebController;
 import java.lang.reflect.Field;
 import java.sql.ResultSet;
 import java.util.ArrayList;
+import java.util.List;
 import java.util.Random;
 
 import javax.servlet.http.HttpSession;
 
+import org.com.DAO.orderDetailsDAO;
 import org.com.ItemPrices.ItemPrices;
 import org.com.getterSetterObjs.LoginGetterandSetters;
 import org.com.getterSetterObjs.Ordergetter;
 import org.com.getterSetterObjs.getterRegisterDetails;
 import org.com.jdbcDAO.jdbcDAO;
+import org.com.jdbcDAO.orderDetailsDAOImpl;
 import org.com.jdbcDAO.orderSaveDAOImpl;
 import org.com.jdbcDAO.addUserDAOImpl;
 import org.springframework.context.ApplicationContext;
@@ -23,11 +26,13 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.servlet.ModelAndView;
 
+
 @Controller
 public class WebController {
 	private jdbcDAO jdbc;
 	private addUserDAOImpl jdb;
 	private orderSaveDAOImpl saveOrder_Impl;
+	private orderDetailsDAOImpl orderList; 
 	private ItemPrices item = new ItemPrices();
 	public int orderCost = 0;
 	String username;
@@ -36,9 +41,8 @@ public class WebController {
 	boolean isOrderPlaced = false;
 	int item_number;
 	
-
-	
 	ApplicationContext ctx = new ClassPathXmlApplicationContext("Spring.xml");
+	
 	@RequestMapping(value = "/")
 	protected String myFromClass1(){
 		return "mainPage";	
@@ -49,9 +53,10 @@ public class WebController {
 										HttpSession session){
 		
 			jdbc = ctx.getBean("jdbcDAO", jdbcDAO.class);
+			
 			int x = jdbc.getCount(User.getUsername(),User.getPass());
 			if(x == 1 ){
-				session.setAttribute("loggedinUser", User);
+				session.setAttribute("loggedinUser", User.getUsername());
 				setUsername(User.getUsername());
 				return LoginSucessModel(User.getUsername());
 			}
@@ -90,22 +95,36 @@ public class WebController {
 		placed_Order.addObject("ordItem", odr);
 		if(!isOrderPlaced){
 			orderID = generateOrderID();
-			
-		    
 			setOrderID(orderID);
 			getObject(odr);
-			
-			
-		
 		}isOrderPlaced = true;
-		placed_Order.addObject("orderID", getOrderID());
-		//System.out.println(odr.timeSpan + " : " + odr.date+ " : " + odr.tshirt + " :" + getUsername());
 		
-	   //System.out.println( "order String is = "+ getOrderString(odr, item));
+		placed_Order.addObject("orderID", getOrderID());
+		
 		return placed_Order;
 	}
 	
-
+	@RequestMapping(value = "order_history", method = RequestMethod.GET)
+	protected ModelAndView orderHistory(HttpSession session){
+		
+		ModelAndView model = new ModelAndView("order_history");
+		orderList = ctx.getBean("orderDetailsDAOImpl", orderDetailsDAOImpl.class);	
+		List<orderDetailsDAO> oList = orderList.findOrder(getUsername());
+		if(oList.size() == 0)
+			System.out.println("Sorry no order Found!! for user :" +getUsername());
+		
+		List<Integer> costList = new ArrayList<Integer>();
+		int cost;
+		for (orderDetailsDAO temp : oList) {
+			cost = orderList.orderCost(temp.getOrder_id());
+			costList.add(cost);		
+		}
+		
+		model.addObject("costList", costList);
+		model.addObject("oList", oList);
+		
+		return model;
+	}
 	public void setUsername(String username2){
 		this.username = username2;
 		}
@@ -131,9 +150,6 @@ public class WebController {
 		ModelAndView model1 = new ModelAndView("welcome");
 		model1.addObject("username", username);
 		model1.addObject("item", item);
-		
-		
-		
 		
 		return model1;
 		}
@@ -172,13 +188,6 @@ public class WebController {
     							field.getInt(obj), getOrderID());
     		saveOrder_Impl.my_orderSave( getUsername(),getOrderID(), 
     						field.getName().toString(), field.getInt(obj), itm_cost );
-    		
-    		
-    		
-    		
-    		
-    		
-    		
     		}
     	}
     /*Demo function for getting and saving all query result (coloums) in a list */

@@ -5,9 +5,16 @@
 <title>myWash | Copy</title>
 <link rel="stylesheet" type = "text/css"  href="${pageContext.request.contextPath}/resources/bootstrap/css/bootstrap.min.css" />
 <link rel="stylesheet" type = "text/css"  href="${pageContext.request.contextPath}/resources/css/popform.css" />
+<link rel="stylesheet" type = "text/css"  href="${pageContext.request.contextPath}/resources/css/jquery-ui.css" />
+
+<link rel="stylesheet" type = "text/css"  href="${pageContext.request.contextPath}/resources/css/default.min.css" />
+
+<link rel="stylesheet" type = "text/css"  href="${pageContext.request.contextPath}/resources/css/alertify.min.css" />
+
 <script type = "text/javascript" src = "${pageContext.request.contextPath}/resources/jQuery/jquery.js"></script>
 <script type = "text/javascript" src = "${pageContext.request.contextPath}/resources/jQuery/costCounter.js"></script>
-
+<script type = "text/javascript" src = "${pageContext.request.contextPath}/resources/jQuery/jquery-ui.js"></script>
+<script type = "text/javascript" src = "${pageContext.request.contextPath}/resources/jQuery/alertify.min.js"></script>
 </head>
 <body>
 <div id = "logoutLink" style = "text-align: right;
@@ -44,7 +51,12 @@
 
 <div id = "orderDetails"></div>
 
-<input type = "date" name = "date" id = "date" />
+<input  name = "date" id = "date" placeholder = "Select date" />
+<script>
+$(function() {
+    $( "#date" ).datepicker({ minDate: 0});
+  });
+  </script>
 <select type = "text" name = "timeSpan" id = "timeSpan">
 	
 	<option value = "8am-10am"> 8am to 10am</option>
@@ -97,7 +109,8 @@ $(document).ready(function(){
         <label for="name">Other</label>
         <input type="number" name="other" id="o" value="0"><div class = "buttonl">-</div><div class = "button">+</div>
       </div>
-<button type ="submit" class ="btn btn-success cancel">Submit Order</button>
+<button type ="submit" class ="btn btn-success">Submit Order</button>
+<a class = "btn btn-default cancel" >Cancel</a>
 
 </div>
 <div id = "myForm2" class = "Myform2" style = "display : none ; position : absolute">
@@ -126,13 +139,17 @@ $(document).ready(function(){
         <label for="name">Blanket(luxary)</label>
         <input type="number" name="blanketLU" id="blu" value="0"><div class = "buttonl">-</div><div class = "button">+</div>
       </div>
-<input type ="submit" class ="btn btn-success cancel" value = "Submit Order"/>
+
+<button type ="submit" class ="btn btn-success">Submit Order</button>
+<a class = "btn btn-default cancel">Cancel</a>
 </div>
 
 </form>
 </div></div>
 
 <script type = "text/javascript">
+
+var totalSum =0; //global Variable!
 $(document).ready(function(){
 	$('#btnClick').click(function(){
 		$('#contactDiv').css("display", "block");
@@ -140,6 +157,25 @@ $(document).ready(function(){
 
 
 	
+});
+
+$('#myForm1').submit(function(){
+	/* use this space to do the awesome alert function of alertify, to make the user aware that 
+	* they have not selected any cloths or date! :D :D */
+	var date = $('#date').val();
+	
+	if(!date){
+		alertify
+		.alert("Date can not be empty !", "Please select a date.");
+		return false;	
+	}
+	if(totalSum < 100){
+		alertify.alert("Sorry, but we do not accept bills below Rs.100");
+		return false;
+	}
+		
+	else
+		return true
 });
 
   $(".button, .buttonl").click( function() {
@@ -173,9 +209,11 @@ $(document).ready(function(){
 	    var x = parseInt($('#sw').val()) * '${item.sweater}';
 	    var y = parseInt($('#jk').val()) * '${item.jacket}';
 	    var z = parseInt($('#ctc').val()) * '${item.coat}';
-	    var totalSum = a + b + c + d + e + f  + u + v + w + x + y + z ; 
+	     totalSum = a + b + c + d + e + f  + u + v + w + x + y + z ; 
 	    $('.totalSum').html(totalSum);
 	  });
+  
+  $()
   
   $('#btnSWash').click(function(){
 	  $('#myForm').css('display', 'block');

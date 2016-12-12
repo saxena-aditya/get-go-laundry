@@ -47,8 +47,11 @@
   padding: 3px 0 0 0;
   text-align: center;
   color : #000;
-} input[type = 'date'], #timeSpan{
+} #date, #timeSpan{
  color : #000;
+ text-align : center;
+     letter-spacing: 2px;
+   
 	
 }label{
 	
@@ -109,7 +112,7 @@ input[type=number]::-webkit-outer-spin-button {
     margin-left: 378px;
 }#btnDWash{width : 21%; 
 margin-top : 20px;
-}input[type = 'date']{    
+}#date{    
 	margin-left: 36px;
     margin-bottom: 46px;
     width: 200px;
@@ -118,4 +121,6 @@ margin-top : 20px;
     padding-top: 5px;
     padding-bottom: 5px;
     width: 200px;
+}#timespan{
+	 padding-left: 12px;
 }

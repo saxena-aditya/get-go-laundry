@@ -6,26 +6,101 @@
 		<title>Login</title>
 		 <meta charset="utf-8" />
 		<link rel="stylesheet" type = "text/css"  href="${pageContext.request.contextPath}/resources/bootstrap/css/bootstrap.min.css" />
-		<link rel="stylesheet" type = "text/css"  href="${pageContext.request.contextPath}/resources/css/mainPagecss.css" />
+		<link rel="stylesheet" type = "text/css"  href="${pageContext.request.contextPath}/resources/css/main.css.css" />
+		<link rel="stylesheet" type = "text/css"  href="${pageContext.request.contextPath}/resources/css/style.css" />
+		<link rel="stylesheet" type = "text/css"  href="${pageContext.request.contextPath}/resources/css/navbar-css.css" />
+		
 </head>
 	<body> 
-	<a  class = "btn btn-success" href = "registerMe">Register</a>
+	<div class= "html-envelop">
+	
+	<!-- NAVBAR CONTENT -->
+	<jsp:include page="navbar.jsp" />  
+
+
+  <!-- NAVBAR CONTENT END -->
+	
+
+ <a  class = "btn btn-success" href = "registerMe">Register</a>
+  <div class = "middle-part">
+	<img id = "background-image" src = "${pageContext.request.contextPath}/resources/visuals/clothes.jpg" alt = "background-image">
 		
-		<div class= "row">
-	
-		  <h2>Login To Your Account</h2>
-		 
-		  <p>${MsgDisplay}</p>
-		  <div id =  "formElements">
-		  <form action='login' method='post'>
-		    <input placeholder='Username' type='text' name='username' /><br>
-		    <input placeholder='Password' type='password' name='pass' /><br>
-		    <div id = "button">
-		    <button class = "btn btn-default" id = "btnL">Login</button>
-		    </div>
-		  </form>
+	<div class = "form-div">
+	<div class = "note-class">
+	<span id = "note">Login</span>
+	</div>
+		<div id ="msg-div">
+		<p id = "msg">${MsgDisplay}</p>
 		  </div>
-		</div>
+		    <form action='login' method='post'>
+		    <div class="form-group">
+		      <div class = "gly-class">
+		        <i class = "glyphicon glyphicon-user" id = "user-gly"></i>
+		      </div>
+		        <input placeholder='Username' class = "form-control " type='text' name='username' /><br>
+		          </div>
+		        <div class = "form-group paswd-marg">
+		       <div class = gly-class>
+		         <i id = user-gly class = "glyphicon glyphicon-triangle-right"></i>
+		       </div>
+		     <input placeholder='Password' class = "form-control pswd-marg" type='password' name='pass' /><br>
+		       </div>
+		         <div id = "button-div">
+		           <button class = "btn btn-success" id = "btnL">Sign in</button>
+		         </div>
+		    </form>
+		  </div>
+		  <img id = "cmpny-sym" src = "${pageContext.request.contextPath}/resources/visuals/cmpny-sym.jpg" alt = "comapny-symbol">
+		  <div class = "cleany-clean">
+		  <span id="cmpny-name">Cleany Clean</span><br>
+		  <span id="cmpny-note">you can trust us!  </span>
+		  </div>
+		  </div>
+		  
+		  
+		  
+		  
+		  <!-- Flip cards starting -->
+		  <div class="card-wrapper flip-diagonal-right filper-1">
+				<div class="card">
+					<div class="front fliper-front">
+						<span id="fliper-title">Why ?</span>
+						
+					</div>
+					<div class="back fliper-back">
+						<span>Flip card</span>
+						<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Quia ipsum enim velit ea sit nisi dolore adipisci impedit non? In, minima natus sapiente repudiandae tempore architecto ut voluptates voluptas commodi.</p>
+					</div>
+				</div>
+			</div>
 	
+	 <div class="card-wrapper flip-diagonal-right filper-2">
+				<div class="card">
+					<div class="front fliper-front">
+						<span id = "fliper-title">When ?</span>
+						
+					</div>
+					<div class="back fliper-back">
+						<h2>Back side</h2>
+						<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Quia ipsum enim velit ea sit nisi dolore adipisci impedit non? In, minima natus sapiente repudiandae tempore architecto ut voluptates voluptas commodi.</p>
+					</div>
+				</div>
+			</div>
+	
+	 <div class="card-wrapper flip-diagonal-right filper-3">
+				<div class="card">
+					<div class="front fliper-front">
+						<span id = "fliper-title">How ?</span>
+						
+					</div>
+					<div class="back fliper-back">
+						<h2>Back side</h2>
+						<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Quia ipsum enim velit ea sit nisi dolore adipisci impedit non? In, minima natus sapiente repudiandae tempore architecto ut voluptates voluptas commodi.</p>
+					</div>
+				</div>
+			</div>
+<!-- Flip cards Ending Here! -->	
+		
+	</div>
 	</body>
 </html>

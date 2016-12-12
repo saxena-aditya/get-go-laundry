@@ -1,0 +1,117 @@
+
+.form-div{
+    border : solid 3px;
+    border-radius : 23px;
+    position :absolute;
+    top : 18%;
+    left : 80%;
+    padding : 20px 20px 20px 20px;
+    width : 243px;
+    background-color : steelblue;
+    
+}
+.gly-class{
+    position :absolute;
+    padding-left : 8px;
+    padding-top : 6px;
+    font-size : 18px;
+}
+.form-div input{
+    padding-left : 35px;
+    font-size :19px;
+
+}
+.pswd-marg{
+    margin-top : -29px
+}
+#button-div{
+    padding-left :0px;
+    
+}
+#btnL{
+    margin-top : -29px;
+    width : 195px;
+    letter-spacing : 1px;
+}
+.note-class{
+    position :relative;
+    padding-top : 2px;
+    padding-bottom : 2px;
+    border : solid 1px;
+    padding-left : 55px; 
+    background-color : white;
+}
+#note{
+    font-size : 30px;
+}
+#msg-div{
+    padding : 5px 5px 5px 5px;
+}
+.filper-1{
+    position: absolute !important;
+    top : 75%;
+    left :12%;
+}
+.filper-2{
+    position: absolute !important;
+    top : 82%;
+    left :39%;
+}
+.filper-3{
+    position: absolute !important;
+    top : 75%;
+    left :65%;
+}
+.cleany-clean{
+    position :absolute;
+    top :29%;
+    left :27%;
+    font-family : verdana;
+}
+#cmpny-name{
+    font-size :55px;
+    letter-spacing :4px;
+    padding-left :0px;
+    color :#000;
+    
+}
+#cmpny-note{
+    font-size : 22px;
+    letter-spacing :2px;
+    padding-left :12px;
+    color : #000;
+}
+#cmpny-sym{
+    position :absolute;
+    width :370px;
+    left : 6%;
+    top :9%;
+}
+.middle-part{
+    position :absolute;
+    height :438px;
+    width : 100%;
+    top :8%;
+}
+#background-image{
+    width : 100%;
+    height :inherit;
+    opacity : 0.69;
+}
+#fliper-title{
+    font-size :45px;
+    font-family :verdana;
+    color : #000;
+    padding-left :62px;
+    
+}
+.fliper-front{
+    position :absolute;
+    margin-top :55px;
+    padding-top :59px !important;
+}
+.card{
+    height: 280px ! important;
+    width: 289px ! important ;
+
+}

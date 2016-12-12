@@ -4,8 +4,12 @@
 <html>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
-<script type = "text/javascript" src = "${pageContext.request.contextPath}/resources/jQuery/jquery.js"></script>
+
 <link rel="stylesheet" type = "text/css"  href="${pageContext.request.contextPath}/resources/bootstrap/css/bootstrap.min.css" />
+<link rel="stylesheet" type = "text/css"  href="${pageContext.request.contextPath}/resources/css/default.min.css" />
+<link rel="stylesheet" type = "text/css"  href="${pageContext.request.contextPath}/resources/css/alertify.min.css" />
+<script type = "text/javascript" src = "${pageContext.request.contextPath}/resources/jQuery/jquery.js"></script>
+<script type = "text/javascript" src = "${pageContext.request.contextPath}/resources/jQuery/alertify.min.js"></script>
 
 <title>Insert title here</title>
 </head>
@@ -14,6 +18,12 @@
 <h3>Your OrderID is : ${orderID}</h3>
 <div id = "orderDetails"></div>
 
+<script type = "text/javascript">
 
+$(document).ready(function(){
+	alertify.success('Your order has been recieved :)'); 
+
+});
+</script>
 </body>
 </html>

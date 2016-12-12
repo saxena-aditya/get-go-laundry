@@ -1,0 +1,88 @@
+.form-div{
+   
+    padding-left : 60px;
+    padding-right : 180px;
+    width : 48em;
+    padding-top : 40px;
+    padding-bottom : 40px;
+    position : absolute;
+    top : 4%;
+    left : 50%
+}
+#hr{
+    color : black;
+}
+.thank-you-class{
+   
+    left : 9%;
+    top : 24%;
+}
+#thank-you{
+    
+    font-size : 80px;
+    font-family : sans-serif;
+    letter-spacing : 3px;
+   }
+
+#note{
+   
+    font-size :30px;
+    letter-spacing : 2px;
+    
+}
+.note-class{
+   
+    left : 9%;
+    top : 41%;
+}
+.note-envelop{
+    position : absolute;
+    top : 50%;
+    left : 9%
+}
+
+#muted-text{
+    color : #000;
+}
+#color-class{
+    height : 678px;
+    background: linear-gradient(#b5f6ff,#00e6f7);
+}
+.container{
+    width : inherit !important;
+    padding-left : 0px !important;
+}
+.sub-heading{
+    font-size :24px;
+    text-decoration : none;
+    font-family : cursive;
+    letter-spacing : 0px;
+}
+form{
+     margin-top: 24px;
+}
+.image-envelop{
+    position : absolute;
+    top :14%;
+    left :15%
+       
+}
+#image{
+    width : 250px;
+}
+#form-heading{
+    font-size : 30px;
+    letter-spacing : 3px;
+}
+.input-support{
+    width : 206px;
+}
+.sign-up{
+    width : 435px;
+    height : 46px;
+    letter-spacing : 2px;
+}
+@font-face {
+   font-family: myFirstFont;
+   src: url(sansation_light.woff);
+}
