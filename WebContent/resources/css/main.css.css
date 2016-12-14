@@ -49,18 +49,18 @@
 }
 .filper-1{
     position: absolute !important;
-    top : 75%;
-    left :12%;
+    top : 85%;
+    left :8%;
 }
 .filper-2{
     position: absolute !important;
-    top : 82%;
-    left :39%;
+    top : 90%;
+    left :38%;
 }
 .filper-3{
     position: absolute !important;
-    top : 75%;
-    left :65%;
+    top : 85%;
+    left :68%;
 }
 .cleany-clean{
     position :absolute;
@@ -89,7 +89,7 @@
 }
 .middle-part{
     position :absolute;
-    height :438px;
+    height :468px;
     width : 100%;
     top :8%;
 }
@@ -98,20 +98,34 @@
     height :inherit;
     opacity : 0.69;
 }
-#fliper-title{
-    font-size :45px;
-    font-family :verdana;
-    color : #000;
-    padding-left :62px;
-    
+.fliper-front, .fliper-back{
+    position :absolute ;
+    width : 289px ! important;
+    height : 299px !important;
 }
-.fliper-front{
+#bubbles{
     position :absolute;
-    margin-top :55px;
-    padding-top :59px !important;
+    opacity : 0.8;
+    height  : 299px !important;
+    width : 270px ! important;
+    padding-left :0px;
+    padding-right :0px;
 }
-.card{
-    height: 280px ! important;
-    width: 289px ! important ;
+#fliper-title{
+    position :absolute;
+    color : #000;
+    font-family :verdana;
+    font-size :40px;
+    padding-top : 35%;
+}
+.title-1{
+    padding-left :26%;
 
+}
+.title-2{
+    padding-left :22%;
+}
+.title-3{
+    padding-left :26%;
+   
 }

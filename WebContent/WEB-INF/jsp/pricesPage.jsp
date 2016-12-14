@@ -5,15 +5,27 @@
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
 <title>Insert title here</title>
+
 <link rel="stylesheet" type = "text/css"  href="${pageContext.request.contextPath}/resources/bootstrap/css/bootstrap.min.css" />
-<script type = "text/javascript" src = "${pageContext.request.contextPath}/resources/jQuery/jquery.js"></script>
+<link rel="stylesheet" type = "text/css"  href="${pageContext.request.contextPath}/resources/css/side-bar.css" />
+<link rel="stylesheet" type = "text/css"  href="${pageContext.request.contextPath}/resources/css/jquery-ui.css" />
+<link rel="stylesheet" type = "text/css"  href="${pageContext.request.contextPath}/resources/css/prices-page.css" />
+
+<script type = "text/javascript" src = "${pageContext.request.contextPath}/resources/jQuery/jquery.min.js"></script>
+<script type = "text/javascript" src = "${pageContext.request.contextPath}/resources/jQuery/bootstrap.min.js"></script>
+<script type = "text/javascript" src = "${pageContext.request.contextPath}/resources/jQuery/jquery-ui.js"></script>
 
 </head>
 <body>
-<p>${itm.hoodie} h h</p>
-<div class = "row">
-<div class ="col-md-2"></div>
-<div class = "col-md-7">
+<img id="background-image-side-bubbles" src="${pageContext.request.contextPath}/resources/visuals/side-bubbles.PNG" alt ="blue-bubbles">
+
+<!-- Upper drawer and side navigation -->
+
+<jsp:include page = "drawers.jsp" />
+
+<!-- Upper drawer and side navigation -->
+
+<div class = "table-holder">
 <table class="table table-hover">
     <thead>
       <tr>
@@ -62,10 +74,22 @@
       </tbody>
     
 </table>
-</div>
-</div>
-<div class = "col-md-3"></div>
 
+
+</div>
+<script>
+ 
+$(document).ready(function(){
+	$('#order-form').addClass("disabled")
+	$('#btnClick').tooltip({
+						content : "Please move to Home for ordering."
+					});
+	
+		
+	
+
+});
+</script>
 
 </body>
 </html>

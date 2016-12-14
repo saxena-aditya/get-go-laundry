@@ -8,8 +8,11 @@
 <link rel="stylesheet" type = "text/css"  href="${pageContext.request.contextPath}/resources/css/jquery-ui.css" />
 
 <link rel="stylesheet" type = "text/css"  href="${pageContext.request.contextPath}/resources/css/default.min.css" />
+<link rel="stylesheet" type = "text/css"  href="${pageContext.request.contextPath}/resources/css/side-bar.css" />
 
 <link rel="stylesheet" type = "text/css"  href="${pageContext.request.contextPath}/resources/css/alertify.min.css" />
+<script type = "text/javascript" src = "${pageContext.request.contextPath}/resources/jQuery/jquery.min.js"></script>
+<script type = "text/javascript" src = "${pageContext.request.contextPath}/resources/jQuery/bootstrap.min.js"></script>
 
 <script type = "text/javascript" src = "${pageContext.request.contextPath}/resources/jQuery/jquery.js"></script>
 <script type = "text/javascript" src = "${pageContext.request.contextPath}/resources/jQuery/costCounter.js"></script>
@@ -17,39 +20,31 @@
 <script type = "text/javascript" src = "${pageContext.request.contextPath}/resources/jQuery/alertify.min.js"></script>
 </head>
 <body>
-<div id = "logoutLink" style = "text-align: right;
-    padding-right: 30px;">
-<a href = "logout" style = "text-align:'right'; padding-right:'30px';">Logout</a>
-</div>
+<img id="background-image" src="${pageContext.request.contextPath}/resources/visuals/back-bubbles.jpg" alt ="blue-bubbles">
 
-	<h3 style = "color: green;">Welcome : ${username} ! </h3>
+<p style = "position : absalute"> it isi ${item.hoodie} </p>
 
+<!-- Upper drawer and side navigation menu -->
+<jsp:include page = "drawers.jsp" />
 
-<!-- Services Tags -->
-<a class = "btn btn-default" href = "prices">Prices</a>
-<button class = "btn btn-default" id = "btnClick">Order</button>
-<a class = "btn btn-default" id = "oderHistory" href = "order_history">Order History</a>
-<!-- Services Tags -->
+<!-- Upper drawer and side navigation menu -->
 
+<!-- Order form starting! -->
 <div id = "contactDiv">
-
 
 <div id ="wrapper">
 
 <button id = "btnSWash" class = "btn btn-default">Simple Wash</button>
 <button id = "btnDWash" class = "btn btn-default">Dry Wash</button>
+<div class= "form-container">
 <form id = "myForm1" class = "Myform1" method="POST" action="placeOrder"  style = "position : absolute">
 
 
 <div id = "myForm" class = "Myform" style = "position : absolute">
 
 <p class = "totalSum" style = "text-align: right;">total</p>
-<hr/><br/>
+<hr>
 
-
-
-
-<div id = "orderDetails"></div>
 
 <input  name = "date" id = "date" placeholder = "Select date" />
 <script>
@@ -57,7 +52,7 @@ $(function() {
     $( "#date" ).datepicker({ minDate: 0});
   });
   </script>
-<select type = "text" name = "timeSpan" id = "timeSpan">
+<select  name = "timeSpan" id = "timeSpan">
 	
 	<option value = "8am-10am"> 8am to 10am</option>
 	<option value = "10am-12pm"> 10am to 12pm</option>
@@ -145,6 +140,7 @@ $(document).ready(function(){
 </div>
 
 </form>
+</div>
 </div></div>
 
 <script type = "text/javascript">
@@ -196,8 +192,9 @@ $('#myForm1').submit(function(){
 		  }
 
 	    $button.parent().find("input").val(newVal);
-	    
+	   
 	    var a = parseInt($('#o').val()) * '${item.hoodie}';
+	   
 	    var b = parseInt($('#p').val()) * '${item.pants}';
 	    var c = parseInt($('#cc').val()) * '${item.coat}';
 	    var d = parseInt($('#s').val()) * '${item.shirt}';
@@ -229,10 +226,15 @@ $('#myForm1').submit(function(){
 	  });
 
   $(".cancel").click(function() {
-		$(this).parent().parent().parent().parent().hide();
+		$(this).parent().parent().parent().parent().parent().hide();
 
 });	
 
 </script>
+
+
+
+<!-- Order form ending! -->
+
 </body>
 </html>

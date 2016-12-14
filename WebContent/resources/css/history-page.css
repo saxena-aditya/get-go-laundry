@@ -1,0 +1,17 @@
+.table-container{
+	position : relative;
+	font-size :16px;
+	text-align :center;
+	
+	font-family :verdana;
+	padding-left : 100px;
+	padding-top : 67px
+
+}
+
+tr th {
+	text-align :center;
+	font-size : 17px;
+	font-family :verdana;
+	
+}

@@ -14,24 +14,8 @@ import org.springframework.web.servlet.ModelAndView;
 @Controller
 public class servicesController {
 
+	WebController webctr = new WebController();
 	
-	ItemPrices itm = new ItemPrices();
-	@RequestMapping(value = "prices", method = RequestMethod.GET)
-	protected ModelAndView pricesPage(HttpSession session, Model model){
-		
-		if(session.getAttribute("loggedinUser")==null){
-			model.addAttribute("MsgDisplay", "Please Login First!");
-			return new ModelAndView("mainPage");
-		}
-		ModelAndView m = new ModelAndView("pricesPage");
-		session.setAttribute("itm", itm);
-		return m;
-		}
-	
-	@RequestMapping(value = "home", method = RequestMethod.GET)
-	protected String returnHome(){
-		return "mainPage";
-	}
 	
 	
 	

@@ -21,6 +21,7 @@ import org.com.jdbcDAO.addUserDAOImpl;
 import org.springframework.context.ApplicationContext;
 import org.springframework.context.support.ClassPathXmlApplicationContext;
 import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
@@ -84,6 +85,15 @@ public class WebController {
 	
 	}
 	
+	@RequestMapping(value = "login")
+	protected ModelAndView login_page(){
+		
+		ModelAndView model = new ModelAndView("welcome");
+		model.addObject("username", getUsername());
+		model.addObject("item", item);
+		return model;
+	}
+	
 	@RequestMapping(value = "placeOrder", method = RequestMethod.POST)
 	protected ModelAndView takingOrder(@ModelAttribute("ordPlaced") Ordergetter odr) throws IllegalArgumentException, IllegalAccessException, NoSuchFieldException, SecurityException{
 		ModelAndView placed_Order = new ModelAndView("OrderShow");
@@ -100,6 +110,7 @@ public class WebController {
 		}isOrderPlaced = true;
 		
 		placed_Order.addObject("orderID", getOrderID());
+		placed_Order.addObject("username",getUsername());
 		
 		return placed_Order;
 	}
@@ -122,9 +133,31 @@ public class WebController {
 		
 		model.addObject("costList", costList);
 		model.addObject("oList", oList);
+		model.addObject("username", getUsername());
+
 		
 		return model;
 	}
+	
+	ItemPrices itm = new ItemPrices();
+	@RequestMapping(value = "prices", method = RequestMethod.GET)
+	protected ModelAndView pricesPage(HttpSession session, Model model){
+		
+		if(session.getAttribute("loggedinUser")==null){
+			model.addAttribute("MsgDisplay", "Please Login First!");
+			return new ModelAndView("mainPage");
+		}
+		ModelAndView m = new ModelAndView("pricesPage");
+		session.setAttribute("itm", itm);
+		m.addObject("username", getUsername());
+		return m;
+		}
+	
+	@RequestMapping(value = "home", method = RequestMethod.GET)
+	protected String returnHome(){
+		return "mainPage";
+	}
+	
 	public void setUsername(String username2){
 		this.username = username2;
 		}
@@ -221,10 +254,5 @@ public boolean isItemCountValid(Object obj, Field field)
 		 return false;
 	else
 		return false;
-	
-	
-	
-}
-
-
+	}
 }

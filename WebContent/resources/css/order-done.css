@@ -1,0 +1,15 @@
+#order-save-image{
+    position :absolute;
+    width : 310px;
+    left: 38%;
+    top : 14%;
+    border :solid 1px;
+    padding : 15px
+
+}
+.order-display{
+    position :absolute;
+    font-family :verdana;
+    left : 38%;
+    top : 70%
+}

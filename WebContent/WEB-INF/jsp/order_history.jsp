@@ -6,27 +6,88 @@
 <html>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
+<link rel="stylesheet" type = "text/css"  href="${pageContext.request.contextPath}/resources/bootstrap/css/bootstrap.min.css" />
+<link rel="stylesheet" type = "text/css"  href="${pageContext.request.contextPath}/resources/css/side-bar.css" />
+<link rel="stylesheet" type = "text/css"  href="${pageContext.request.contextPath}/resources/css/history-page.css" />
+<link rel="stylesheet" type = "text/css"  href="${pageContext.request.contextPath}/resources/css/popform.css" />
+<link rel="stylesheet" type = "text/css"  href="${pageContext.request.contextPath}/resources/css/jquery-ui.css" />
+<link rel="stylesheet" type = "text/css"  href="${pageContext.request.contextPath}/resources/css/default.min.css" />
+
+<script type = "text/javascript" src = "${pageContext.request.contextPath}/resources/jQuery/jquery.min.js"></script>
+<script type = "text/javascript" src = "${pageContext.request.contextPath}/resources/jQuery/bootstrap.min.js"></script>
+<script type = "text/javascript" src = "${pageContext.request.contextPath}/resources/jQuery/jquery-ui.js"></script>
+
+
 <title>Order History</title>
 </head>
 <body>
-<c:if test="${empty oList}">
+<img id="background-image-side-bubbles" src="${pageContext.request.contextPath}/resources/visuals/side-bubbles.PNG" alt ="blue-bubbles">
+
+<!-- Upper drawer and side navigation -->
+
+<jsp:include page = "drawers.jsp" />
+
+<!-- Upper drawer and side navigation -->
+
+
+<div class = "container table-container">
+
+<c:choose>
+<c:when test = "${empty oList}">
+<!-- One time but awesome thing 
+	show you have not made any 
+	order yet, please make one now! -->
 
 <p>List is Empty</p>
 
-
-</c:if>
+</c:when>
+<c:otherwise>
+<table class = "table table-bordered">
+<thead>
+<tr class="table-head">
+<th>Order ID</th>
+<th>Order Date</th>
+<th>Total Cost</th>
+</tr>
+</thead>
+<tbody>
 <c:forEach items="${oList}" var="list" varStatus = "sts">
 
 	
 
     <c:if test = "${not empty list.getOrder_id()}">
-        <span>Order ID: <a href = "#"><c:out value="${list.getOrder_id()}"/></a>
-        <span>Order Date: <c:out value="${list.getOrder_date()}"/> </span>  
-        <span>Order Cost : <c:out value = "${costList[sts.index]}"></c:out></span>
-        <br> 
+    
+	<tr>
+    <td><a href = "#"><c:out value="${list.getOrder_id()}"/></a></td>
+    <td><c:out value="${list.getOrder_date()}"/></td>
+    <td><c:out value="${costList[sts.index]}"/></td>
+    </tr>
     </c:if>
     </c:forEach>
 
-<p>Your Order History will appear here!!</p>
+</tbody>
+
+</table>
+
+
+</c:otherwise>
+</c:choose>
+
+</div>
+
+<script>
+ 
+$(document).ready(function(){
+	$('#order-form').addClass("disabled")
+	$('#btnClick').tooltip({
+						content : "Please move to Home for ordering."
+					});
+	
+		
+	
+
+});
+</script>
+
 </body>
 </html>

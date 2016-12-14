@@ -58,13 +58,15 @@
 		  </div>
 		  
 		  
-		  
+			  
 		  
 		  <!-- Flip cards starting -->
 		  <div class="card-wrapper flip-diagonal-right filper-1">
 				<div class="card">
 					<div class="front fliper-front">
-						<span id="fliper-title">Why ?</span>
+					<img id = "bubbles" src = "${pageContext.request.contextPath}/resources/visuals/bubbles.jpg" alt = "bubbles">
+		  
+						<span id="fliper-title" class = "title-1">Why ?</span>
 						
 					</div>
 					<div class="back fliper-back">
@@ -77,7 +79,9 @@
 	 <div class="card-wrapper flip-diagonal-right filper-2">
 				<div class="card">
 					<div class="front fliper-front">
-						<span id = "fliper-title">When ?</span>
+					<img id = "bubbles" src = "${pageContext.request.contextPath}/resources/visuals/bubbles.jpg" alt = "bubbles">
+		  
+						<span id = "fliper-title" class = "title-2">When ?</span>
 						
 					</div>
 					<div class="back fliper-back">
@@ -90,7 +94,9 @@
 	 <div class="card-wrapper flip-diagonal-right filper-3">
 				<div class="card">
 					<div class="front fliper-front">
-						<span id = "fliper-title">How ?</span>
+					<img id = "bubbles" src = "${pageContext.request.contextPath}/resources/visuals/bubbles.jpg" alt = "bubbles">
+		  
+						<span id = "fliper-title" class = "title-3">How ?</span>
 						
 					</div>
 					<div class="back fliper-back">

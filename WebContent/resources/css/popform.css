@@ -1,5 +1,5 @@
  #contactDiv{
-    opacity:0.72;
+    opacity:0.86;
 	position: absolute;
 	top: 0px;
 	left: 0px;
@@ -8,63 +8,112 @@
 	background: #a7ece7;
 	display: none;
 
-}.totalSum{color : #000;
-}#myForm1{
-	left : 27%;
-}#myForm,#myForm2{
-    left: 27.99%;
-    top: 9%;
+}
+.totalSum{
 
-}.Myform,.Myform2{
-
-	border-radius:12px;
-	padding:20px 30px;
-	box-shadow:0 0 15px;
-	font-size:14px;
-	font-weight:bold;
-	width:350px;
-	margin:20px 250px 0 35px;
-	float:right;
-
-}#myForm, #myForm2{
-	width: 570px;
-	margin:0px;
+	color : #000;
+	padding-right : 50px;
+	margin-top : 8px;
+}
+.form-container{
+	padding-top : 45px;
+	width : inherit;
+	height : inherit;
+}
+.myForm, .myForm2{
+	
+	padding-top : 15px;
+	padding-left : 55px;
+	 
 	color: white;
+
+	
 	font-size: 20px;
- background-color: rgba(0, 255, 111, 0.84);
-	font-family: sans-serif;
-	position: absolute;
+ 	font-family: sans-serif;
+	position: relative !important;
+
+}
+#wrapper{
+	position :absolute;
 	border: 0.5px solid rgb(90, 158, 181);
-}.userInput{
+	box-shadow:0 0 15px;
+	background-color: rgba(0, 255, 111, 0.84);
+	
+	height : 500px;
+	width: 570px;
+	border-radius: 12px ;
+	top : 11% ! important;
+	left : 28%;
+}
+#btnSWash{
+
+ 	position :absolute;
+	width: 50%;
+	height : 50px;
+	margin-right :0px;
+	border : none;
+	border-radius : 0px
+}
+#btnDWash{
+
+	position :absolute;
+	padding-left :0px;
+	left : 50%;
+	margin-left :0px;
+	width : 50%;
+	height : 50px;
+	border : none;
+	border-radius : 0px 
+
+}
+#date{    
+	margin-left: 36px;
+    margin-bottom: 46px;
+    width: 200px;
+}
+select{
+	    margin-left: 42px;
+    padding-top: 5px;
+    padding-bottom: 5px;
+    width: 200px;
+}
+.userInput{
 	width: inherit;
     margin-left: 3px;
     margin-bottom: 20px;
 
-}input[type = 'number']{
+}
+input[type = 'number']{
   
   width: 40px;
-  font: bold 20px Helvetica, sans-serif;
+  font: 20p, sans-serif;
+
   padding: 3px 0 0 0;
   text-align: center;
   color : #000;
-} #date, #timeSpan{
+}
+#date, #timeSpan{
  color : #000;
  text-align : center;
-     letter-spacing: 2px;
+     letter-spacing: 1px;
    
 	
-}label{
+}
+label{
 	
 	width: 7em;
     margin-right: 9em;
     text-align: right;
     margin-left: 4px;
-}#cancel{
+}
+#cancel{
 	width: 112px
-}textarea:focus, input:focus {
+}
+textarea:focus, input:focus {
     text-align:center;
     color: #000;
-}.buttonl {
+}
+.buttonl {
 	color: rgba(95, 95, 99, 0.84);
     margin-top: 0px;
    	border: none;
@@ -81,7 +130,8 @@
     text-align: center;
     background: url(../visuals/newImage.PNG) no-repeat;
 	
-}.button{
+}
+.button{
 	color: rgba(95, 95, 99, 0.84);
 	border: none;
 	border-radius: 15px;
@@ -98,29 +148,18 @@
     text-align: center;
     background: url(../visuals/newImage.PNG) no-repeat;
 	
-}input[type=number]::-webkit-inner-spin-button, 
+}
+input[type=number]::-webkit-inner-spin-button, 
 input[type=number]::-webkit-outer-spin-button { 
 	  -webkit-appearance: none; 
 	  margin: 0; 
 	  -moz-appearance: textfield;
 
-}.buttonl:hover, .button:hover {
+}
+.buttonl:hover, .button:hover {
     color: black;
-}#btnSWash{
-	    width: 21%;
-	    margin-top : 20px;
-    margin-left: 378px;
-}#btnDWash{width : 21%; 
-margin-top : 20px;
-}#date{    
-	margin-left: 36px;
-    margin-bottom: 46px;
-    width: 200px;
-}select{
-	    margin-left: 42px;
-    padding-top: 5px;
-    padding-bottom: 5px;
-    width: 200px;
-}#timespan{
+}
+
+#timespan{
 	 padding-left: 12px;
 }
