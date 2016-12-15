@@ -1,3 +1,4 @@
+<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>  
 <!doctype html>
 <html>
 
@@ -60,6 +61,7 @@
 </div>
 <div class = "form-group">
     <label for = "lastName">Phone number </label>
+    <span>${MsgDisplay}</span>
      <input type = "number" class = "form-control" id = "pnum" name = "phone" />
       <small id = "muted-text" class="form-text text-muted"   >This will be your username. so,choose this carefully.
       </small>
@@ -83,9 +85,17 @@
  <button type = "submit" name = "submit" class=" btn btn-success sign-up">Sign Up</button>
 	<small id="muted-text">By clicking here, you agree with our T&C </small>
 	
+	
+	
 </form>
 </div>
 </div>
+
+<c:if test = "${not empty id_number}">
+<script>
+alert("Alertify will over take from here!");
+</script>
+</c:if>
 
 <script type = "text/javascript">
 

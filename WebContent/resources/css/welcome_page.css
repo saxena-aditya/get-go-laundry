@@ -1,0 +1,45 @@
+.latest-order-container{
+    position : absolute;
+    width : 60%;
+    //background-color :red;
+    left : 20%;
+    top : 30%;
+     
+    }
+
+table  {
+   // position :absolute;
+        font-size : 25px;
+        font-family : verdana;
+        text-align : center;
+      
+    }
+
+.table-head, .table-details {
+        padding-bottom : 20px !important;
+        padding-top : 20px!important;
+      
+    }
+    
+.cancle-order-form{
+    position :absolute;
+    top : 56%;
+    left : 102%;
+}    
+#submit-image{
+    position :absolute; 
+    height : 100%;
+    cursor : pointer;
+    left : -40px;
+    top : -12px;
+    
+}
+tr:hover{
+    background-color : lightcyan;
+}
+.latest-order-container:hover .cancle-order-form{
+    display : block;
+}
+.cancle-order-form{
+    display : none;
+}

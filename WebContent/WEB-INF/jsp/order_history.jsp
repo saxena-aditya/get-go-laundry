@@ -37,9 +37,9 @@
 <!-- One time but awesome thing 
 	show you have not made any 
 	order yet, please make one now! -->
+	
 
 <p>List is Empty</p>
-
 </c:when>
 <c:otherwise>
 <table class = "table table-bordered">

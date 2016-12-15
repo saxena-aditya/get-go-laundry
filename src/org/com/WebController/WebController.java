@@ -2,13 +2,10 @@ package org.com.WebController;
 
 
 import java.lang.reflect.Field;
-import java.sql.ResultSet;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Random;
-
 import javax.servlet.http.HttpSession;
-
 import org.com.DAO.orderDetailsDAO;
 import org.com.ItemPrices.ItemPrices;
 import org.com.getterSetterObjs.LoginGetterandSetters;
@@ -39,10 +36,43 @@ public class WebController {
 	String username;
 	long orderid;
 	long orderID;
+	String lastOrderid;
 	boolean isOrderPlaced = false;
 	int item_number;
+	int category_count = 0;
+	int LatestOcost;
+	int cost;
+	orderDetailsDAO le;
+	
+	List<Integer> costList = new ArrayList<>();
+	List<String> currentOrder = new ArrayList<>();
+	List<String> cOrder = new ArrayList<>();
+	List<orderDetailsDAO> lastOrderDetails = new ArrayList<>();
 	
 	ApplicationContext ctx = new ClassPathXmlApplicationContext("Spring.xml");
+	
+
+	
+	private void getLastOrderDetails(){
+		
+	
+		orderList = ctx.getBean("orderDetailsDAOImpl", orderDetailsDAOImpl.class);	
+
+		lastOrderDetails = orderList.latestesOrder(getUsername());
+		if (lastOrderDetails.size() == 0)
+			System.out.println("Sorry not Latest orders! ");
+		else{
+			for (orderDetailsDAO temp : lastOrderDetails) {
+				LatestOcost = orderList.orderCost(temp.getOrder_id());
+					
+			}
+		}
+		
+
+		
+	}
+	
+	
 	
 	@RequestMapping(value = "/")
 	protected String myFromClass1(){
@@ -57,6 +87,7 @@ public class WebController {
 			
 			int x = jdbc.getCount(User.getUsername(),User.getPass());
 			if(x == 1 ){
+				
 				session.setAttribute("loggedinUser", User.getUsername());
 				setUsername(User.getUsername());
 				return LoginSucessModel(User.getUsername());
@@ -65,6 +96,33 @@ public class WebController {
 				return LoginFailedModel();
 	}
 	
+	@RequestMapping(value = "login")
+	protected ModelAndView login_page(){
+		
+		ModelAndView model = new ModelAndView("welcome");
+		isOrderPlaced = false;
+		getLastOrderDetails();
+		model.addObject("username", getUsername());
+		model.addObject("item", item);
+		model.addObject("latestoList", lastOrderDetails);
+		model.addObject("LatestOcost", LatestOcost);
+		
+		return model;
+	}
+	
+	@RequestMapping(value = "order_cancel" )
+	protected ModelAndView order_cancel(){
+		ModelAndView model = new ModelAndView("welcome");
+		saveOrder_Impl = ctx.getBean(orderSaveDAOImpl.class);
+
+		saveOrder_Impl.deleteOrder(getUsername());
+		getLastOrderDetails();
+		model.addObject("LatestOcost", LatestOcost);
+		model.addObject("latestoList", lastOrderDetails);
+
+		model.addObject("username", getUsername());
+		return model;
+	}
 	
 	
 	@RequestMapping(value = "registerMe")
@@ -77,22 +135,23 @@ public class WebController {
 	protected ModelAndView ForForm(@ModelAttribute("registerUser") getterRegisterDetails reg){
 		
 		jdb = ctx.getBean("addUserDAOImpl", addUserDAOImpl.class);
+		ModelAndView model_success = new ModelAndView("mainPage");
+		ModelAndView model_fail = new ModelAndView("registerPage");
+		
+		if(jdb.userAlreadyPresent(reg.getPhone())){
+			model_fail.addObject("MsgDisplay", "Sorry, phone number already registered!");
+			model_fail.addObject("id_number", 0);
+			return model_fail;
+		}
+		else{
+		
 		jdb.addNewUser(reg);
-		
-		ModelAndView model2 = new ModelAndView("mainPage");
-		model2.addObject("MsgDisplay", "Please Login with your Phone Number and Password!");
-		return model2;
+		model_success.addObject("MsgDisplay", "Please Login with your Phone Number and Password!");
+		return model_success;
+	}
 	
 	}
 	
-	@RequestMapping(value = "login")
-	protected ModelAndView login_page(){
-		
-		ModelAndView model = new ModelAndView("welcome");
-		model.addObject("username", getUsername());
-		model.addObject("item", item);
-		return model;
-	}
 	
 	@RequestMapping(value = "placeOrder", method = RequestMethod.POST)
 	protected ModelAndView takingOrder(@ModelAttribute("ordPlaced") Ordergetter odr) throws IllegalArgumentException, IllegalAccessException, NoSuchFieldException, SecurityException{
@@ -100,6 +159,7 @@ public class WebController {
 		
 		//orderCost = calculateOrderCost(odr, item);
 		//System.out.println( "order is = "+ calculateOrderCost(odr, item));
+		
 		saveOrder_Impl = ctx.getBean(orderSaveDAOImpl.class);
 		 
 		placed_Order.addObject("ordItem", odr);
@@ -119,10 +179,22 @@ public class WebController {
 	protected ModelAndView orderHistory(HttpSession session){
 		
 		ModelAndView model = new ModelAndView("order_history");
+		
+		  /*1->getting all the orders by the username (phone number)
+		   *2-> storing then in the List<generic> type.
+		   *3-> calculating the cost for each order by order ID
+		   *4-> storing the order cost for each order in a array serial-wise
+		   *5-> passing the object model List<>, array and username to the jsp
+		   *6-> getting the last order_id and setting it to the variable! (for current order)
+		  **/
+		
+	//	getLists();
 		orderList = ctx.getBean("orderDetailsDAOImpl", orderDetailsDAOImpl.class);	
 		List<orderDetailsDAO> oList = orderList.findOrder(getUsername());
 		if(oList.size() == 0)
-			System.out.println("Sorry no order Found!! for user :" +getUsername());
+		{
+			//do something
+		}
 		
 		List<Integer> costList = new ArrayList<Integer>();
 		int cost;
@@ -155,6 +227,7 @@ public class WebController {
 	
 	@RequestMapping(value = "home", method = RequestMethod.GET)
 	protected String returnHome(){
+		
 		return "mainPage";
 	}
 	
@@ -173,16 +246,20 @@ public class WebController {
 
 	@RequestMapping(value = "logout", method = RequestMethod.GET)
 	protected String logout(HttpSession session){
+		
 		session.removeAttribute("loggedinUser");
 		return "mainPage";
 	}
 	
 	
 	protected ModelAndView LoginSucessModel(String username){
+		getLastOrderDetails();
 		isOrderPlaced = false;
 		ModelAndView model1 = new ModelAndView("welcome");
 		model1.addObject("username", username);
 		model1.addObject("item", item);
+		model1.addObject("latestoList", lastOrderDetails);
+		model1.addObject("LatestOcost", LatestOcost);
 		
 		return model1;
 		}
@@ -202,7 +279,15 @@ public class WebController {
 			return orderid;
 		}
 	
-	
+		
+		public String getLastOrderid() {
+			return lastOrderid;
+		}
+
+		public void setLastOrderid(String lastOrderid) {
+			this.lastOrderid = lastOrderid;
+		}
+
 	public int getObject(Object obj ) throws IllegalArgumentException, IllegalAccessException,
 								NoSuchFieldException, SecurityException {
     /*
@@ -221,10 +306,12 @@ public class WebController {
     							field.getInt(obj), getOrderID());
     		saveOrder_Impl.my_orderSave( getUsername(),getOrderID(), 
     						field.getName().toString(), field.getInt(obj), itm_cost );
+    		category_count++;
     		}
     	}
-    /*Demo function for getting and saving all query result (coloums) in a list */
-	saveOrder_Impl.testCallFunction();
+	
+	System.out.println("Use have Entered : "+ category_count +" categories!" );
+   
 	
 	
     /* 

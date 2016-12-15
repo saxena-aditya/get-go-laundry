@@ -9,6 +9,7 @@
 
 <link rel="stylesheet" type = "text/css"  href="${pageContext.request.contextPath}/resources/css/default.min.css" />
 <link rel="stylesheet" type = "text/css"  href="${pageContext.request.contextPath}/resources/css/side-bar.css" />
+<link rel="stylesheet" type = "text/css"  href="${pageContext.request.contextPath}/resources/css/welcome_page.css" />
 
 <link rel="stylesheet" type = "text/css"  href="${pageContext.request.contextPath}/resources/css/alertify.min.css" />
 <script type = "text/javascript" src = "${pageContext.request.contextPath}/resources/jQuery/jquery.min.js"></script>
@@ -30,6 +31,74 @@
 <!-- Upper drawer and side navigation menu -->
 
 <!-- Order form starting! -->
+
+<div class = "latest-order-container">
+<c:choose>
+<c:when test= "${empty latestoList}">
+
+	<!-- the user has not made any orderers till now  -->
+	<p>no order history!</p>
+
+</c:when>
+<c:otherwise>
+<table class = "table table-bordered">
+<thead>
+<tr >
+<th class="table-head">Order ID</th>
+<th class="table-head">Order Date</th>
+<th class="table-head">Total Cost</th>
+<th class="table-head">Stage</th>
+</tr>
+</thead>
+<tbody>
+<c:forEach items="${latestoList}" var="list" varStatus = "sts">
+
+	
+
+    <c:if test = "${not empty list.getOrder_id()}">
+    
+	<tr >
+	
+    <td class = "table-details"><a href = "#"><c:out value="${list.getOrder_id()}"/></a></td>
+    <td class = "table-details"><c:out value="${list.getOrder_date()}"/></td>
+    <td class = "table-details"><c:out value="${LatestOcost}"/></td>
+    <td class = "table-details">Recieved</td>
+    
+    </tr>
+  
+    </c:if>
+    </c:forEach>
+
+</tbody>
+
+</table>
+</c:otherwise>
+</c:choose>
+<script>
+$(document).ready(function(){
+	$('#submit-image').click(function(){
+		
+		// can use alertify for showing a prompt, for deleting the order 
+		// and them testing the option for processing request! :D
+		
+		
+		$('#cancel-order').submit();
+	});
+	
+});
+
+</script>
+
+    <div class= "cancle-order-form">
+<form id = "cancel-order" action = "order_cancel" method = "GET">
+<img id = "submit-image" src = "${pageContext.request.contextPath}/resources/visuals/cross.png"  alt = "image"></img>
+</form>
+
+
+</div>
+</div>
+
+
 <div id = "contactDiv">
 
 <div id ="wrapper">
@@ -104,8 +173,8 @@ $(document).ready(function(){
         <label for="name">Other</label>
         <input type="number" name="other" id="o" value="0"><div class = "buttonl">-</div><div class = "button">+</div>
       </div>
-<button type ="submit" class ="btn btn-success">Submit Order</button>
-<a class = "btn btn-default cancel" >Cancel</a>
+<button type ="submit" class ="btn btn-success lower-submit-button">Submit Order</button>
+<a class = "btn btn-default cancel lower-cancel-button" >Cancel</a>
 
 </div>
 <div id = "myForm2" class = "Myform2" style = "display : none ; position : absolute">
@@ -135,8 +204,8 @@ $(document).ready(function(){
         <input type="number" name="blanketLU" id="blu" value="0"><div class = "buttonl">-</div><div class = "button">+</div>
       </div>
 
-<button type ="submit" class ="btn btn-success">Submit Order</button>
-<a class = "btn btn-default cancel">Cancel</a>
+<button type ="submit" class ="btn btn-success lower-submit-button">Submit Order</button>
+<a class = "btn btn-default cancel lower-cancel-button">Cancel</a>
 </div>
 
 </form>
@@ -207,7 +276,7 @@ $('#myForm1').submit(function(){
 	    var y = parseInt($('#jk').val()) * '${item.jacket}';
 	    var z = parseInt($('#ctc').val()) * '${item.coat}';
 	     totalSum = a + b + c + d + e + f  + u + v + w + x + y + z ; 
-	    $('.totalSum').html(totalSum);
+			$('.totalSum').html(totalSum);	    
 	  });
   
   $()
@@ -227,6 +296,11 @@ $('#myForm1').submit(function(){
 
   $(".cancel").click(function() {
 		$(this).parent().parent().parent().parent().parent().hide();
+		document.getElementById("myForm1").reset();
+		$('.totalSum').html("total");
+		totalSum = 0;
+		
+		
 
 });	
 

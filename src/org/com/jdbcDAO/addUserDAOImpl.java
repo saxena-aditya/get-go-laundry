@@ -33,11 +33,24 @@ public class addUserDAOImpl implements addUserDAO{
 		// TODO Auto-generated method stub
 		final String query = "INSERT INTO reg_users(firstName, lastName, phone, pass, address1, address2)VALUES (?,?,?,?,?,?)";
 		jdbcTemplate.setDataSource(getDataSource());
-		jdbcTemplate.update(query, grd.getFirstName(),grd.getLastName(), grd.getphone(), grd.getPass(), 
+		jdbcTemplate.update(query, grd.getFirstName(),grd.getLastName(), grd.getPhone(), grd.getPass(), 
 				                   grd.getAddress1(), grd.getAddress2());
 		
 		
 		return 0;
+	}
+	@Override
+	public boolean userAlreadyPresent(String phn_number) {
+		// TODO Auto-generated method stub
+		
+		String str = "SELECT COUNT(*) FROM reg_users WHERE phone = ?";
+		jdbcTemplate.setDataSource(getDataSource());
+		int i = jdbcTemplate.queryForInt(str, phn_number);
+		
+		if(i == 0)
+			return false;
+		else
+			return true;
 	}
 
 }

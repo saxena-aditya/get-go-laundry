@@ -50,5 +50,15 @@ public class orderDetailsDAOImpl {
 		return cost;
 	}
 	
+	public List<orderDetailsDAO> latestesOrder(String Username) {
+		// TODO Auto-generated method stub
+		
+		String str = "SELECT order_id, order_date FROM my_order WHERE user = ? ORDER BY init DESC LIMIT 1";
+		jdbcTemplate.setDataSource(getDataSource());
+		List<orderDetailsDAO> latestoList  = getJdbcTemplate().query(str,
+				new BeanPropertyRowMapper<orderDetailsDAO>(orderDetailsDAO.class), Username);
+		
+			return latestoList;
+	}
 	
 }

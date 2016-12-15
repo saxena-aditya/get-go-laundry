@@ -3,7 +3,7 @@ package org.com.getterSetterObjs;
 public class getterRegisterDetails {
 	public String firstName;
 	public String lastName;
-	public long phone;
+	public String phone;
 	public String address1;
 	public String address2;
 	public String pass;
@@ -32,13 +32,14 @@ public class getterRegisterDetails {
 	public void setLastName(String lastName) {
 		this.lastName = lastName;
 	}
-	public long getphone() {
+	
+	
+	public String getPhone() {
 		return phone;
 	}
-	public void setphone(long phone) {
+	public void setPhone(String phone) {
 		this.phone = phone;
 	}
-	
 	public String getPass() {
 		return pass;
 	}
@@ -52,7 +53,7 @@ public class getterRegisterDetails {
 		setPass(pass);
 		setAddress1(address1);
 		setAddress1(address2);
-		setphone(phone);
+		setPhone(phone);
 	}
 	
 }

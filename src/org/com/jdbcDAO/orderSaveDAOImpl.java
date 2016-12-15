@@ -1,6 +1,5 @@
 package org.com.jdbcDAO;
 
-import java.util.List;
 
 import javax.sql.DataSource;
 
@@ -84,26 +83,20 @@ public class orderSaveDAOImpl implements SaveOrderDAO{
 
 		
 	}
+	@Override
 	public void testCallFunction() {
 		// TODO Auto-generated method stub
-		final String qry = "SELECT cloth_code FROM my_order WHERE order_id = ?";
-		jdbcTemplate.setDataSource(dataSource);
+		
+	}
+	public void deleteOrder(String username) {
+		// TODO Auto-generated method stub
+		
+		String Str = "DELETE e FROM my_order e WHERE order_id IN (SELECT order_id FROM (SELECT order_id FROM my_order WHERE user = ? ORDER BY init DESC LIMIT 1) x)";
+		jdbcTemplate.setDataSource(getDataSource());
+		jdbcTemplate.update(Str, username);
 		
 		
-	long order_ID = 628080;                   
-	List<String> string = jdbcTemplate.queryForList(qry, String.class, order_ID);
+		
+	}
 	
-	if(string.size() >0){
-		System.out.print("======================QUERY RECIEVED :) ======================================");
-		
-		for(int i =0; i < string.size() ; i++)
-			System.out.println("== "+string.get(i)+" ==");
-	}else{
-		System.out.println("====================NO QUERY RECIEVED :( =================================");
-	}
-		
-		
-	}
-
-
 }
