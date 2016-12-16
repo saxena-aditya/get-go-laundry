@@ -10,6 +10,8 @@ import org.springframework.stereotype.Controller;
 @Controller
 public class orderSaveDAOImpl implements SaveOrderDAO{
 	
+	private int count = 1;
+	
 	@Autowired
 	private DataSource dataSource;
 	private JdbcTemplate jdbcTemplate = new JdbcTemplate();
@@ -27,7 +29,6 @@ public class orderSaveDAOImpl implements SaveOrderDAO{
 		this.jdbcTemplate = jdbcTemplate;
 	}
 	
-	
 	@Override
 	public int orderDataSave(String username, String date, String time, String odrString, long orderid, int cost) {
 		
@@ -41,7 +42,7 @@ public class orderSaveDAOImpl implements SaveOrderDAO{
 		return 0;
 	}
 	@Override
-	public boolean my_orderSave(String username , long order_ID, String name, int value, int itm_cost ){
+	public boolean my_orderSave(String username , String order_ID, String name, int value, int itm_cost ){
 		
 		final String saveqry1 = "INSERT INTO my_order (user, order_ID, cloth_code,total_item_cost, item_count) VALUES (?,?,?,?,?)";
 		jdbcTemplate.setDataSource(dataSource);
@@ -50,7 +51,8 @@ public class orderSaveDAOImpl implements SaveOrderDAO{
 		
 		return true;
 	}
-	public int calc_ItemCost(String Name, int itm_Number, long order_ID) {
+	@Override
+	public int calc_ItemCost(String Name, int itm_Number, String string) {
 		// TODO Auto-generated method stub
 		
 		final String saveqry = "SELECT item_cost FROM item_prices WHERE item_name = ?";
@@ -67,15 +69,17 @@ public class orderSaveDAOImpl implements SaveOrderDAO{
 		
 		
 	}
-	public void save_Date(String DATE, long order_ID) {
+	
+	public void save_Date(String DATE, String order_id) {
 		// TODO Auto-generated method stub
 		final String saveqry = "UPDATE my_order SET order_date = ? WHERE order_id = ?";
 		jdbcTemplate.setDataSource(dataSource);
-		jdbcTemplate.update(saveqry,DATE,order_ID );
+		jdbcTemplate.update(saveqry,DATE,order_id );
 
 		
 	}
-	public void save_Time(String TIME, long order_ID) {
+	
+	public void save_Time(String TIME, String order_ID) {
 		// TODO Auto-generated method stub
 		final String saveqry = "UPDATE my_order SET order_time = ? WHERE order_id = ?";
 		jdbcTemplate.setDataSource(dataSource);
@@ -83,7 +87,6 @@ public class orderSaveDAOImpl implements SaveOrderDAO{
 
 		
 	}
-	@Override
 	public void testCallFunction() {
 		// TODO Auto-generated method stub
 		
@@ -96,6 +99,25 @@ public class orderSaveDAOImpl implements SaveOrderDAO{
 		jdbcTemplate.update(Str, username);
 		
 		
+		
+	}
+	public boolean firstOrder(String username) {
+		// TODO Auto-generated method stub
+		String str = "SELECT COUNT(*) FROM exhausted_users WHERE user = ?";
+		jdbcTemplate.setDataSource(getDataSource());
+		count = jdbcTemplate.queryForInt(str, username);
+		System.out.println("The count is = " +count);
+		
+		if(count == 0 )
+			return true;
+		
+		return false;
+	}
+	public void exhaustUser(String username) {
+		// TODO Auto-generated method stub
+		String str = "INSERT INTO exhausted_users (user) VALUES (?)";
+		jdbcTemplate.setDataSource(getDataSource());
+		jdbcTemplate.update(str, username);
 		
 	}
 	

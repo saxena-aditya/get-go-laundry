@@ -84,3 +84,13 @@ ul a:hover{
 	height : inherit;
 	width :inherit;
 }
+.activate{
+	background-color : white;
+	border-radius : 4px;
+}
+#order-simple-cost{
+	font-size :20px;
+}
+.crossed-over{
+	text-decoration : line-through;
+}

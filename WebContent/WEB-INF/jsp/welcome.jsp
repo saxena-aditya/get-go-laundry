@@ -6,6 +6,7 @@
 <link rel="stylesheet" type = "text/css"  href="${pageContext.request.contextPath}/resources/bootstrap/css/bootstrap.min.css" />
 <link rel="stylesheet" type = "text/css"  href="${pageContext.request.contextPath}/resources/css/popform.css" />
 <link rel="stylesheet" type = "text/css"  href="${pageContext.request.contextPath}/resources/css/jquery-ui.css" />
+<link rel="stylesheet" type = "text/css"  href="${pageContext.request.contextPath}/resources/css/footer-css.css" />
 
 <link rel="stylesheet" type = "text/css"  href="${pageContext.request.contextPath}/resources/css/default.min.css" />
 <link rel="stylesheet" type = "text/css"  href="${pageContext.request.contextPath}/resources/css/side-bar.css" />
@@ -21,6 +22,7 @@
 <script type = "text/javascript" src = "${pageContext.request.contextPath}/resources/jQuery/alertify.min.js"></script>
 </head>
 <body>
+
 <img id="background-image" src="${pageContext.request.contextPath}/resources/visuals/back-bubbles.jpg" alt ="blue-bubbles">
 
 <p style = "position : absalute"> it isi ${item.hoodie} </p>
@@ -37,10 +39,16 @@
 <c:when test= "${empty latestoList}">
 
 	<!-- the user has not made any orderers till now  -->
-	<p>no order history!</p>
+	<img id = "neutral-face-pic" src = "${pageContext.request.contextPath}/resources/visuals/neutral-face.png">
+	
+	<p id = "para">No Orders to show!! </p>
 
 </c:when>
 <c:otherwise>
+<div id = "teller">
+<p>Your most Recent Order</p>
+</div>
+
 <table class = "table table-bordered">
 <thead>
 <tr >
@@ -72,30 +80,45 @@
 </tbody>
 
 </table>
-</c:otherwise>
-</c:choose>
-<script>
-$(document).ready(function(){
-	$('#submit-image').click(function(){
-		
-		// can use alertify for showing a prompt, for deleting the order 
-		// and them testing the option for processing request! :D
-		
-		
-		$('#cancel-order').submit();
-	});
-	
-});
 
-</script>
-
-    <div class= "cancle-order-form">
+ <div class= "cancle-order-form">
 <form id = "cancel-order" action = "order_cancel" method = "GET">
 <img id = "submit-image" src = "${pageContext.request.contextPath}/resources/visuals/cross.png"  alt = "image"></img>
 </form>
 
 
 </div>
+
+</c:otherwise>
+
+
+
+</c:choose>
+<script>
+$(document).ready(function(){
+	
+	$("#home").addClass("activate");
+	
+	$('#submit-image').click(function(){
+		// can use alertify for showing a prompt, for deleting the order 
+		// and them testing the option for processing request! :D
+
+
+		alertify.confirm('Confirm Delete.', 'Do you want to delete this Order?', function(){ $('#cancel-order').submit(); }
+        , function(){
+        	//do something
+        });
+
+		
+		
+	
+	});
+	
+});
+
+</script>
+
+   
 </div>
 
 
@@ -309,6 +332,8 @@ $('#myForm1').submit(function(){
 
 
 <!-- Order form ending! -->
-
+<!-- footer  -->
+<jsp:include page = "footer.jsp" />
+<!-- footer ending -->
 </body>
 </html>

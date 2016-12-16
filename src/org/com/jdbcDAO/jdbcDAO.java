@@ -27,6 +27,7 @@ public class jdbcDAO implements LoginPageDAO{
 		this.jdbcTemplate = jdbcTemplate;
 	}
 	
+	@Override
 	public int getCount(String user,String pass){
 	//	System.out.println("pass1 : "+pass+" user1 : "+user);
 		String sql = "SELECT COUNT(*) FROM reg_users where phone = ? AND pass = ?";

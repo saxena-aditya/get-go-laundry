@@ -6,8 +6,10 @@
 <link rel="stylesheet" type = "text/css"  href="${pageContext.request.contextPath}/resources/css/bootstrap.min.css" />
 <link rel="stylesheet" type = "text/css"  href="${pageContext.request.contextPath}/resources/css/register-page.css" />
 <link rel="stylesheet" type = "text/css"  href="${pageContext.request.contextPath}/resources/css/navbar-css.css" />
+<link rel="stylesheet" type = "text/css"  href="${pageContext.request.contextPath}/resources/css/alertify.min.css" />
 
 <script type = "text/javascript" src = "${pageContext.request.contextPath}/resources/jQuery/jquery.js"></script>
+<script type = "text/javascript" src = "${pageContext.request.contextPath}/resources/jQuery/alertify.min.js"></script>
 
 </head>
 <body>
@@ -61,7 +63,7 @@
 </div>
 <div class = "form-group">
     <label for = "lastName">Phone number </label>
-    <span>${MsgDisplay}</span>
+    <span id = "error-msg">${MsgDisplay}</span>
      <input type = "number" class = "form-control" id = "pnum" name = "phone" />
       <small id = "muted-text" class="form-text text-muted"   >This will be your username. so,choose this carefully.
       </small>
@@ -80,6 +82,7 @@
 <div class = "form-group">
   <label for = "address2">Address 2nd Line </label>
 	<input type = "text" class = "form-control" id = "addr2" name = "address2" />
+	<small id="muted-text" class = "form-text text-muted">please, be as detailed as you can.</small>
 </div>	
 
  <button type = "submit" name = "submit" class=" btn btn-success sign-up">Sign Up</button>
@@ -90,12 +93,10 @@
 </form>
 </div>
 </div>
+<footer class="site-footer">
+  Cleany Clean 2016
+</footer>
 
-<c:if test = "${not empty id_number}">
-<script>
-alert("Alertify will over take from here!");
-</script>
-</c:if>
 
 <script type = "text/javascript">
 
@@ -104,20 +105,23 @@ $(document).ready(function(){
 	$('#reg-form').submit(function(){
 		if(!$('#fname').val()){
 			
+			alertify.alert('INVALID FIRST NAME', 'Please, let us know your name.');
+			
+			
 			return false;
 		}
 		else if(!$('#pnum').val()){
-			//alertify alert!
+			alertify.alert('INVALID PHONE NUMBER', 'Seems like your typed a wroung phone number.');
 			
 			return false;
 		}
 		else if($('#pnum').val().length !=10){
-			//alertify alert!
+			alertify.alert('INVALID PHONE NUMBER', 'Seems like your typed a wroung phone number.');
 			
 			return false;
 		}
 		else if(!$('#addr1').val()){
-			//alertify alert
+			alertify.alert('INVALID ADDRESS', 'Sorry, but we need a valid Address.');
 			
 			return false;
 			}
@@ -126,6 +130,7 @@ $(document).ready(function(){
 	});
 });
 </script>
+
 </body>
 
 </html>

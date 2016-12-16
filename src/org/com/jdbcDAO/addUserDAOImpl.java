@@ -27,7 +27,6 @@ public class addUserDAOImpl implements addUserDAO{
 		this.jdbcTemplate = jdbcTemplate;
 	}
 	
-
 	@Override
 	public int addNewUser(getterRegisterDetails grd) {
 		// TODO Auto-generated method stub

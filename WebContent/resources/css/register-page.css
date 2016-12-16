@@ -45,7 +45,7 @@
     color : #000;
 }
 #color-class{
-    height : 678px;
+    height : 800px;
     background: linear-gradient(#b5f6ff,#00e6f7);
 }
 .container{
@@ -90,4 +90,22 @@ input[type=number]::-webkit-inner-spin-button,
 input[type=number]::-webkit-outer-spin-button { 
   -webkit-appearance: none; 
   margin: 0; 
+
+}
+#error-msg{
+    font-size :17px;
+    padding-left :9px;
+    color : red;
+}
+input[type=text],input[type=number],input[type=password]{
+    font-size: 20px !important;
+    font-family : verdana;
+    
+}
+.site-footer{
+
+    font-size :30px;
+    text-align : center;
+    height : 62px;
+    padding-top : 10px;
 }

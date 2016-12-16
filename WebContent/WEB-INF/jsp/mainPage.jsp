@@ -21,7 +21,7 @@
   <!-- NAVBAR CONTENT END -->
 	
 
- <a  class = "btn btn-success" href = "registerMe">Register</a>
+ 
   <div class = "middle-part">
 	<img id = "background-image" src = "${pageContext.request.contextPath}/resources/visuals/clothes.jpg" alt = "background-image">
 		
@@ -107,6 +107,10 @@
 			</div>
 <!-- Flip cards Ending Here! -->	
 		
+	</div>
+	<div class ="footer">
+	<p>Cleany Clean 2016</p>
+	
 	</div>
 	</body>
 </html>

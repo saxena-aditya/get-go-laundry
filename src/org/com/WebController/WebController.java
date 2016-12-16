@@ -34,8 +34,8 @@ public class WebController {
 	private ItemPrices item = new ItemPrices();
 	public int orderCost = 0;
 	String username;
-	long orderid;
-	long orderID;
+	String orderid;
+	String orderID;
 	String lastOrderid;
 	boolean isOrderPlaced = false;
 	int item_number;
@@ -119,6 +119,7 @@ public class WebController {
 		getLastOrderDetails();
 		model.addObject("LatestOcost", LatestOcost);
 		model.addObject("latestoList", lastOrderDetails);
+		model.addObject("item", item);
 
 		model.addObject("username", getUsername());
 		return model;
@@ -161,7 +162,22 @@ public class WebController {
 		//System.out.println( "order is = "+ calculateOrderCost(odr, item));
 		
 		saveOrder_Impl = ctx.getBean(orderSaveDAOImpl.class);
-		 
+		
+		
+			if(saveOrder_Impl.firstOrder(getUsername()))
+				placed_Order.addObject("isFirstOrder", "yes");
+			
+		 /* adding order object to for oblect reflection!!
+		  * the reflection then loops throught the object details and adds it to 
+		  * the database!! 
+		  * */
+			
+			/*
+			 * Adding the user to a diffrent table, so so that he can be counted as
+			 * done of the 40% off offer!
+			 * */
+			saveOrder_Impl.exhaustUser(getUsername());
+			
 		placed_Order.addObject("ordItem", odr);
 		if(!isOrderPlaced){
 			orderID = generateOrderID();
@@ -169,6 +185,14 @@ public class WebController {
 			getObject(odr);
 		}isOrderPlaced = true;
 		
+		/* Checking if the place order is the first one or not? 
+		 * the function will return true is it is otherwise will return false.
+		 */
+		System.out.println("the fistrOrder check : " + saveOrder_Impl.firstOrder(getUsername()));
+		
+		
+		
+		placed_Order.addObject("orderCost", orderList.orderCost(getOrderID()));
 		placed_Order.addObject("orderID", getOrderID());
 		placed_Order.addObject("username",getUsername());
 		
@@ -238,9 +262,9 @@ public class WebController {
 		return username;
 	}
 
-	public long generateOrderID() {
+	public String generateOrderID() {
 		Random genereateRandomInt = new Random();
-	    long orderID = genereateRandomInt.nextInt(999999);
+	    String orderID = ""+genereateRandomInt.nextInt(999999);
 		return orderID;
 	}
 
@@ -272,10 +296,10 @@ public class WebController {
 		return model2;
 	}
 	
-	private void setOrderID(long orderID){
+	private void setOrderID(String orderID){
 		  this.orderid = orderID;
 		}
-		public long getOrderID(){
+		public String getOrderID(){
 			return orderid;
 		}
 	
@@ -304,6 +328,8 @@ public class WebController {
     	if( isItemCountValid(obj, field)){
     		int itm_cost = saveOrder_Impl.calc_ItemCost(field.getName().toString(), 
     							field.getInt(obj), getOrderID());
+    		
+    		
     		saveOrder_Impl.my_orderSave( getUsername(),getOrderID(), 
     						field.getName().toString(), field.getInt(obj), itm_cost );
     		category_count++;

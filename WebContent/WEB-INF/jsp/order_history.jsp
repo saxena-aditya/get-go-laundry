@@ -12,6 +12,7 @@
 <link rel="stylesheet" type = "text/css"  href="${pageContext.request.contextPath}/resources/css/popform.css" />
 <link rel="stylesheet" type = "text/css"  href="${pageContext.request.contextPath}/resources/css/jquery-ui.css" />
 <link rel="stylesheet" type = "text/css"  href="${pageContext.request.contextPath}/resources/css/default.min.css" />
+<link rel="stylesheet" type = "text/css"  href="${pageContext.request.contextPath}/resources/css/footer-css.css" />
 
 <script type = "text/javascript" src = "${pageContext.request.contextPath}/resources/jQuery/jquery.min.js"></script>
 <script type = "text/javascript" src = "${pageContext.request.contextPath}/resources/jQuery/bootstrap.min.js"></script>
@@ -78,6 +79,8 @@
 <script>
  
 $(document).ready(function(){
+	
+	$("#order_history").addClass("activate");
 	$('#order-form').addClass("disabled")
 	$('#btnClick').tooltip({
 						content : "Please move to Home for ordering."
@@ -88,6 +91,8 @@ $(document).ready(function(){
 
 });
 </script>
-
+<!-- footer  -->
+<jsp:include page = "footer.jsp" />
+<!-- footer ending -->
 </body>
 </html>

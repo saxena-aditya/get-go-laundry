@@ -31,7 +31,6 @@ public class orderDetailsDAOImpl {
 	}
 	
 	
-	
 	public List<orderDetailsDAO> findOrder(String Username){
 
 		String sql = "SELECT DISTINCT order_id, order_date FROM my_order WHERE user = ?";

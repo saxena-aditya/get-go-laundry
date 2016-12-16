@@ -31,7 +31,8 @@ table  {
     height : 100%;
     cursor : pointer;
     left : -40px;
-    top : -12px;
+    top : -14px;
+    
     
 }
 tr:hover{
@@ -43,3 +44,24 @@ tr:hover{
 .cancle-order-form{
     display : none;
 }
+#neutral-face-pic{
+    position :absolute;
+    height : inherit;
+    opacity :.89;
+    top : -109px;
+    left : 140px;
+}
+#para{
+    position :absolute;
+    font-size : 27px;
+    left : 267px;
+    top : 160px;
+    font-family :verdana;
+}
+#teller{
+    position :absolute;
+    top : -70px;
+    font-size :28px;
+    font-family : verdana;
+}
+
