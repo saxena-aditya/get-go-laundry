@@ -1,23 +1,28 @@
+*{
+	font-family : 'Quicksand', sans-serif;
+}
 .table-holder{
     position : absolute;
     left : 17%;
     top :11%;
- //   border : solid ;
     width : 1000px;
     height :100%;
     font-size :26px;
-    font-family : verdana;
 
 }
 
 tr, th {
     text-align :center;
 }
-tr th {
-    padding-bottom : 25px !important;
+tr.td{
+    width : 100px !important;
 }
-tr td{
-    padding-top : 16px !important;
-    padding-bottom : 18px !important;
-
+td{
+	padding-top : 15px !important;
+	padding-bottom : 0px !important; 
+}
+.item-image{
+    height : 50px;
+    margin-top :-9px;
+    margin-bottom : 5px;
 }

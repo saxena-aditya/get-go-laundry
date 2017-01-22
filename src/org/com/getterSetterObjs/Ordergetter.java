@@ -19,24 +19,11 @@ public class Ordergetter {
 	public String timeSpan = "o";
 	
 	
-	
-	public String getDate() {
-		return date;
-	}
-	public void setDate(String date) {
-		this.date = date;
-	}
-	public String getTimeSpan() {
-		return timeSpan;
-	}
-	public void setTimeSpan(String timeSpan) {
-		this.timeSpan = timeSpan;
-	}
 	public int getTshirt() {
 		return tshirt;
 	}
-	public void setTshirt(int tshrit) {
-		this.tshirt = tshrit;
+	public void setTshirt(int tshirt) {
+		this.tshirt = tshirt;
 	}
 	public int getShirt() {
 		return shirt;
@@ -104,5 +91,20 @@ public class Ordergetter {
 	public void setBlanketLU(int blanketLU) {
 		this.blanketLU = blanketLU;
 	}
-	
+	public String getDate() {
+		return date;
+	}
+	public void setDate(String date) {
+		this.date = date;
+	}
+	public String getTimeSpan() {
+		return timeSpan;
+	}
+	public void setTimeSpan(String timeSpan) {
+		this.timeSpan = timeSpan;
+	}
+
+
+
+
 }

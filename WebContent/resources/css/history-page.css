@@ -1,12 +1,16 @@
-.table-container{
-	position : relative;
-	font-size :16px;
-	text-align :center;
-	
-	font-family :verdana;
-	padding-left : 100px;
-	padding-top : 67px
+*{
+	font-family: 'Quicksand', sans-serif;
 
+}
+.table-container{
+	position : absolute;
+	font-size :19px;
+	text-align :center;
+	left: 10%;
+	padding-left : 100px;
+	padding-top : 67px;
+	font-weight : 700;
+	
 }
 
 tr th {

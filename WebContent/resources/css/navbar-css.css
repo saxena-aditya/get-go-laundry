@@ -17,7 +17,7 @@
     padding-left :65px;
     font-size :25px;
     letter-spacing :3px;
-    font-family : Verdana;
+	font-family: 'Lato', verdana, sans-serif;
 }
 #head-cmpny-sym{
     position :absolute;

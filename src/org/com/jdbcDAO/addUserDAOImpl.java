@@ -3,12 +3,15 @@ package org.com.jdbcDAO;
 import javax.sql.DataSource;
 
 import org.com.DAO.addUserDAO;
+import org.com.SQLExpressions.MySQLStatements;
 import org.com.getterSetterObjs.getterRegisterDetails;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.jdbc.core.JdbcTemplate;
 import org.springframework.stereotype.Controller;
 @Controller
 public class addUserDAOImpl implements addUserDAO{
+	
+	MySQLStatements sql = new MySQLStatements();
 	
 	@Autowired
 	private DataSource dataSource;
@@ -30,9 +33,8 @@ public class addUserDAOImpl implements addUserDAO{
 	@Override
 	public int addNewUser(getterRegisterDetails grd) {
 		// TODO Auto-generated method stub
-		final String query = "INSERT INTO reg_users(firstName, lastName, phone, pass, address1, address2)VALUES (?,?,?,?,?,?)";
 		jdbcTemplate.setDataSource(getDataSource());
-		jdbcTemplate.update(query, grd.getFirstName(),grd.getLastName(), grd.getPhone(), grd.getPass(), 
+		jdbcTemplate.update(sql.SAVE_USER , grd.getFirstName(),grd.getLastName(), grd.getPhone(), grd.getPass(), 
 				                   grd.getAddress1(), grd.getAddress2());
 		
 		
@@ -42,9 +44,8 @@ public class addUserDAOImpl implements addUserDAO{
 	public boolean userAlreadyPresent(String phn_number) {
 		// TODO Auto-generated method stub
 		
-		String str = "SELECT COUNT(*) FROM reg_users WHERE phone = ?";
 		jdbcTemplate.setDataSource(getDataSource());
-		int i = jdbcTemplate.queryForInt(str, phn_number);
+		int i = jdbcTemplate.queryForInt(sql.COUNT_USER_VALIDATE , phn_number);
 		
 		if(i == 0)
 			return false;

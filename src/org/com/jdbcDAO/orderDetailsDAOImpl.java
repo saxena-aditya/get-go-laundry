@@ -5,6 +5,8 @@ import java.util.List;
 import javax.sql.DataSource;
 
 import org.com.DAO.orderDetailsDAO;
+import org.com.ItemPrices.ItemPrices;
+import org.com.SQLExpressions.MySQLStatements;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.jdbc.core.BeanPropertyRowMapper;
 import org.springframework.jdbc.core.JdbcTemplate;
@@ -12,7 +14,8 @@ import org.springframework.stereotype.Controller;
 
 @Controller
 public class orderDetailsDAOImpl {
-
+	MySQLStatements sql = new MySQLStatements();
+	
 	@Autowired
 	private DataSource dataSource;
 	private JdbcTemplate jdbcTemplate = new JdbcTemplate();
@@ -31,33 +34,42 @@ public class orderDetailsDAOImpl {
 	}
 	
 	
+	
 	public List<orderDetailsDAO> findOrder(String Username){
 
-		String sql = "SELECT DISTINCT order_id, order_date FROM my_order WHERE user = ?";
+		
 		jdbcTemplate.setDataSource(getDataSource());
-		List<orderDetailsDAO> Olist  = getJdbcTemplate().query(sql,
+		List<orderDetailsDAO> Olist  = getJdbcTemplate().query(sql.TOTAL_ORDERS,
 				new BeanPropertyRowMapper<orderDetailsDAO>(orderDetailsDAO.class), Username);
 		
 
 		return Olist;
 	}
 	
-	public int orderCost(String Username){
-		String str = "SELECT SUM(total_item_cost) from my_order where order_id = ?";
+	public int orderCost(String orderID){
+		
 		jdbcTemplate.setDataSource(getDataSource());
-		int cost = getJdbcTemplate().queryForInt(str, Username);
+		int cost = getJdbcTemplate().queryForInt(sql.ORDER_COST, orderID);
 		return cost;
 	}
 	
-	public List<orderDetailsDAO> latestesOrder(String Username) {
+	public List<orderDetailsDAO> latestOrder(String Username) {
 		// TODO Auto-generated method stub
 		
-		String str = "SELECT order_id, order_date FROM my_order WHERE user = ? ORDER BY init DESC LIMIT 1";
 		jdbcTemplate.setDataSource(getDataSource());
-		List<orderDetailsDAO> latestoList  = getJdbcTemplate().query(str,
+		List<orderDetailsDAO> latestoList  = getJdbcTemplate().query(sql.LAST_ORDER,
 				new BeanPropertyRowMapper<orderDetailsDAO>(orderDetailsDAO.class), Username);
 		
 			return latestoList;
 	}
+	
+	public List<ItemPrices> getItemPrices(){
+		
+		jdbcTemplate.setDataSource(getDataSource());
+		List<ItemPrices> item_prices = getJdbcTemplate().query(sql.GET_PRICES,
+				new BeanPropertyRowMapper<ItemPrices>(ItemPrices.class));
+		
+		return item_prices;
+		}
 	
 }

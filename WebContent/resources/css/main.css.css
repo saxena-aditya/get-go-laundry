@@ -39,7 +39,7 @@
     letter-spacing : 1px;
 }
 .note-class{
-    position :relative;
+    
     padding-top : 2px;
     padding-bottom : 2px;
     border : solid 1px;
@@ -51,6 +51,7 @@
 }
 #msg-div{
     padding : 5px 5px 5px 5px;
+    color : red;
 }
 .filper-1{
     position: absolute !important;
@@ -59,7 +60,7 @@
 }
 .filper-2{
     position: absolute !important;
-    top : 90%;
+    top : 85%;
     left :37%;
 }
 .filper-3{
@@ -90,11 +91,11 @@
     position :absolute;
     width :370px;
     left : 6%;
-    top :9%;
+    top :15%;
 }
 .middle-part{
     position :absolute;
-    height :468px;
+    height :85%;
     width : 100%;
     top :8%;
 }

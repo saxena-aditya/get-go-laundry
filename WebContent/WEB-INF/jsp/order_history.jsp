@@ -14,85 +14,61 @@
 <link rel="stylesheet" type = "text/css"  href="${pageContext.request.contextPath}/resources/css/default.min.css" />
 <link rel="stylesheet" type = "text/css"  href="${pageContext.request.contextPath}/resources/css/footer-css.css" />
 
+<link href="https://fonts.googleapis.com/css?family=Quicksand" rel="stylesheet">
+
+
 <script type = "text/javascript" src = "${pageContext.request.contextPath}/resources/jQuery/jquery.min.js"></script>
 <script type = "text/javascript" src = "${pageContext.request.contextPath}/resources/jQuery/bootstrap.min.js"></script>
 <script type = "text/javascript" src = "${pageContext.request.contextPath}/resources/jQuery/jquery-ui.js"></script>
-
-
 <title>Order History</title>
 </head>
-<body>
-<img id="background-image-side-bubbles" src="${pageContext.request.contextPath}/resources/visuals/side-bubbles.PNG" alt ="blue-bubbles">
-
-<!-- Upper drawer and side navigation -->
-
-<jsp:include page = "drawers.jsp" />
-
-<!-- Upper drawer and side navigation -->
-
-
-<div class = "container table-container">
-
-<c:choose>
-<c:when test = "${empty oList}">
-<!-- One time but awesome thing 
-	show you have not made any 
-	order yet, please make one now! -->
-	
-
-<p>List is Empty</p>
-</c:when>
-<c:otherwise>
-<table class = "table table-bordered">
-<thead>
-<tr class="table-head">
-<th>Order ID</th>
-<th>Order Date</th>
-<th>Total Cost</th>
-</tr>
-</thead>
-<tbody>
-<c:forEach items="${oList}" var="list" varStatus = "sts">
-
-	
-
-    <c:if test = "${not empty list.getOrder_id()}">
-    
-	<tr>
-    <td><a href = "#"><c:out value="${list.getOrder_id()}"/></a></td>
-    <td><c:out value="${list.getOrder_date()}"/></td>
-    <td><c:out value="${costList[sts.index]}"/></td>
-    </tr>
-    </c:if>
-    </c:forEach>
-
-</tbody>
-
-</table>
-
-
-</c:otherwise>
-</c:choose>
-
-</div>
+ <body>
+  <img id="background-image-side-bubbles" src="${pageContext.request.contextPath}/resources/visuals/side-bubbles.PNG" alt ="blue-bubbles">
+   <!-- Upper drawer and side navigation -->
+    <jsp:include page = "drawers.jsp" />
+     <!-- Upper drawer and side navigation -->
+      <div class = "container table-container">
+       <c:choose>
+        <c:when test = "${empty oList}">
+          <!-- One time but awesome thing 
+	           show you have not made any 
+	           order yet, please make one now! 
+	           -->
+	        <p>List is Empty</p>
+        </c:when>
+         <c:otherwise>
+           <table class = "table table-bordered">
+             <thead>
+               <tr class="table-head">
+                 <th>Order ID</th>
+				 <th>Order Date</th>
+				 <th>Total Cost</th>
+			  </tr>
+			</thead>
+			  <tbody>
+				<c:forEach items="${oList}" var="list" varStatus = "sts">
+				  <c:if test = "${not empty list.getOrder_id()}">
+     				<tr>
+    				  <td><a href = "#"><c:out value="${list.getOrder_id()}"/></a></td>
+    				  <td><c:out value="${list.getOrder_date()}"/></td>
+    				  <td><c:out value="${costList[sts.index]}"/></td>
+    				</tr>
+    			 </c:if>
+    		    </c:forEach>
+			  </tbody>
+			</table>
+		  </c:otherwise>
+		</c:choose>
+	</div>
 
 <script>
  
 $(document).ready(function(){
-	
 	$("#order_history").addClass("activate");
 	$('#order-form').addClass("disabled")
-	$('#btnClick').tooltip({
-						content : "Please move to Home for ordering."
-					});
-	
-		
-	
-
-});
+	$('#btnClick').tooltip({ content : "Please move to Home for ordering."});
+	});
 </script>
-<!-- footer  -->
-<jsp:include page = "footer.jsp" />
-<!-- footer ending -->
-</body>
+	
+ </body>
 </html>

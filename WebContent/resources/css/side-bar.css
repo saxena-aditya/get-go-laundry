@@ -1,17 +1,18 @@
 .side-bar{
 	position : fixed;
 	background-color :;
-	font-size : 16px;
-	letter-spacing : .8px;
-	font-family : verdana;
+	font-size : 17px;
+	color : #333 !important;
+	letter-spacing :1px;
+	font-weight : 700! !important; 
 	text-align : left ;
-	padding-top : 5px;
+	padding-top : 15px;
 	padding-bottom : 5px;
-	width : 183px;
+	width : 210px;
 	height : 100%;
-	//background-color : white;
 	top :65px;
-	
+	border-right : white 1.5px;
+	box-shadow : 1px 0px 5px #333;
 }
 
 .top-desk{
@@ -35,14 +36,23 @@
 	background-repeat :no-repeat;
 	height :inherit !important;
 	width :inherit !important;
-	opacity :0.7;
+	opacity :0.67;
 	top : 65px;
 }
 ul a{
-	color : black;
+	color : #333;
+	font-size : 17px;
+	font-weight : 700;
 }
 ul a:hover{
 	background-color :white !important;
+ 	color : #000;
+}
+.side-bar > ul > li{
+	border-bottom : solid 1.7px;
+	box-shadow : 0px 0px 1px #333;
+	font-weight : normal;
+	margin-top : 8px;
 }
 #back-cmpny-sym{
 	position : absolute;
@@ -56,8 +66,9 @@ ul a:hover{
 	font-size : 32px;
 	left : 6%; 
 	top :12%;
-	letter-spacing : 2px
-
+	letter-spacing : 2px;
+	text-decoration : none !important;
+	color : #333;
 }
 .scroll-pre {
   height: 100px;
@@ -80,10 +91,12 @@ ul a:hover{
 	opacity :1;
 }
 #background-image-side-bubbles{
-	position : absolute;
+	position : fixed;
 	height : inherit;
-	width :inherit;
+	width :210px;
+	opacity :0.77;
 }
+
 .activate{
 	background-color : white;
 	border-radius : 4px;
@@ -93,4 +106,28 @@ ul a:hover{
 }
 .crossed-over{
 	text-decoration : line-through;
+}
+.dropdown-menu{
+	width : 140% !important;
+}
+.dropdown-menu > li > a{
+ 
+	margin-left: 0px;
+	padding-top : 5px;
+	margin-bottom : 0px !important;
+}
+
+.dropdown-menu{
+	border : solid 1.9px;
+}
+.dropdown-menu > li >a:hover{
+	background-color :lightcyan !important ;
+	font-size : 19px;
+	
+}
+input[type=number]::-webkit-inner-spin-button, 
+input[type=number]::-webkit-outer-spin-button { 
+  -webkit-appearance: none; 
+  margin: 0; 
+
 }

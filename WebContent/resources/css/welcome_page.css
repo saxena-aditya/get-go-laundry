@@ -1,26 +1,21 @@
+*{font-family: 'Quicksand', verdana;}
+#para{width : 100vh !important;}
 .latest-order-container{
     position : absolute;
-    width : 60%;
-    //background-color :red;
+    width : inherit;
     left : 20%;
     top : 30%;
-     
-    }
-
-table  {
-   // position :absolute;
-        font-size : 25px;
-        font-family : verdana;
-        text-align : center;
-      
-    }
+}
+table th, td {border : solid 1px !important;}
+table{
+     font-size : 25px;
+     text-align : center;
+     }
 
 .table-head, .table-details {
-        padding-bottom : 20px !important;
-        padding-top : 20px!important;
-      
-    }
-    
+    padding-bottom : 20px !important;
+    padding-top : 20px!important;
+      }
 .cancle-order-form{
     position :absolute;
     top : 56%;
@@ -32,36 +27,29 @@ table  {
     cursor : pointer;
     left : -40px;
     top : -14px;
-    
-    
 }
-tr:hover{
-    background-color : lightcyan;
-}
-.latest-order-container:hover .cancle-order-form{
-    display : block;
-}
-.cancle-order-form{
-    display : none;
-}
+th{text-align :center;}
+tbody:hover{background-color : lightcyan;}
+.latest-order-container:hover .cancle-order-form{display : block;}
+.cancle-order-form{display : none;}
 #neutral-face-pic{
     position :absolute;
     height : inherit;
-    opacity :.89;
+    opacity :.99;
     top : -109px;
     left : 140px;
 }
 #para{
     position :absolute;
-    font-size : 27px;
+    font-size : 21px;
     left : 267px;
     top : 160px;
-    font-family :verdana;
-}
+ }
 #teller{
     position :absolute;
     top : -70px;
     font-size :28px;
-    font-family : verdana;
 }
-
+.lower-submit-button{
+    padding: 3px;
+}

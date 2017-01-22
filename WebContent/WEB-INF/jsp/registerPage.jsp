@@ -7,7 +7,6 @@
 <link rel="stylesheet" type = "text/css"  href="${pageContext.request.contextPath}/resources/css/register-page.css" />
 <link rel="stylesheet" type = "text/css"  href="${pageContext.request.contextPath}/resources/css/navbar-css.css" />
 <link rel="stylesheet" type = "text/css"  href="${pageContext.request.contextPath}/resources/css/alertify.min.css" />
-
 <script type = "text/javascript" src = "${pageContext.request.contextPath}/resources/jQuery/jquery.js"></script>
 <script type = "text/javascript" src = "${pageContext.request.contextPath}/resources/jQuery/alertify.min.js"></script>
 
@@ -19,8 +18,9 @@
 	<jsp:include page="navbar.jsp" />  
 
   <!-- NAVBAR CONTENT END -->
+  <div class="container view-wrap">
   <div class = "image-envelop">
-   <img id="image" class = "img-circle" src = "${pageContext.request.contextPath}/resources/visuals/smile.jpg">
+   <img id="image" class = "img-circle img-responsive" src = "${pageContext.request.contextPath}/resources/visuals/smile.jpg">
   </div>
 
 
@@ -93,6 +93,7 @@
 </form>
 </div>
 </div>
+</div>
 <footer class="site-footer">
   Cleany Clean 2016
 </footer>
@@ -111,12 +112,12 @@ $(document).ready(function(){
 			return false;
 		}
 		else if(!$('#pnum').val()){
-			alertify.alert('INVALID PHONE NUMBER', 'Seems like your typed a wroung phone number.');
+			alertify.alert('INVALID PHONE NUMBER', 'Seems like your typed a wrong phone number.');
 			
 			return false;
 		}
 		else if($('#pnum').val().length !=10){
-			alertify.alert('INVALID PHONE NUMBER', 'Seems like your typed a wroung phone number.');
+			alertify.alert('INVALID PHONE NUMBER', 'Seems like your typed a wrong phone number.');
 			
 			return false;
 		}

@@ -7,6 +7,14 @@ public class orderDetailsDAO {
 	String cloth_code;
 	int item_count;
 	String order_date;
+	String order_stage;
+	
+	public String getOrder_stage() {
+		return order_stage;
+	}
+	public void setOrder_stage(String order_stage) {
+		this.order_stage = order_stage;
+	}
 	public String getOrder_id() {
 		return order_id;
 	}

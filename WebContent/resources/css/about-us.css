@@ -1,0 +1,62 @@
+*{
+    font-family : "verdana", sans-serif;
+}
+.container{
+    padding-top :100px;
+    margin-left : 0px;
+    margin-right : 0px;
+}
+.content{
+    font-size :17px;
+    font-weight : 100;
+}
+ul a{
+    font-weight :100;
+}
+@media only screen and (max-width :768px){
+    .a {
+        color : #000;
+    }
+    
+    .ul{
+        margin-top:0px !important;
+        padding-top :3px;
+        background-color :#222a2d;
+     }
+     li .a{
+         font-size : 17px;
+     }
+     #head-cmpny-sym{
+         padding-left :15px !important;
+     }
+     .cmpny-title{
+         font-size :21px !important;
+     }
+
+     .side-pannel{
+         padding-top :100px;
+     }
+}
+
+@media only screen and (min-width :765px) and (max-width :816px){
+     
+    ul li .a{
+        font-size :16px !important;
+        }
+}
+
+@media only screen and (max-width :992px){
+    .side-pannel ul{
+        display: flex !important;
+        flex-wrap: wrap !important;
+        }
+    .col9{
+        padding-left: 25px;
+    }
+    .content{
+        font-size: 15px;
+        overflow-x: auto;
+        overflow-y: auto;
+      }   
+     
+}

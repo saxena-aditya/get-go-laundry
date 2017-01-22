@@ -12,7 +12,7 @@
 .totalSum{
 
 	color : #000;
-	padding-right : 50px;
+	padding-right : 20px;;
 	margin-top : 8px;
 }
 .form-container{
@@ -29,9 +29,12 @@
 
 	
 	font-size: 20px;
- 	font-family: sans-serif;
+ 	font-family: "verdana", sans-serif;
 	position: relative !important;
 
+}
+label{
+	font-size : 18px !important;
 }
 #wrapper{
 	position :absolute;
@@ -91,7 +94,7 @@ select{
 input[type = 'number']{
   
   width: 40px;
-  font: 20p, sans-serif;
+  font: 20p, "verdana",sans-serif;
 
   padding: 3px 0 0 0;
   text-align: center;
@@ -100,16 +103,17 @@ input[type = 'number']{
 #date, #timeSpan{
  color : #000;
  text-align : center;
-     letter-spacing: 1px;
+     letter-spacing: .3px;
    
 	
 }
 label{
 	
-	width: 7em;
-    margin-right: 9em;
+	min-width: 9em !important;
+	margin-right: 9em;
     text-align: right;
-    margin-left: 4px;
+    margin-left: 8px;
+    font-size :17px
 }
 textarea:focus, input:focus {
     text-align:center;

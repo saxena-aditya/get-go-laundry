@@ -5,16 +5,20 @@ import java.lang.reflect.Field;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Random;
+
 import javax.servlet.http.HttpSession;
+
 import org.com.DAO.orderDetailsDAO;
 import org.com.ItemPrices.ItemPrices;
 import org.com.getterSetterObjs.LoginGetterandSetters;
 import org.com.getterSetterObjs.Ordergetter;
 import org.com.getterSetterObjs.getterRegisterDetails;
+import org.com.getterSetterObjs.typeCompanyDetails;
+import org.com.jdbcDAO.CompanyDetailsDAOImpl;
+import org.com.jdbcDAO.addUserDAOImpl;
 import org.com.jdbcDAO.jdbcDAO;
 import org.com.jdbcDAO.orderDetailsDAOImpl;
 import org.com.jdbcDAO.orderSaveDAOImpl;
-import org.com.jdbcDAO.addUserDAOImpl;
 import org.springframework.context.ApplicationContext;
 import org.springframework.context.support.ClassPathXmlApplicationContext;
 import org.springframework.stereotype.Controller;
@@ -24,6 +28,8 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.servlet.ModelAndView;
 
+import com.google.gson.Gson;
+
 
 @Controller
 public class WebController {
@@ -31,34 +37,48 @@ public class WebController {
 	private addUserDAOImpl jdb;
 	private orderSaveDAOImpl saveOrder_Impl;
 	private orderDetailsDAOImpl orderList; 
-	private ItemPrices item = new ItemPrices();
+	private CompanyDetailsDAOImpl cmp_details;	
 	public int orderCost = 0;
-	String username;
-	String orderid;
-	String orderID;
-	String lastOrderid;
-	boolean isOrderPlaced = false;
-	int item_number;
-	int category_count = 0;
-	int LatestOcost;
-	int cost;
-	orderDetailsDAO le;
+	public boolean isOrderPlaced = false;
+	public int item_number;
+	public int category_count = 0;
+	public int LatestOcost;
+	public int cost;
+	public String username;
+	public String orderid;
+	public String orderID;
+	public String lastOrderid;
+	public orderDetailsDAO le;
 	
 	List<Integer> costList = new ArrayList<>();
 	List<String> currentOrder = new ArrayList<>();
 	List<String> cOrder = new ArrayList<>();
 	List<orderDetailsDAO> lastOrderDetails = new ArrayList<>();
+	List<ItemPrices> pricesList = new ArrayList<>();
 	
 	ApplicationContext ctx = new ClassPathXmlApplicationContext("Spring.xml");
 	
-
+	// gets all the cloth prices from the database and saves them in the List(procesList)
+	public void getItemPricesForContext(){
+		orderList = ctx.getBean("orderDetailsDAOImpl", orderDetailsDAOImpl.class);	
+		pricesList = orderList.getItemPrices();
+	}
+	
+	public typeCompanyDetails getCompanyDetails(){
+	
+		cmp_details = ctx.getBean(CompanyDetailsDAOImpl.class);
+		typeCompanyDetails c_details = cmp_details.getCompanyDetail();
+		
+	return c_details;		
+	
+	}
 	
 	private void getLastOrderDetails(){
 		
-	
+		// an instance of the bean that will connect to the database is included here!!		
 		orderList = ctx.getBean("orderDetailsDAOImpl", orderDetailsDAOImpl.class);	
 
-		lastOrderDetails = orderList.latestesOrder(getUsername());
+		lastOrderDetails = orderList.latestOrder(getUsername());
 		if (lastOrderDetails.size() == 0)
 			System.out.println("Sorry not Latest orders! ");
 		else{
@@ -67,16 +87,21 @@ public class WebController {
 					
 			}
 		}
-		
+	}
+	@RequestMapping(value = "about-us")
+	protected ModelAndView about(HttpSession session){
+		ModelAndView model = new ModelAndView("about-us");
+		model.addObject("company_details", getCompanyDetails());
 
 		
+		return model;
 	}
-	
-	
-	
 	@RequestMapping(value = "/")
-	protected String myFromClass1(){
-		return "mainPage";	
+	protected ModelAndView myFromClass1(){
+		ModelAndView model = new ModelAndView("mainPage");
+		model.addObject("company_details", getCompanyDetails());
+
+		return model;	
 		}
 	
 	@RequestMapping(value = "login", method = RequestMethod.POST)
@@ -97,15 +122,21 @@ public class WebController {
 	}
 	
 	@RequestMapping(value = "login")
-	protected ModelAndView login_page(){
-		
+	protected ModelAndView login_page(HttpSession session){
+		if(session.getAttribute("loggedinUser") == null){
+			 return new ModelAndView("mainPage")
+					 .addObject("company_details", getCompanyDetails());
+
+		}
 		ModelAndView model = new ModelAndView("welcome");
 		isOrderPlaced = false;
 		getLastOrderDetails();
-		model.addObject("username", getUsername());
-		model.addObject("item", item);
-		model.addObject("latestoList", lastOrderDetails);
-		model.addObject("LatestOcost", LatestOcost);
+		model.addObject("username", getUsername())
+			.addObject("latestoList", lastOrderDetails)
+			.addObject("item_price", pricesList)
+			.addObject("item_price", getPricesListInJSON())
+			.addObject("company_details", getCompanyDetails())
+			.addObject("LatestOcost", LatestOcost);
 		
 		return model;
 	}
@@ -117,18 +148,21 @@ public class WebController {
 
 		saveOrder_Impl.deleteOrder(getUsername());
 		getLastOrderDetails();
-		model.addObject("LatestOcost", LatestOcost);
-		model.addObject("latestoList", lastOrderDetails);
-		model.addObject("item", item);
+		   model.addObject("LatestOcost", LatestOcost)
+				.addObject("latestoList", lastOrderDetails)
+				.addObject("username", getUsername())
+				.addObject("company_details", getCompanyDetails());
 
-		model.addObject("username", getUsername());
 		return model;
 	}
 	
 	
 	@RequestMapping(value = "registerMe")
 	protected ModelAndView myFromClass2( ){
-		return new ModelAndView("registerPage");
+		ModelAndView model = new ModelAndView("registerPage");
+		model.addObject("company_details", getCompanyDetails());
+
+		return model;
 		}
 	
 	
@@ -138,16 +172,23 @@ public class WebController {
 		jdb = ctx.getBean("addUserDAOImpl", addUserDAOImpl.class);
 		ModelAndView model_success = new ModelAndView("mainPage");
 		ModelAndView model_fail = new ModelAndView("registerPage");
+	
+		
+
 		
 		if(jdb.userAlreadyPresent(reg.getPhone())){
 			model_fail.addObject("MsgDisplay", "Sorry, phone number already registered!");
 			model_fail.addObject("id_number", 0);
+			model_fail.addObject("company_details", getCompanyDetails());
 			return model_fail;
 		}
 		else{
 		
 		jdb.addNewUser(reg);
 		model_success.addObject("MsgDisplay", "Please Login with your Phone Number and Password!");
+		model_success.addObject("company_details", getCompanyDetails());
+		
+		
 		return model_success;
 	}
 	
@@ -157,26 +198,28 @@ public class WebController {
 	@RequestMapping(value = "placeOrder", method = RequestMethod.POST)
 	protected ModelAndView takingOrder(@ModelAttribute("ordPlaced") Ordergetter odr) throws IllegalArgumentException, IllegalAccessException, NoSuchFieldException, SecurityException{
 		ModelAndView placed_Order = new ModelAndView("OrderShow");
+		placed_Order.addObject("takenOrder", odr);
 		
 		//orderCost = calculateOrderCost(odr, item);
 		//System.out.println( "order is = "+ calculateOrderCost(odr, item));
 		
 		saveOrder_Impl = ctx.getBean(orderSaveDAOImpl.class);
 		
-		
-			if(saveOrder_Impl.firstOrder(getUsername()))
+		if(saveOrder_Impl.firstOrder(getUsername()))
 				placed_Order.addObject("isFirstOrder", "yes");
+		
+			saveOrder_Impl.exhaustUser(getUsername());
 			
-		 /* adding order object to for oblect reflection!!
-		  * the reflection then loops throught the object details and adds it to 
-		  * the database!! 
+		 /* adding (order object) for object reflection!!
+		  * the reflection then loops through the object details and adds it to 
+		  * the database. 
 		  * */
 			
-			/*
-			 * Adding the user to a diffrent table, so so that he can be counted as
-			 * done of the 40% off offer!
+			
+			/* Adding the user to a diffrent table, so that they can be counted as
+			 * "done" for the 40% oFF offer!
 			 * */
-			saveOrder_Impl.exhaustUser(getUsername());
+			
 			
 		placed_Order.addObject("ordItem", odr);
 		if(!isOrderPlaced){
@@ -188,19 +231,32 @@ public class WebController {
 		/* Checking if the place order is the first one or not? 
 		 * the function will return true is it is otherwise will return false.
 		 */
+		
 		System.out.println("the fistrOrder check : " + saveOrder_Impl.firstOrder(getUsername()));
 		
+		/* Have not calculated and saved the seperate order cost in the data base! so 
+		 * in the order history table for first order cost-- check if the order id is first 
+		 * order id and then do the OFF OFFER!
+		 * */
 		
-		
-		placed_Order.addObject("orderCost", orderList.orderCost(getOrderID()));
-		placed_Order.addObject("orderID", getOrderID());
-		placed_Order.addObject("username",getUsername());
+		placed_Order.addObject("orderCost", orderList.orderCost(getOrderID()))
+					.addObject("orderID", getOrderID())
+					.addObject("username",getUsername())
+					.addObject("company_details", getCompanyDetails())
+					.addObject("item_price", getPricesListInJSON());
+
+
 		
 		return placed_Order;
 	}
 	
 	@RequestMapping(value = "order_history", method = RequestMethod.GET)
 	protected ModelAndView orderHistory(HttpSession session){
+		int cost;
+		if(session.getAttribute("loggedinUser") == null){
+			 return new ModelAndView("mainPage")
+					 .addObject("company_details", getCompanyDetails());
+		}
 		
 		ModelAndView model = new ModelAndView("order_history");
 		
@@ -215,13 +271,16 @@ public class WebController {
 	//	getLists();
 		orderList = ctx.getBean("orderDetailsDAOImpl", orderDetailsDAOImpl.class);	
 		List<orderDetailsDAO> oList = orderList.findOrder(getUsername());
+		
+		
+		
 		if(oList.size() == 0)
 		{
 			//do something
 		}
 		
 		List<Integer> costList = new ArrayList<Integer>();
-		int cost;
+		
 		for (orderDetailsDAO temp : oList) {
 			cost = orderList.orderCost(temp.getOrder_id());
 			costList.add(cost);		
@@ -230,29 +289,43 @@ public class WebController {
 		model.addObject("costList", costList);
 		model.addObject("oList", oList);
 		model.addObject("username", getUsername());
+		model.addObject("company_details", getCompanyDetails());
 
 		
 		return model;
 	}
 	
-	ItemPrices itm = new ItemPrices();
+	
 	@RequestMapping(value = "prices", method = RequestMethod.GET)
 	protected ModelAndView pricesPage(HttpSession session, Model model){
 		
 		if(session.getAttribute("loggedinUser")==null){
 			model.addAttribute("MsgDisplay", "Please Login First!");
-			return new ModelAndView("mainPage");
+			return new ModelAndView("mainPage")
+					.addObject("company_details", getCompanyDetails());
 		}
+		
+		
 		ModelAndView m = new ModelAndView("pricesPage");
-		session.setAttribute("itm", itm);
-		m.addObject("username", getUsername());
+		m.addObject("item_price", pricesList);
+		
+		for(ItemPrices i:pricesList)
+			System.out.println(i.getItem_name() + "" + i.getItem_cost());
+			
+		
+		m.addObject("username", getUsername())
+	     .addObject("company_details", getCompanyDetails());
+
 		return m;
 		}
 	
 	@RequestMapping(value = "home", method = RequestMethod.GET)
-	protected String returnHome(){
+	protected ModelAndView returnHome(){
 		
-		return "mainPage";
+		ModelAndView model = new ModelAndView("mainPage");
+		model.addObject("company_details", getCompanyDetails());
+		
+		return model; 
 	}
 	
 	public void setUsername(String username2){
@@ -269,30 +342,55 @@ public class WebController {
 	}
 
 	@RequestMapping(value = "logout", method = RequestMethod.GET)
-	protected String logout(HttpSession session){
-		
+	protected ModelAndView logout(HttpSession session){
+		ModelAndView model = new ModelAndView("mainPage");
 		session.removeAttribute("loggedinUser");
-		return "mainPage";
+		model.addObject( "company_details", getCompanyDetails());
+		return model;
 	}
 	
 	
 	protected ModelAndView LoginSucessModel(String username){
+		
+		
 		getLastOrderDetails();
+		getItemPricesForContext();
 		isOrderPlaced = false;
 		ModelAndView model1 = new ModelAndView("welcome");
+		
+		
 		model1.addObject("username", username);
-		model1.addObject("item", item);
 		model1.addObject("latestoList", lastOrderDetails);
 		model1.addObject("LatestOcost", LatestOcost);
+		model1.addObject("item_price", getPricesListInJSON());
+		model1.addObject("company_details", getCompanyDetails());
+		
+		
 		
 		return model1;
 		}
 	
 	
+	private String getPricesListInJSON() {
+		// TODO Auto-generated method stub
+			String str = "";	
+		try{
+			
+			 str = new Gson().toJson(pricesList);
+			
+		}
+		catch(Exception e){
+			e.printStackTrace();
+		}
+		return str;
+	}
+
 	protected ModelAndView LoginFailedModel(){
 		
 		ModelAndView model2 = new ModelAndView("mainPage");
 		model2.addObject("MsgDisplay", "Error. Please Try Again!");
+		model2.addObject("company_details", getCompanyDetails());
+
 		return model2;
 	}
 	
@@ -358,14 +456,12 @@ public class WebController {
 
 
 public boolean isItemCountValid(Object obj, Field field) 
-		throws IllegalArgumentException, IllegalAccessException{
+										throws IllegalArgumentException, IllegalAccessException{
 	
 	if(field.getType().equals(int.class) )
 		if(field.getInt(obj)!=0 )
 		 return true;
-		else 
-		 return false;
-	else
+		
 		return false;
 	}
 }
