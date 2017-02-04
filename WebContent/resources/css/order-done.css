@@ -3,29 +3,37 @@
 }
 #order-save-image{
    
-   margin-left : 32%;
-   margin-top : 15%;
-    width : 310px;
-    left: 38%;
-    top : 14%;
-    border :solid 1px;
-    padding : 15px
+   margin-top : 32%;
+   margin-left : -19%;
+   font-size : 14em;
+   color : #5151ea;
 
 }
 .order-display{
-   
-    margin-left :35%;
+   text-align : left;
+   margin-left : 15%;
     font-family :verdana;
     left : 38%;
     top : 70%
 }
+.order-view{
+    margin-left : 200px;
+    overflow-x : hidden !important;
 
+}
+#order-simple-cost{
+    margin-right : 120px;
+
+}
 th, td{
     text-align : center !important;
+    font-family : 'Quicksand' !important;
 }
 th{
-    font-family : 'verdana', sans-serif;
-    font-size : 2em;
+    font-family : 'lato', sans-serif !important;
+    font-size : 1.5em;
+   font-weight : 400;
+
 }
 td{
     font-family : 'verdana', sans-serif;
@@ -33,6 +41,10 @@ td{
 }
 .order-table{
     margin-top : 8%;
-    margin-left : auto;
+    margin-left : -161px;
     padding-left : 5%;
+}
+
+.banck-end-div{
+    height : 110px !important;
 }

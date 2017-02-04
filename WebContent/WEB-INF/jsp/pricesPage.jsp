@@ -12,7 +12,8 @@
 <link rel="stylesheet" type = "text/css"  href="${pageContext.request.contextPath}/resources/css/side-bar.css" />
 <link rel="stylesheet" type = "text/css"  href="${pageContext.request.contextPath}/resources/css/jquery-ui.css" />
 <link rel="stylesheet" type = "text/css"  href="${pageContext.request.contextPath}/resources/css/prices-page.css" />
-<link rel="stylesheet" type = "text/css"  href="${pageContext.request.contextPath}/resources/css/footer-css.css" />
+<link rel="stylesheet" type="text/css" href="${pageContext.request.contextPath}/resources/css/testFile.css">
+<link rel="stylesheet" type = "text/css"  href="${pageContext.request.contextPath}/resources/css/alertify.min.css" />
 
 <link href="https://fonts.googleapis.com/css?family=Quicksand" rel="stylesheet">
 
@@ -20,7 +21,15 @@
 <script type = "text/javascript" src = "${pageContext.request.contextPath}/resources/jQuery/jquery.min.js"></script>
 <script type = "text/javascript" src = "${pageContext.request.contextPath}/resources/jQuery/bootstrap.min.js"></script>
 <script type = "text/javascript" src = "${pageContext.request.contextPath}/resources/jQuery/jquery-ui.js"></script>
+<script type = "text/javascript" src = "${pageContext.request.contextPath}/resources/jQuery/alertify.min.js"></script>
 
+<style>
+.sorters{
+    display :inline;
+    padding-left : 10px;
+    font-size : 11px;
+}
+</style>
 </head>
 <body>
  
@@ -33,13 +42,13 @@
 <!-- Upper drawer and side navigation -->
 
 <div class = "table-holder">
-<table class="table table-hover">
+<table class="table table-hover tablesorter" id="item-table">
     <thead>
       <tr>
       <th></th>
-        <th>Categories</th>
+        <th>Categories<div class="sorters"><span class="glyphicon glyphicon-triangle-bottom"></span><span class="glyphicon glyphicon-triangle-top"></span></div></th>
         
-        <th>Prices</th>
+        <th>Prices<div class="sorters"><span class="glyphicon glyphicon-triangle-bottom"></span><span class="glyphicon glyphicon-triangle-top"></span></div></th>
       </tr>
     </thead>
     <tbody>
@@ -187,21 +196,15 @@
 
 
 </div>
-<script>
- 
-$(document).ready(function(){
-	$(".prices").addClass("activate");
-	
-	$('#order-form').addClass("disabled")
-	$('#btnClick').tooltip({
-						content : "Please move to Home for ordering."
-					});
-	
-		
-	
 
+<%@ include file="order-form.jsp" %>
+<%@ include file="login-footer.jsp" %>
+	<script type = "text/javascript" src = "${pageContext.request.contextPath}/resources/jQuery/jquery.tablesorter.min.js"></script>
+<script type="text/javascript">
+$(document).ready(function(){
+	$("#item-table").tablesorter();
+	
 });
 </script>
-
 </body>
 </html>

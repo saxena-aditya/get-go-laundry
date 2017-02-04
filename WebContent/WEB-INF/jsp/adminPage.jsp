@@ -57,11 +57,76 @@
 			<li><button class="btn btnl" data-toggle = "modal" data-target="#off-offer">%OFF Offer</button></li>
 			<li><button class="btn btnl" data-toggle = "modal" data-target="#banner-text">Bannar Text</button></li>
 			<li><button class="btn btnl" data-toggle = "modal" data-target="#del-cloth-item">Minimum Order Cost</button></li>
+			<li><button class="btn btnl" data-toggle = "modal" data-target="#query-order">Query Order</button></li>
 			</ul>
 		</div>
 	</div>
+	<div class="col-md-3">
+		<div class="panel panel-info">
+      					<div class="panel-heading">
+      						<h3>Total Users</h3>
+      					</div>
+     					<div class="panel-body panel-div-body">
+	     					<p class="text-body">Total users of ${c_details.getCompany_name()}</p>
+     					 	<p class="text-body-detail">${all_users}</p>
+     					 </div>
+    				</div><br/>
+    				<div class="panel panel-info">
+      					<div class="panel-heading">
+      						<h3>Total Orders</h3>
+      					</div>
+     					<div class="panel-body panel-div-body">
+	     					<p class="text-body">Total Orders placed till date</p>
+	     					<p class="text-body-detail">${all_orders}</p>
+	     					
+	     				</div>
+    				</div>
+	</div>
+	<div class="col-md-3">
+	<div class="panel panel-info">
+      					<div class="panel-heading">
+      						<h3>Total Orders Served</h3>
+      					</div>
+     					<div class="panel-body panel-div-body">
+							<p class="text-body">Total orders served sussessfully</p>
+							<p class="text-body-detail">${done_orders}</p>	     		
+	     				 </div>
+    				</div><br/>
+    				<div class="panel panel-info">
+      					<div class="panel-heading">
+      						<h3>Orders in Processing</h3>
+      					</div>
+     					<div class="panel-body panel-div-body">
+							<p class="text-body">Total orders in processing</p>
+							<p class="text-body-detail">${processing_orders}</p>	     		
+	     				 </div>
+    				</div>
+	</div>
+	<div class="col-md-3">
+	<div class="panel panel-info">
+      					<div class="panel-heading">
+      						<h3>Amount Recieved</h3>
+      					</div>
+     					<div class="panel-body panel-div-body">
+							<p class="text-body">Total business done</p>
+							
+							<p class="text-body-detail">Rs. ${total_served_order_cost}</p>
+								     		
+	     				 </div>
+	     				</div>
+					<br/>
+    				<div class="panel panel-info">
+      					<div class="panel-heading">
+      						<h3>Potential business</h3>
+      					</div>
+     					<div class="panel-body panel-div-body">
+							<p class="text-body">Cost for orders in process</p>
+							<p class="text-body-detail">Rs. ${processing_order_cost}</p>	     		
+	     				 </div>
+    				</div>
+	
 </div>
-
+</div>
 
 <div id="c-details" class="modal fade" role="dialog">
   <div class="modal-dialog">
@@ -240,6 +305,90 @@
 
   </div>
 </div>
+<div id="off-offer" class="modal fade" role="dialog">
+  <div class="modal-dialog">
 
+    <!-- Modal content-->
+    <div class="modal-content">
+      <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal">&times;</button>
+        <h2 class="modal-title">Set New OFF rate</h2>
+      </div>
+      <div class="modal-body">
+        
+			<form class="form-inline" action="updateOff-Offer" method="POST">
+				<div class="row">
+					<div class="col-md-4">
+			  <div class="form-group">
+			    <label for="off-perceent" class="right-aligned">Off percent :</label></div>
+			    </div>
+			    <div class="col-md-3">
+			    <input value= "${c_details.getOff_percentage() }" type="number" name="off_percentage" class="form-control" id="off-perceent" name="off-percent">
+			  </div>
+			  
+			  <div class="col-md-5">
+			  <button type="submit" class="btn btn-success">Save</button>
+				</div>
+				</div>
+			</form>
+
+
+      </div>
+      <div class="modal-footer">
+        <button type="button" class=" btn btnl btn btnl-default" data-dismiss="modal">Close</button>
+      </div>
+    </div>
+
+  </div>
+</div>
+<div id="query-order" class="modal fade" role="dialog">
+  <div class="modal-dialog">
+
+    <!-- Modal content-->
+    <div class="modal-content">
+      <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal">&times;</button>
+        <h2 class="modal-title">Query Ordert</h2>
+      </div>
+      <div class="modal-body">
+        <form action="queryByOrderID" method="POST" id="query-by-order">
+        	<div class="form-group">
+        		<div class="row">
+        			<div class="col-md-3">
+        				<label for="order_id">Order ID:</label>
+        			</div>
+        			<div class="col-md-9">
+       			 		<input type = "number" name="order_id" class="form-control" id="order_input"/>
+       				</div>
+       				</div>
+        		</div>
+        <button type="submit" class="btn btn-success button">Search by ID</button>
+        
+        </form>
+        <hr id="form-seperator">
+        <form action= "queryByOrderStage" method="POST" id="query-by-stage">
+        	<div class="form-group">
+        		<div class="row">
+        			<div class="col-md-3">
+        				<label for="stage">Select Order Stage:</label>
+        			</div>
+        			<div class="col-md-7">
+        	<select id="stages" class="form-control" name="order_stage"> 
+        		<option value="PROCESSING">Processing</option>
+        		<option value ="SERVED">Served</option>
+        	</select>
+        	</div>
+        	</div>
+        	</div>
+        	
+        	 <button type="submit" class="btn btn-success button">Search by Stage</button>
+        </form>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class=" btn btnl btn btnl-default" data-dismiss="modal">Close</button>
+      </div>
+    </div>
+</div>
+  </div>
 </body>
 </html>

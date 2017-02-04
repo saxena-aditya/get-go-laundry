@@ -25,7 +25,7 @@
 		
 }
 .drpdwn{
-	left : 85% ! important;
+	left : 84% ! important;
 	padding-top: 14px ! important;
 }
 .nav{
@@ -40,7 +40,7 @@
 	top : 65px;
 }
 ul a{
-	color : #333;
+	color : #000;
 	font-size : 17px;
 	font-weight : 700;
 }
@@ -81,7 +81,7 @@ ul a:hover{
 	background-repeat : no-repeat;
 	height : 57px;
 	width : 57px;
-	left : 1084px;
+	left : 78.5%;
 	top : 5px;
 	border :solid 1px;
 }
@@ -108,7 +108,7 @@ ul a:hover{
 	text-decoration : line-through;
 }
 .dropdown-menu{
-	width : 140% !important;
+	width : 150% !important;
 }
 .dropdown-menu > li > a{
  

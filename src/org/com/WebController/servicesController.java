@@ -15,6 +15,8 @@ import org.com.getterSetterObjs.AdminServicesGetNewBannerText;
 import org.com.getterSetterObjs.AdminServicesGetNewPerItemCosts;
 import org.com.getterSetterObjs.AdminServicesMinimumOrderCost;
 import org.com.getterSetterObjs.AdminServicesOffOffer;
+import org.com.getterSetterObjs.TypeOrderDetails;
+import org.com.getterSetterObjs.TypeUserDetails;
 import org.com.jdbcDAO.AdminServicesDAOImpl;
 import org.com.jdbcDAO.CompanyDetailsDAOImpl;
 import org.com.jdbcDAO.orderDetailsDAOImpl;
@@ -28,6 +30,7 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.servlet.ModelAndView;
 
+import com.google.gson.Gson;
 import com.org.testClasses.Person;
 import com.org.testClasses.PersonListContainer;
 
@@ -37,17 +40,57 @@ public class servicesController {
 	public WebController webControllerServices = new WebController();
 	ApplicationContext ctx = new ClassPathXmlApplicationContext("Spring.xml");
 	public AdminServicesDAOImpl services = ctx.getBean(AdminServicesDAOImpl.class);
-	
+	public UtilityFuctions utils = new UtilityFuctions();
 	public CompanyDetailsDAOImpl companyInfo;
 	public orderDetailsDAOImpl cloth_list;
 	
+	
+	
+	@RequestMapping(value="queryByOrderID", method = RequestMethod.POST)
+	protected ModelAndView queryByOrderID(@RequestParam String order_id){
+		ModelAndView model = new ModelAndView("OrderView");
+		List<TypeOrderDetails> order_details  = services.getOrderDetails(order_id);
+		
+		if(order_details.size() == 0){
+			return new ModelAndView("noOrderFound").addObject("order_id", order_id);
+		}
+		else{
+		TypeUserDetails user_details = services.getUserDetails(order_details.get(0).getUser());
+		
+		model.addObject("order_details", order_details)
+		.addObject("user_details", user_details)
+		.addObject("order_id", order_id);
+
+				
+		return model;
+		}
+	}
+	
+	@RequestMapping(value="queryByOrderStage", method = RequestMethod.POST)
+	protected ModelAndView queryByOrderStage(@RequestParam String order_stage){
+		ModelAndView model = new ModelAndView("ordersByStage");
+		List<TypeOrderDetails> order_by_stage  = services.getOdersByStageDistinct(order_stage);
+		model.addObject("order_by_stage", order_by_stage)
+		.addObject("stage", order_stage);
+		
+		
+		return model;
+	}
 	
 	@RequestMapping(value = "Sudo-I-am-admin", method = RequestMethod.GET)
 	protected ModelAndView adminPage(){
 		ModelAndView model = new ModelAndView("adminPage");
 		companyInfo = ctx.getBean(CompanyDetailsDAOImpl.class);
 		model.addObject("c_details", webControllerServices.getCompanyDetails());
-		model.addObject("clothList", getClothList());
+		model.addObject("clothList", utils.getClothList())
+		.addObject("all_users", utils.getTotalUsers())
+		.addObject("all_orders", utils.getTotalOrderCount())
+		.addObject("processing_orders", utils.getTotalOrderInProcess())
+		.addObject("done_orders", utils.getTotalOrderDone())
+		.addObject("total_served_order_cost", utils.getTotalBuisenessDone())
+		.addObject("processing_order_cost", utils.getTotalOrderCostInProcess());
+		
+
 		return model;
 	}
 	
@@ -57,7 +100,13 @@ public class servicesController {
 		ModelAndView model = new ModelAndView("adminPage");
 		services.updateCompanyDetails(companyDetails);
 		model.addObject("c_details", webControllerServices.getCompanyDetails());
-		model.addObject("clothList", getClothList());
+		model.addObject("clothList", utils.getClothList())
+		.addObject("all_users", utils.getTotalUsers())
+		.addObject("all_orders", utils.getTotalOrderCount())
+		.addObject("processing_orders", utils.getTotalOrderInProcess())
+		.addObject("done_orders", utils.getTotalOrderDone())
+		.addObject("total_served_order_cost", utils.getTotalBuisenessDone())
+		.addObject("processing_order_cost", utils.getTotalOrderCostInProcess());
 		
 		return model;
 		
@@ -70,7 +119,14 @@ public class servicesController {
 		services.updatePerItemCost(perItemCosts);
 		
 		model.addObject("c_details", webControllerServices.getCompanyDetails());
-		model.addObject("clothList", getClothList());
+		model.addObject("clothList", utils.getClothList())
+		.addObject("all_users", utils.getTotalUsers())
+		.addObject("all_orders", utils.getTotalOrderCount())
+		.addObject("processing_orders", utils.getTotalOrderInProcess())
+		.addObject("done_orders", utils.getTotalOrderDone())
+		.addObject("total_served_order_cost", utils.getTotalBuisenessDone())
+		
+		.addObject("processing_order_cost", utils.getTotalOrderCostInProcess());
 		return model;
 		
 	}
@@ -81,7 +137,13 @@ public class servicesController {
 		ModelAndView model = new ModelAndView("adminPage");													
 		services.updateOffPercentage(offPercentage);
 		model.addObject("c_details", webControllerServices.getCompanyDetails());
-		model.addObject("clothList", getClothList());
+		model.addObject("clothList", utils.getClothList())
+		.addObject("all_users", utils.getTotalUsers())
+		.addObject("all_orders", utils.getTotalOrderCount())
+		.addObject("processing_orders", utils.getTotalOrderInProcess())
+		.addObject("done_orders", utils.getTotalOrderDone())
+		.addObject("total_served_order_cost", utils.getTotalBuisenessDone())
+		.addObject("processing_order_cost", utils.getTotalOrderCostInProcess());
 		return model;
 		
 	}
@@ -92,7 +154,13 @@ public class servicesController {
 		ModelAndView model = new ModelAndView("adminPage");													
 		services.updateBannerText(bannerText);
 		model.addObject("c_details", webControllerServices.getCompanyDetails());
-		model.addObject("clothList", getClothList());
+		model.addObject("clothList", utils.getClothList())
+		.addObject("all_users", utils.getTotalUsers())
+		.addObject("all_orders", utils.getTotalOrderCount())
+		.addObject("processing_orders", utils.getTotalOrderInProcess())
+		.addObject("done_orders", utils.getTotalOrderDone())
+		.addObject("total_served_order_cost", utils.getTotalBuisenessDone())
+		.addObject("processing_order_cost", utils.getTotalOrderCostInProcess());
 		return model;
 		
 	}
@@ -103,61 +171,63 @@ public class servicesController {
 		ModelAndView model = new ModelAndView("adminPage");													
 		services.updateMinimumOrderCost(minimumOrderCost);
 		model.addObject("c_details", webControllerServices.getCompanyDetails());
-		model.addObject("clothList", getClothList());
+		model.addObject("clothList", utils.getClothList())
+		.addObject("all_users", utils.getTotalUsers())
+		.addObject("all_orders", utils.getTotalOrderCount())
+		.addObject("processing_orders", utils.getTotalOrderInProcess())
+		.addObject("done_orders", utils.getTotalOrderDone())
+		.addObject("total_served_order_cost", utils.getTotalBuisenessDone())
+		.addObject("processing_order_cost", utils.getTotalOrderCostInProcess());
 		return model;
 		
 	}
 
 
 	
-		public List<ItemPrices> getClothList(){
-		List<ItemPrices> clothList = new ArrayList<>();
-		cloth_list = ctx.getBean(orderDetailsDAOImpl.class);
-		clothList = cloth_list.getItemPrices();
 		
-		return clothList;
-	}
 
 		@RequestMapping(value="/testForm", method= RequestMethod.GET)
 		protected ModelAndView getForm(){
 			ModelAndView model = new ModelAndView("testFile");
+			model.addObject("clothList", utils.getClothList())
+				.addObject("jsonList", new Gson().toJson(utils.getClothList()));
+			
 			
 			
 			
 			return model;
 			
 		}
-		
+	
 
 	    @RequestMapping("/value")
-	    public String index(
-	            ModelMap map, 
+	    public ModelAndView index(
+	             
 	            HttpSession session, 
 	            HttpServletRequest request, 
 	            @RequestParam(value="f", required=false) String flush,
 	            @RequestParam(value="message", required=false) String message ) {
+	        ModelAndView modal = new ModelAndView("index");
 	        
-	        if( flush != null )
-	            session.setAttribute("personListContainer", getDummyPersonListContainer());
-	        if( session.getAttribute("personListContainer") == null )
-	            session.setAttribute("personListContainer", getDummyPersonListContainer());
-	        map.addAttribute("personListContainer", (PersonListContainer)session.getAttribute("personListContainer"));
+	        modal.addObject("personListContainer",  getDummyPersonListContainer());
 	        if( message != null )
-	            map.addAttribute("message", message);
-	        map.addAttribute("cp", request.getContextPath());
+	            modal.addObject("message", message);
 	        
-	        return "index";
+	        
+	        return modal;
 	    }
 	    
 	    @RequestMapping(value="/editpersonlistcontainer", method= RequestMethod.POST)
-	    public String editpersonListContainer(@ModelAttribute PersonListContainer personListContainer, HttpSession session) {
-	        for( Person p : personListContainer.getPersonList() ) {
-	            //System.out.println("Name: " + p.getName());
-	            //System.out.println("Age: " + p.getAge());
+	    public ModelAndView editpersonListContainer(@ModelAttribute PersonListContainer personListContainer, HttpSession session) {
+	        
+	    	for( Person p : personListContainer.getPersonList() ) {
+	            System.out.println("Name: " + p.getName());
+	            System.out.println("Age: " + p.getAge());
 	        }
 	        session.setAttribute("personListContainer",personListContainer);
-	        return "redirect:/?message=Form Submitted Ok. Number of rows is: ["+personListContainer.getPersonList().size()+"]";
-	    }
+	        return new ModelAndView("index").addObject("personListContainer",  getDummyPersonListContainer());
+
+	        }
 	    
 	    private PersonListContainer getDummyPersonListContainer() {
 	        List<Person> personList = new ArrayList<Person>();

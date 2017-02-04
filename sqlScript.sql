@@ -7,6 +7,13 @@ off_percentage INT,
 banner_text VARCHAR (350)
 );
 
+CREATE TABLE order_address (
+init INT PRIMARY KEY, 
+order_id VARCHAR (10) NOT NULL, 
+add1 VARCHAR (100) NOT NULL, 
+add2 VARCHAR (100) NOT NULL
+);
+
 
 INSERT INTO company_details (company_name, company_symbol, off_percentage, banner_text, minimum_order_cost)
 VALUES ("Cleany Clean", "/visuals/cmpny-image", 40, "Get 40% OFF on your first order!!",100);

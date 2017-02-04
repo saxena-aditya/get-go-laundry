@@ -23,6 +23,17 @@ public class MySQLStatements {
 	public final String UPDATE_COMPANY_DETAILS = "UPDATE company_details SET company_name=?, company_symbol=? WHERE init=1";
 	public final String UPDATE_OFF_PERCENTAGE = "Update company_details SET off_percentage = ? where init=1";
 	public final String UPDATE_MINIMUM_ORDER_COST =  "Update company_details SET minimum_order_cost =? WHERE init=1";
+	public final String SAVE_ADDRESS = "INSERT INTO order_address (add1, add2, order_id) VALUES(?,?,?)";
+	public final String ALL_USERS = "SELECT COUNT(*) FROM reg_users";
+	public final String ORDER_SERVED = "SELECT COUNT(*) FROM my_order WHERE order_stage = 'SERVED'";
+	public final String TOTAL_COST_UPTILL_NOW = "SELECT SUM(total_item_cost) from my_order WHERE order_stage = 'SERVED'";
+	public final String TOTAL_ORDERS_MADE = "SELECT COUNT(DISTINCT(order_id)) FROM my_order";
+	public final String TOTAL_PROCESSING_ORDERS = "SELECT COUNT(DISTINCT(order_id)) FROM my_order WHERE order_stage = 'PROCESSING' ";
+	public final String TOTAL_PROCESSING_ORDER_COST = "SELECT SUM(total_item_cost) FROM my_order WHERE order_stage = 'PROCESSING' ";
+	public final String USER_DETAILS = "SELECT * FROM reg_users WHERE phone = ?";
+	public final String ORDER_DETAILS = "SELECT * FROM my_order WHERE order_id = ?";
+	public final String OREDER_BY_STAGE = "SELECT * FROM my_order WHERE order_stage = ?";
+	public final String ORDERS_BY_STAGE_DISTINCT = "SELECT * FROM my_order WHERE order_stage = ? GROUP BY order_id ";
 	public final String UPDATE_ITEM_PRICES = "UPDATE item_prices "+
 			"SET item_cost = CASE item_name "+
             "WHEN 'shirt' THEN ? "+ 

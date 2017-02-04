@@ -116,4 +116,11 @@ public class orderSaveDAOImpl implements SaveOrderDAO{
 		
 	}
 	
+	public void saveOrderAddress(String add1, String add2, String orderID){
+		jdbcTemplate.setDataSource(getDataSource());
+		jdbcTemplate.update(sql.SAVE_ADDRESS, add1, add2, orderID);
+		
+		
+	}
+	
 }

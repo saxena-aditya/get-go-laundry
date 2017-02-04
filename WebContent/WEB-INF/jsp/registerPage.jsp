@@ -9,6 +9,7 @@
 <link rel="stylesheet" type = "text/css"  href="${pageContext.request.contextPath}/resources/css/alertify.min.css" />
 <script type = "text/javascript" src = "${pageContext.request.contextPath}/resources/jQuery/jquery.js"></script>
 <script type = "text/javascript" src = "${pageContext.request.contextPath}/resources/jQuery/alertify.min.js"></script>
+<link rel="stylesheet" type="text/css" href="${pageContext.request.contextPath}/resources/css/footerFile.css">
 
 </head>
 <body>
@@ -94,9 +95,7 @@
 </div>
 </div>
 </div>
-<footer class="site-footer">
-  Cleany Clean 2016
-</footer>
+<%@ include file="footer.jsp" %>
 
 
 <script type = "text/javascript">

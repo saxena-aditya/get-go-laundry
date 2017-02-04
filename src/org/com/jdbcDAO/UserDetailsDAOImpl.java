@@ -29,7 +29,7 @@ public class UserDetailsDAOImpl implements UserDetailsDAO{
 	}
 	
 	@Override
-	public String getUserAddress(int username) {
+	public String getUserAddress(String username) {
 		// TODO Auto-generated method stub
 		
 		

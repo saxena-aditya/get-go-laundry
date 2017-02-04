@@ -11,6 +11,11 @@ input[type=number]{
     margin-top :0px;
     font-size : 1.6em;
 }
+input[type=number]::-webkit-inner-spin-button, 
+input[type=number]::-webkit-outer-spin-button { 
+  -webkit-appearance: none; 
+  margin: 0; 
+}
 label{
     margin-top :8px;
     font-size : 1.6em;
@@ -59,12 +64,97 @@ label{
 .top-left:hover,.top-right:hover{
     background-color : rgba(164, 164, 220, 0.59)
 }
-.btn-active{
-    background-color :  rgba(99, 99, 255, 0.59);
+.btnn-active{
+    background-color :  rgba(99, 99, 255, 0.59) !important;
 }
 
 .form-holder{
     margin-top : 30px;
+}
+#form-phase-2{
+    margin-top : 0%;
+    margin-left : 10%;
+}
+.time-and-date{
+    margin-left : 0%;
+    display : flex;
+    margin-bottom : 9%;
+
+}
+.date-holder, .time-holder{
+    width : 50%;
+}
+.date-holder > input, .time-holder > select{
+    width : 190px; 
+    height : 41px;  
+    font-size : 1.3em;
+    padding-left : 8%;
+}
+.address-part{
+    margin-right : 10%;
+}
+label{
+    margin-bottom : 0px;
+}
+#move-phase-2{
+    margin-top : 5%;
+    margin-left : 17%;
+    width :66%;
+    height : 40px;
+    font-size : 20px;
+    padding-bottom : 15px;
+}
+
+.estimateAmount{
+    margin-left : 10%;
+    margin-right : 10%;
+    text-align :  right;
+}
+#total{
+    margin-right : 5%;
+    font-size : 1.39em;
+   
+}
+.lower-buttons{
+    display : flex;
+    margin-top : 3%;
+    margin-left : 0px;
+
+}
+.col-md-5{
+    padding-left: 0px;
+}
+.hr-line{
+    margin-right : 10%;
+}
+.a-row{
+    display :flex;
+    margin-right : 0px !important;
+    padding-right : 0px;
+}
+.a-row>input{
+  
+}
+label{
+    width : 90% !important;
+    text-align : center;
+}
+
+#order-form-submit{
+    margin-left : 5%;
+    margin-top : 0%;
+    height : 40px;                  
+    width : 50%; 
+    font-size : 1.6em;
+    padding-bottom : 35px;                   
+}
+#back-to-phase-1{
+    width : 20%;
+    height : 40px;                  
+   
+    font-size : 1.6em;
+    padding-bottom : 35px;                   
+
 }
 /*=======FOOTER CSS===========================================*/
    
@@ -86,20 +176,25 @@ ul{
     margin-left : -10px;
     list-style : none;
     padding-top : 6px;
-    font-size : 1.2em;
+    font-size : 16px;
 }
 ul > li{
     padding-top : 3px;
+    text-align : left
 }
 .container-cont{
     padding-top : 60px;
     padding-left: 120px;
 }
+.company-container{
+    height : 4 ;
+}
 .company-terms{
     margin-top : 16px;
+    padding-top : 7px;;
     background-color :#040310;
-    height :32px;
-    font-size : 1.5em;
+    height :52px;
+    font-size : 1.em;
     color : white;
     text-align : center;
 }

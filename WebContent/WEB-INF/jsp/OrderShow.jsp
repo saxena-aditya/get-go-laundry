@@ -13,6 +13,7 @@
 <link rel="stylesheet" type = "text/css"  href="${pageContext.request.contextPath}/resources/css/order-done.css" />
 <link rel="stylesheet" type = "text/css"  href="${pageContext.request.contextPath}/resources/css/side-bar.css" />
 <link rel="stylesheet" type = "text/css"  href="${pageContext.request.contextPath}/resources/css/footer-css.css" />
+<link rel="stylesheet" type="text/css" href="${pageContext.request.contextPath}/resources/css/testFile.css">
 
 <link href="https://fonts.googleapis.com/css?family=Quicksand" rel="stylesheet">
 
@@ -21,7 +22,7 @@
 <script type = "text/javascript" src = "${pageContext.request.contextPath}/resources/jQuery/jquery.js"></script>
 <script type = "text/javascript" src = "${pageContext.request.contextPath}/resources/jQuery/alertify.min.js"></script>
 
-<title>Insert title here</title>
+<title>Order Placed</title>
 </head>
 <body>
 <img id="background-image-side-bubbles" src="${pageContext.request.contextPath}/resources/visuals/side-bubbles.PNG" alt ="blue-bubbles">
@@ -32,32 +33,39 @@
 <jsp:include page = "drawers.jsp" />
 
 <!-- Upper drawer and side navigation -->
-<div class="container">
+<div class="container order-view">
 <div class="col-md-6">
 
-<img id = "order-save-image" class = "img-circle" src= "${pageContext.request.contextPath}/resources/visuals/saved_order.png" alt = "order-saved"></img>
-
+<span id = "order-save-image" class = "glyphicon glyphicon-thumbs-up"></span> 
 <div class = "order-display">
-<h3>Your Order ID is : ${orderID}</h3>
+<h3>Your Order ID is ${orderID}</h3>
 
 
 <c:choose>
 <c:when test = "${empty isFirstOrder}">
-<span id="order-simple-cost">Order Cost = Rs. ${orderCost}</span>
+<span id="order-simple-cost">Total Order Cost: Rs. ${orderCost}</span>
 
 </c:when>
 <c:otherwise>
-<span id="order-simple-cost" class = "crossed-over">Order Cost = ${orderCost}</span>
-<p id="order-simple-cost">Order Cost : <c:out value = "${orderCost*(100-company_details.off_percentage)/100}"/> (after first time discount!)</p>
+<span id="order-simple-cost" class = "crossed-over">Order Cost: ${orderCost}</span>
+<p id="order-simple-cost">New Order Cost: <c:out value = "${orderCost*(100-company_details.off_percentage)/100}"/> (after first time discount!)</p>
 
 
 </c:otherwise>
 
 </c:choose>
 
+<div class="after-text">
+<br/>
+<p>Please Note:</p>
+	<p>We only support <i>COD</i> at the moment. </p>
+	<p>Other modes <span id="coming-soon">Coming Soon..</span></p>
+</div>
+
 </div>
 </div>
 <div class="col-md-6 order-table">
+	<h2>Order Preview</h2><br/>
 	<table class="table table-hover">
 		<thead>
 			<tr>
@@ -154,20 +162,19 @@
 
 </div>
 </div>
-
+<%@ include file= "order-form.jsp" %>
 <script type = "text/javascript">
 
 $(document).ready(function(){
 	alertify.success('Your order has been recieved :)'); 
-	$("#order_history").addClass("activate");
-	$('#order-form').addClass("disabled")
-	$('#btnClick').tooltip({ content : "Please move to Home for ordering."});
+	
 
 });
-<script>
-
-
 </script>
+
+
+
+<%@ include file="login-footer.jsp" %>
 
 </body>
 </html>

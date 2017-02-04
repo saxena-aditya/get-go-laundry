@@ -1,154 +1,260 @@
-<div id = "contactDiv">
+<div id="banner-text" class="modal fade" role="dialog">
+  <div class="modal-dialog">
 
-<div id ="wrapper">
+    <!-- Modal content-->
+    <div class="modal-content">
+      <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal">&times;</button>
+        <h2 class="modal-title">Select Your Order!</h2>
+      </div>
+      <div class="modal-body">
+      <div class="top-btns" >
+				<button class="top-left" id="cleanwash" >Simple Wash</button>
+				<button class="top-right" id="drywash" >Dry Wash</button>
+			</div>  
+      
+        <form class="form-horizontal"  action="placeOrder" method="POST">
+			<div class="form-holder">
+				<div id="form-phase-1" >
+					<div class="estimateAmount">
+						<span id="total">total</span>
+						<hr id="hr-line">
+					</div>
+				
+			<c:forEach items="${clothList}" var="list" varStatus="i" begin="0">
+				<c:choose>
+				 <c:when test="${list.getType() =='CLEAN'}">
+		   <div class="row clean">
+		   		<div class="col-md-6">
+		   		<c:choose>	
+		   			<c:when test="${list.getItem_name()=='tshirt' }">	
+		   				<label for="item_name">T-Shirt</label>
+		   			</c:when>
+		   			<c:when test="${list.getItem_name()=='shirt' }">	
+		   				<label for="item_name">Shirt</label>
+		   			</c:when>
+		   			<c:when test="${list.getItem_name()=='jeans' }">	
+		   				<label for="item_name">Jeans</label>
+		   			</c:when>
+		   			<c:when test="${list.getItem_name()=='pant' }">	
+		   				<label for="item_name">Pants</label>
+		   			</c:when>
+		   			<c:when test="${list.getItem_name()=='sweater' }">	
+		   				<label for="item_name">Sweater</label>
+		   			</c:when>
+		   			<c:when test="${list.getItem_name()=='blanketL' }">	
+		   				<label for="item_name">Blanket-Light</label>
+		   			</c:when>
+		   			<c:when test="${list.getItem_name()=='blanketH' }">	
+		   				<label for="item_name">Blanket-Heavy</label>
+		   			</c:when>
+		   			<c:when test="${list.getItem_name()=='BlanketLU' }">	
+		   				<label for="item_name">Blanket-Luxary</label>
+		   			</c:when>
+		   			<c:when test="${list.getItem_name()=='ccoat' }">	
+		   				<label for="item_name">Casual Coat</label>
+		   			</c:when>
+		   			<c:when test="${list.getItem_name()=='fcoat' }">	
+		   				<label for="item_name">Formal Coat</label>
+		   			</c:when>
+		   			<c:when test="${list.getItem_name()=='jacket' }">	
+		   				<label for="item_name">Jacket</label>
+		   			</c:when>
+		   			<c:when test="${list.getItem_name()=='other' }">	
+		   				<label for="item_name">Other Cloths</label>
+		   			</c:when>
+		   			
+		   			
+		   			<c:otherwise>
+		   				<label for="item_name">${list.getItem_name() }</label>
+		   			</c:otherwise>
+		   		</c:choose>
+		   		</div>
+		   		<div class="col-md-1">
+		   			<input class="form-control" id="${list.getItem_name()}" name="${list.getItem_name()}" value="0" type="number">
+		   		</div>		   		
+		   		<div class="col-md-5">
+		   		<div class="btn-container">
+		   			<span class = "buttonl btn">-</span>
+		   			<span class = "button btn">+</span>
+		   		</div>
+		 	  </div>
+		   </div>
+		   </c:when>
+		    <c:when test="${list.getType()=='DRY'}">
+		   	<div class="row dry">
+		   		<div class="col-md-6">		
+		   			<c:choose>	
+		   			<c:when test="${list.getItem_name()=='tshirt' }">	
+		   				<label for="item_name">T-Shirt</label>
+		   			</c:when>
+		   			<c:when test="${list.getItem_name()=='shirt' }">	
+		   				<label for="item_name">Shirt</label>
+		   			</c:when>
+		   			<c:when test="${list.getItem_name()=='jeans' }">	
+		   				<label for="item_name">Jeans</label>
+		   			</c:when>
+		   			<c:when test="${list.getItem_name()=='pant' }">	
+		   				<label for="item_name">Pants</label>
+		   			</c:when>
+		   			<c:when test="${list.getItem_name()=='sweater' }">	
+		   				<label for="item_name">Sweater</label>
+		   			</c:when>
+		   			<c:when test="${list.getItem_name()=='blanketL' }">	
+		   				<label for="item_name">Blanket-Light</label>
+		   			</c:when>
+		   			<c:when test="${list.getItem_name()=='blanketH' }">	
+		   				<label for="item_name">Blanket-Heavy</label>
+		   			</c:when>
+		   			<c:when test="${list.getItem_name()=='blanketLU' }">	
+		   				<label for="item_name">Blanket-Luxary</label>
+		   			</c:when>
+		   			<c:when test="${list.getItem_name()=='ccoat' }">	
+		   				<label for="item_name">Casual Coat</label>
+		   			</c:when>
+		   			<c:when test="${list.getItem_name()=='fcoat' }">	
+		   				<label for="item_name">Formal Coat</label>
+		   			</c:when>
+		   			<c:when test="${list.getItem_name()=='jacket' }">	
+		   				<label for="item_name">Jacket</label>
+		   			</c:when>
+		   			<c:when test="${list.getItem_name()=='other' }">	
+		   				<label for="item_name">Other Cloths</label>
+		   			</c:when>
+		   			<c:otherwise>
+		   				<label for="item_name">${list.getItem_name()}</label>
+		   				
+		   			</c:otherwise>
+		   			
+		   			</c:choose>
+		   		</div>
+		   		<div class="col-md-1">
+		   			<input class="form-control" id="${list.getItem_name()}" name="${list.getItem_name()}" value="0" type="number">
+		   		</div>
+		   		<div class="col-md-5">
+		   		<div class="btn-container">
+		   			<span class = "buttonl btn">-</span>
+		   			<span class = "button btn">+</span>
+		   		</div>
+		 	  </div>
+		   </div>
+		   	</c:when>
+		   	</c:choose>
+		   </c:forEach>
+		   
+		   <button id="move-phase-2" class="btn btn-success">Proceed <span class="glyphicon glyphicon-chevron-right"></span></button>
+		  </div>
+		  <div id="form-phase-2" >
+		  	<h2>Set Order Pickup Date and Time</h2>
+		  	<hr class="hr-line">
+		  	<div class="time-and-date">
+					<div class="date-holder">
+					<input  name = "date" id = "date" placeholder = "Select date" />
+					</div>
+          <script>
+            $(function() {
+             $( "#date" ).datepicker({ minDate: 0});
+                 });
+          </script>
+          <div class="time-holder">
+	           <select  name = "timeSpan" id = "timeSpan">
+		        <option value = "8am-10am"> 8am to 10am</option>
+		        <option value = "10am-12pm"> 10am to 12pm</option>
+		        <option value = "12pm-2pm"> 12pm to 2pm</option>
+		        <option value = "2pm-4pm"> 2pm to 4pm</option>
+		        <option value = "4pm-6pm"> 4pm to 6pm</option>
+           </select>
+			</div>
+			</div>
+			<div class="address-part">
+				<h2>Set Order Address</h2><hr class="line-horizoltal">
+					<div class="row">
+						<div class="col-md-4">
+						<div class="form-group">
+							<label for="add-1">Local:</label>
+						</div>
+					</div>
+					<div class="col-md-8">
+						<input class="form-control" name="add1" value="${add1}" id="add1" type="text" />
+					</div>
+					</div>
+				
+					<div class="row">
+						<div class="col-md-4">
+						<div class="form-group">
+							<label for="add-2">City:</label>
+						</div>
+					</div>
+					<div class="col-md-8">
+						<input class="form-control" name="add2" value="${add2}" id="add2" type="text" />
+					</div>
+					</div>
+			</div>
+			<div class="lower-buttons">
+				 <button class="btn btn-default" id="back-to-phase-1"><span class="glyphicon glyphicon-chevron-left"></span>Back</button>
+				 <button class="btn btn-success" id="order-form-submit">Submit Order&nbsp;&nbsp;<span class="glyphicon glyphicon-ok-sign" id="ok"></span></button>
+				</div>
+		  </div>
+		  </div>
+		 
+		</form>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class=" btn btnl  btn btnl-default" data-dismiss="modal">Close</button>
+      </div>
+    </div>
 
-<button id = "btnSWash" class = "btn btn-default">Simple Wash</button>
-<button id = "btnDWash" class = "btn btn-default">Dry Wash</button>
-<form id = "myForm1" class = "Myform1" method="POST" action="placeOrder"  style = "position : absolute">
-
-
-<div id = "myForm" class = "Myform" style = "position : absolute">
-
-<p class = "totalSum" style = "text-align: right;">total</p>
-<hr/><br/>
-
-
-
-
-<div id = "orderDetails"></div>
-
-<input  name = "date" id = "date" placeholder = "Select date" />
+  </div>
+</div>
 <script>
-$(function() {
-    $( "#date" ).datepicker({ minDate: 0});
-  });
-  </script>
-<select type = "text" name = "timeSpan" id = "timeSpan">
 	
-	<option value = "8am-10am"> 8am to 10am</option>
-	<option value = "10am-12pm"> 10am to 12pm</option>
-	<option value = "12pm-2pm"> 12pm to 2pm</option>
-	<option value = "2pm-4pm"> 2pm to 4pm</option>
-	<option value = "4pm-6pm"> 4pm to 6pm</option>
-</select>
-
-<script type = "text/javascript">
-
-$(document).ready(function(){
-	var date = new Date();
-
-
-	var today = new Date();
-	var day = new String(date.getDate());
-	var mon = new String(date.getMonth()+1); //January is 0!
-	var yr = today.getFullYear();
-
-	  if(day.length < 2) { day = "0" + day; }
-	  if(mon.length < 2) { mon = "0" + mon; }
-
-	  var datemin = new String( yr + '-' + mon + '-' + day );
-	  $('#date').attr("min", datemin);
-	  //document.getElementByID('date').setAttribute('min', date);
-
-});
-
-</script>
-<div class="numbers-row">
-        <label for="name">T-Shirt</label>
-        <input  type="number" name="tshirt" id="ts" value ="0"><div class = "buttonl">-</div><div class = "button">+</div>
-      </div>
-      <div class="numbers-row">
-        <label for="name">Shirt</label>
-        <input type="number" name="shirt" id="s" value="0"><div class = "buttonl">-</div><div class = "button">+</div>
-      </div>
-      <div class="numbers-row">
-        <label for="name">Formal Pants</label>
-        <input type="number" name="pant" id="p" value="0"><div class = "buttonl">-</div><div class = "button">+</div>
-      </div>
-      <div class="numbers-row">
-        <label for="name">Jeans</label>
-        <input type="number" name="jeans" id="j" value="0"><div class = "buttonl">-</div><div class = "button">+</div>
-      </div><div class="numbers-row">
-        <label for="name">Casual Coats</label>
-        <input type="number" name="ccoat" id="cc" value="0"><div class = "buttonl">-</div><div class = "button">+</div>
-      </div><div class="numbers-row">
-        <label for="name">Other</label>
-        <input type="number" name="other" id="o" value="0"><div class = "buttonl">-</div><div class = "button">+</div>
-      </div>
-<button type ="submit" class ="btn btn-success">Submit Order</button>
-<a class = "btn btn-default cancel" >Cancel</a>
-
-</div>
-<div id = "myForm2" class = "Myform2" style = "display : none ; position : absolute">
-<p class = "totalSum" style = "text-align: right;">total</p>
-<hr/><br/>
-
-<div class="numbers-row">
-        <label for="name">Formal Coats</label>
-        <input type="number" name="fcoat" id="ctc" value ="0"><div class = "buttonl">-</div><div class = "button">+</div>
-      </div>
-      <div class="numbers-row">
-        <label for="name">Sweater</label>
-        <input type="number" name="sweater" id="sw" value="0"><div class = "buttonl">-</div><div class = "button">+</div>
-      </div>
-      <div class="numbers-row">
-        <label for="name">Jacket</label>
-        <input type="number" name="jacket" id="jk" value="0"><div class = "buttonl">-</div><div class = "button">+</div>
-      </div>
-      <div class="numbers-row">
-        <label for="name">Blanket(light)</label>
-        <input type="number" name="blanketL" id="bl" value="0"><div class = "buttonl">-</div><div class = "button">+</div>
-      </div><div class="numbers-row">
-        <label for="name">Blanket(heavy)</label>
-        <input type="number" name="blanketH" id="bh" value="0"><div class = "buttonl">-</div><div class = "button">+</div>
-      </div><div class="numbers-row">
-        <label for="name">Blanket(luxary)</label>
-        <input type="number" name="blanketLU" id="blu" value="0"><div class = "buttonl">-</div><div class = "button">+</div>
-      </div>
-
-<button type ="submit" class ="btn btn-success">Submit Order</button>
-<a class = "btn btn-default cancel">Cancel</a>
-</div>
-
-</form>
-</div></div>
-
-<script type = "text/javascript">
-
-var totalSum =0; //global Variable!
-$(document).ready(function(){
-	$('#btnClick').click(function(){
-		$('#contactDiv').css("display", "block");
-	});
-
-
-	
-});
-
-$('#myForm1').submit(function(){
-	/* use this space to do the awesome alert function of alertify, to make the user aware that 
-	* they have not selected any cloths or date! :D :D */
-	var date = $('#date').val();
-	
-	if(!date){
-		alertify
-		.alert("Date can not be empty !", "Please select a date.");
-		return false;	
-	}
-	if(totalSum < 100){
-		alertify.alert("Sorry, but we do not accept bills below Rs.100");
-		return false;
-	}
+	$(document).ready(function(){
 		
-	else
-		return true
-});
-
-  $(".button, .buttonl").click( function() {
+		var array = {};
+		var ids = {};
+		var cleanButton = $("#cleanwash");
+		var dryButton = $("#drywash");
+		var dryDivs = $(".dry");
+		var cleanDivs = $(".clean");
+		var phaseChangeButton = $("#move-phase-2");
+		var formSubmitButton = $("#order-form-submit");
+		var phase1 = $("#form-phase-1");
+		var phase2 = $("#form-phase-2");
+		var topButtons = $(".top-btns");
+		var back = $("#back-to-phase-1");
+		var minimum_value = ${company_details.getMinimum_order_cost()};
+		var total =0;
+		var cost = {};
+		var sum =0; 
+		
+		dryDivs.toggle();
+		cleanButton.addClass("btnn-active");
+		cleanButton.click(function(){
+			dryDivs.css("display", "none");
+			cleanDivs.css("display", "block");
+			dryButton.removeClass("btnn-active");
+			cleanButton.addClass("btnn-active");
+			
+		});
+		dryButton.click(function(){
+			cleanDivs.css("display", "none");
+			dryDivs.css("display", "block");
+			cleanButton.removeClass("btnn-active");
+			dryButton.addClass("btnn-active");
+		});
+		var object = JSON.parse('${jsonList}');
+		
+		for(var i in object){
+			array[object[i].item_name] = object[i].item_cost;
+			ids[i] = object[i].item_name;
+		}
+	
+		phase2.css("display", "none");
+		$(".button, .buttonl").click( function() {
 
 	    var $button = $(this);
 	    var one = 1;
-	    var oldValue = $button.parent().find("input").val();
+	    var oldValue = $button.parent().parent().parent().find("input").val();
 
 	    if ($button.text() == "+") {
 	  	  var newVal = parseInt(oldValue) + parseInt(one);
@@ -156,47 +262,51 @@ $('#myForm1').submit(function(){
 		   // Don't allow decrementing below zero
 	      if (oldValue > 0) {
 	        var newVal = parseInt(oldValue) - parseInt(one);
-		    } else {
+		   	} else {
 	        newVal = 0;
 	      }
-		  }
-
-	    $button.parent().find("input").val(newVal);
-	    
-	    var a = parseInt($('#o').val()) * '${item.hoodie}';
-	    var b = parseInt($('#p').val()) * '${item.pants}';
-	    var c = parseInt($('#cc').val()) * '${item.coat}';
-	    var d = parseInt($('#s').val()) * '${item.shirt}';
-	    var e = parseInt($('#ts').val()) * '${item.tshirt}';
-	    var f = parseInt($('#j').val()) * '${item.jeans}';
-	    var u = parseInt($('#bl').val()) * '${item.blanketl}';
-	    var v = parseInt($('#bh').val()) * '${item.blanketh}';
-	    var w = parseInt($('#blu').val()) * '${item.blanketlu}';
-	    var x = parseInt($('#sw').val()) * '${item.sweater}';
-	    var y = parseInt($('#jk').val()) * '${item.jacket}';
-	    var z = parseInt($('#ctc').val()) * '${item.coat}';
-	     totalSum = a + b + c + d + e + f  + u + v + w + x + y + z ; 
-	    $('.totalSum').html(totalSum);
-	  });
-  
-  $()
-  
-  $('#btnSWash').click(function(){
-	  $('#myForm').css('display', 'block');
-	  $('#myForm2').css('display', 'none');
-	  $('#btnDWash').css('background-color', 'white');
-	  $('#btnSWash').css('background-color', 'blue');
-	  });
-  $('#btnDWash').click(function(){
-	  $('#myForm2').css('display', 'block');
-	  $('#myForm').css('display', 'none');
-	  $('#btnDWash').css('background-color', 'blue');
-	  $('#btnSWash').css('background-color', 'white');
-	  });
-
-  $(".cancel").click(function() {
-		$(this).parent().parent().parent().parent().hide();
-
-});	
-
-</script>
+	 }
+	$button.parent().parent().parent().find("input").val(newVal);
+		for(var i in ids){
+			total=0;
+			total =  total +parseInt(document.getElementById(ids[i]).value) * parseInt(array[ids[i]]);
+			cost[i] = total;		
+		}	
+		sum =0;
+		for(var k in cost)
+			sum = sum + cost[k];
+		
+		$('#total').html("Rs " + sum); 
+	});
+	
+	phaseChangeButton.click(function(){
+		if(parseInt(sum) > minimum_value){
+		topButtons.css("display", "none");
+		phase1.css("display", "none");
+		phase2.css("display", "block");
+		}
+		else{
+			alertify.alert("ALERT", "Curently, we only accept orders above Rs. "+minimum_value);
+			return false;
+		}
+		return false;
+	});
+	         
+	back.click(function(){
+		topButtons.css("display", "flex");
+		phase1.css("display", "block");
+		phase2.css("display", "none");
+		
+		return false;
+		
+	});	   
+	
+	formSubmitButton.click(function(){
+		if(document.getElementById("date").value.length == 0){
+				alertify.alert("ALERT", "Please click on the Date box to select a valid Date");
+				return false;
+			}
+		});	
+	});
+		
+	</script>

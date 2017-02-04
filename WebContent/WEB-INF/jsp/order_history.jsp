@@ -9,10 +9,10 @@
 <link rel="stylesheet" type = "text/css"  href="${pageContext.request.contextPath}/resources/bootstrap/css/bootstrap.min.css" />
 <link rel="stylesheet" type = "text/css"  href="${pageContext.request.contextPath}/resources/css/side-bar.css" />
 <link rel="stylesheet" type = "text/css"  href="${pageContext.request.contextPath}/resources/css/history-page.css" />
-<link rel="stylesheet" type = "text/css"  href="${pageContext.request.contextPath}/resources/css/popform.css" />
 <link rel="stylesheet" type = "text/css"  href="${pageContext.request.contextPath}/resources/css/jquery-ui.css" />
 <link rel="stylesheet" type = "text/css"  href="${pageContext.request.contextPath}/resources/css/default.min.css" />
-<link rel="stylesheet" type = "text/css"  href="${pageContext.request.contextPath}/resources/css/footer-css.css" />
+<link rel="stylesheet" type="text/css" href="${pageContext.request.contextPath}/resources/css/testFile.css">
+<link rel="stylesheet" type = "text/css"  href="${pageContext.request.contextPath}/resources/css/alertify.min.css" />
 
 <link href="https://fonts.googleapis.com/css?family=Quicksand" rel="stylesheet">
 
@@ -20,6 +20,8 @@
 <script type = "text/javascript" src = "${pageContext.request.contextPath}/resources/jQuery/jquery.min.js"></script>
 <script type = "text/javascript" src = "${pageContext.request.contextPath}/resources/jQuery/bootstrap.min.js"></script>
 <script type = "text/javascript" src = "${pageContext.request.contextPath}/resources/jQuery/jquery-ui.js"></script>
+<script type = "text/javascript" src = "${pageContext.request.contextPath}/resources/jQuery/alertify.min.js"></script>
+
 <title>Order History</title>
 </head>
  <body>
@@ -61,14 +63,9 @@
 		</c:choose>
 	</div>
 
-<script>
- 
-$(document).ready(function(){
-	$("#order_history").addClass("activate");
-	$('#order-form').addClass("disabled")
-	$('#btnClick').tooltip({ content : "Please move to Home for ordering."});
-	});
-</script>
+
+	<%@ include file="order-form.jsp" %>
+	<%@ include file="login-footer.jsp" %>
 	
  </body>
 </html>

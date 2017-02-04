@@ -18,11 +18,12 @@ tr.td{
     width : 100px !important;
 }
 td{
-	padding-top : 15px !important;
+	
 	padding-bottom : 0px !important; 
 }
 .item-image{
     height : 50px;
     margin-top :-9px;
     margin-bottom : 5px;
+    padding-top: 5px;
 }

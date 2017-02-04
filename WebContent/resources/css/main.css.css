@@ -8,10 +8,12 @@
     border : solid 3px;
     border-radius : 23px;
     position :absolute;
-    top : 18%;
-    left : 80%;
+    top : 14%;
+    left : 78%;
     padding : 20px 20px 20px 20px;
     width : 243px;
+    
+    padding-top: 38px;
     background-color : steelblue;
     
 }
@@ -27,14 +29,14 @@
 
 }
 .pswd-marg{
-    margin-top : -29px
+    margin-top : -25px
 }
 #button-div{
     padding-left :0px;
     
 }
 #btnL{
-    margin-top : -29px;
+    margin-top : -19px;
     width : 195px;
     letter-spacing : 1px;
 }
@@ -43,29 +45,34 @@
     padding-top : 2px;
     padding-bottom : 2px;
     border : solid 1px;
-    padding-left : 55px; 
+    padding-left : 45px; 
     background-color : white;
 }
+.glyphicon-hand-down{
+    color : #333;
+    padding : 2px 2px 2px 4px;
+    margin-top : 1px;
+}
 #note{
-    font-size : 30px;
+    font-size : 25px;
 }
 #msg-div{
     padding : 5px 5px 5px 5px;
-    color : red;
+    color : white;
 }
 .filper-1{
     position: absolute !important;
-    top : 85%;
+    top : 90%;
     left :6%;
 }
 .filper-2{
     position: absolute !important;
-    top : 85%;
+    top : 90%;
     left :37%;
 }
 .filper-3{
     position: absolute !important;
-    top : 85%;
+    top : 90%;
     left :68%;
 }
 .cleany-clean{
@@ -76,13 +83,17 @@
 }
 #cmpny-name{
     font-size :55px;
+    font-family : 'lato',sans-serif;
     letter-spacing :4px;
-    padding-left :0px;
+    padding-left :5px;
     color :#000;
+    font-weight : 400;
     
 }
 #cmpny-note{
-    font-size : 22px;
+    font-size : 25px;
+    font-family : 'lato',sans-serif;
+    font-weight : 500;
     letter-spacing :2px;
     padding-left :12px;
     color : #000;
@@ -143,3 +154,36 @@
     padding-top : 5px;
     background-color :white;
 }
+.carousel{
+    height : 184px;
+    margin-bottom : 80px;
+    margin-left : 40px;
+    margin-right : 40px;
+}
+.carousel-inner{
+    padding-top: 0px;
+   margin-top : 42px;
+   margin-bottom : 50px;
+
+}
+.carousel-indicators > li {
+   border-color : #fd0000;
+}
+.carousel-control{
+    color:blue;
+}
+#customer-said{
+    margin-left: 34%;
+    font-size : 2.49em;
+}
+#services{
+    margin-top : 40px;
+    margin-bottom : 90px;
+}   
+.logo-small{font-size: 50px;}
+.power{color:#ff1515;}
+.green{color:#06a906;}
+.love{color:#ff002d;}
+.job-guarantee{color:#043d92;}
+.certified{color:#8e063e;}
+.hard-work{color:#7b5f5f;}

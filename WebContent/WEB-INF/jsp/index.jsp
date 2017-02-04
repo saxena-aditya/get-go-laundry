@@ -15,7 +15,7 @@
         <div style="border:1px solid #eaeaea;padding:20px;width:400px">
             ${message}
         </div>
-        <form:form action="${cp}/editpersonlistcontainer" modelAttribute="personListContainer" method="post" id="personListForm">
+        <form:form action="editpersonlistcontainer" modelAttribute="personListContainer" method="post" id="personListForm">
             <table>
                 <thead>
                     <tr>
@@ -27,12 +27,10 @@
                 <tbody id="personListContainer">
                     <c:forEach items="${personListContainer.personList}" var="Person" varStatus="i" begin="0" >
                         <tr class="person">    
-                            <td><form:input path="personList[${i.index}].name" id="name${i.index}" /></td>
-                            <td><form:input path="personList[${i.index}].age" id="age${i.index}" /></td>
-                            <%--
+                            
                             <td><input type="text" name="personList[].name" value="${Person.name}" /></td>
                             <td><input type="text" name="personList[].age" value="${Person.age}" /></td>
-                            --%>
+                            
                             <td><a href="#" class="removePerson">Remove Person</a></td>
                         </tr>
                     </c:forEach>

@@ -15,6 +15,7 @@ import org.com.getterSetterObjs.Ordergetter;
 import org.com.getterSetterObjs.getterRegisterDetails;
 import org.com.getterSetterObjs.typeCompanyDetails;
 import org.com.jdbcDAO.CompanyDetailsDAOImpl;
+import org.com.jdbcDAO.UserDetailsDAOImpl;
 import org.com.jdbcDAO.addUserDAOImpl;
 import org.com.jdbcDAO.jdbcDAO;
 import org.com.jdbcDAO.orderDetailsDAOImpl;
@@ -48,8 +49,12 @@ public class WebController {
 	public String orderid;
 	public String orderID;
 	public String lastOrderid;
+	private String add1;
+	private String add2;
 	public orderDetailsDAO le;
-	
+	public 	UserDetailsDAOImpl userDetails;
+	public UtilityFuctions utils = new UtilityFuctions();
+
 	List<Integer> costList = new ArrayList<>();
 	List<String> currentOrder = new ArrayList<>();
 	List<String> cOrder = new ArrayList<>();
@@ -87,6 +92,14 @@ public class WebController {
 					
 			}
 		}
+	}
+	@RequestMapping(value = "home", method = RequestMethod.GET)
+	protected ModelAndView returnHome(){
+		
+		ModelAndView model = new ModelAndView("mainPage");
+		model.addObject("company_details", getCompanyDetails());
+		
+		return model; 
 	}
 	@RequestMapping(value = "about-us")
 	protected ModelAndView about(HttpSession session){
@@ -126,7 +139,6 @@ public class WebController {
 		if(session.getAttribute("loggedinUser") == null){
 			 return new ModelAndView("mainPage")
 					 .addObject("company_details", getCompanyDetails());
-
 		}
 		ModelAndView model = new ModelAndView("welcome");
 		isOrderPlaced = false;
@@ -134,9 +146,14 @@ public class WebController {
 		model.addObject("username", getUsername())
 			.addObject("latestoList", lastOrderDetails)
 			.addObject("item_price", pricesList)
-			.addObject("item_price", getPricesListInJSON())
-			.addObject("company_details", getCompanyDetails())
-			.addObject("LatestOcost", LatestOcost);
+			.addObject("item_prices", getPricesListInJSON())
+			.addObject("company_details", getCompanyDetails())	
+			.addObject("LatestOcost", LatestOcost)
+			.addObject("clothList", utils.getClothList())
+			.addObject("jsonList", new Gson().toJson(utils.getClothList()))
+			.addObject("add1", getAdd1())
+			.addObject("add2", getAdd2());
+		
 		
 		return model;
 	}
@@ -151,7 +168,14 @@ public class WebController {
 		   model.addObject("LatestOcost", LatestOcost)
 				.addObject("latestoList", lastOrderDetails)
 				.addObject("username", getUsername())
-				.addObject("company_details", getCompanyDetails());
+				.addObject("item_price", pricesList)
+
+				.addObject("company_details", getCompanyDetails())
+				.addObject("clothList", utils.getClothList())
+				.addObject("jsonList", new Gson().toJson(utils.getClothList()))
+				.addObject("add1", getAdd1())
+				.addObject("add2", getAdd2());
+				
 
 		return model;
 	}
@@ -201,7 +225,7 @@ public class WebController {
 		placed_Order.addObject("takenOrder", odr);
 		
 		//orderCost = calculateOrderCost(odr, item);
-		//System.out.println( "order is = "+ calculateOrderCost(odr, item));
+		System.out.println( "order is = "+ odr.getAdd1() + "\n" + odr.getAdd2());
 		
 		saveOrder_Impl = ctx.getBean(orderSaveDAOImpl.class);
 		
@@ -226,7 +250,11 @@ public class WebController {
 			orderID = generateOrderID();
 			setOrderID(orderID);
 			getObject(odr);
+			// HERE GOES THE ORDER ADDRESS!!
+			saveOrder_Impl.saveOrderAddress(odr.getAdd1(), odr.getAdd2(), getOrderID());
 		}isOrderPlaced = true;
+		
+		
 		
 		/* Checking if the place order is the first one or not? 
 		 * the function will return true is it is otherwise will return false.
@@ -239,11 +267,16 @@ public class WebController {
 		 * order id and then do the OFF OFFER!
 		 * */
 		
-		placed_Order.addObject("orderCost", orderList.orderCost(getOrderID()))
+		placed_Order.addObject("order"
+				+ "Cost", orderList.orderCost(getOrderID()))
 					.addObject("orderID", getOrderID())
 					.addObject("username",getUsername())
 					.addObject("company_details", getCompanyDetails())
-					.addObject("item_price", getPricesListInJSON());
+					.addObject("item_price", getPricesListInJSON())
+					.addObject("add1", getAdd1())
+					.addObject("add2", getAdd2())
+					.addObject("clothList", utils.getClothList())
+					.addObject("jsonList", new Gson().toJson(utils.getClothList()));
 
 
 		
@@ -289,7 +322,11 @@ public class WebController {
 		model.addObject("costList", costList);
 		model.addObject("oList", oList);
 		model.addObject("username", getUsername());
-		model.addObject("company_details", getCompanyDetails());
+		model.addObject("company_details", getCompanyDetails())
+		.addObject("clothList", utils.getClothList())
+		.addObject("jsonList", new Gson().toJson(utils.getClothList()))
+		.addObject("add1", getAdd1())
+		.addObject("add2", getAdd2());
 
 		
 		return model;
@@ -314,19 +351,16 @@ public class WebController {
 			
 		
 		m.addObject("username", getUsername())
-	     .addObject("company_details", getCompanyDetails());
+	     .addObject("company_details", getCompanyDetails())
+		.addObject("clothList", utils.getClothList())
+		.addObject("jsonList", new Gson().toJson(utils.getClothList()))
+		.addObject("add1", getAdd1())
+		.addObject("add2", getAdd2());;
 
 		return m;
 		}
 	
-	@RequestMapping(value = "home", method = RequestMethod.GET)
-	protected ModelAndView returnHome(){
-		
-		ModelAndView model = new ModelAndView("mainPage");
-		model.addObject("company_details", getCompanyDetails());
-		
-		return model; 
-	}
+	
 	
 	public void setUsername(String username2){
 		this.username = username2;
@@ -349,28 +383,6 @@ public class WebController {
 		return model;
 	}
 	
-	
-	protected ModelAndView LoginSucessModel(String username){
-		
-		
-		getLastOrderDetails();
-		getItemPricesForContext();
-		isOrderPlaced = false;
-		ModelAndView model1 = new ModelAndView("welcome");
-		
-		
-		model1.addObject("username", username);
-		model1.addObject("latestoList", lastOrderDetails);
-		model1.addObject("LatestOcost", LatestOcost);
-		model1.addObject("item_price", getPricesListInJSON());
-		model1.addObject("company_details", getCompanyDetails());
-		
-		
-		
-		return model1;
-		}
-	
-	
 	private String getPricesListInJSON() {
 		// TODO Auto-generated method stub
 			String str = "";	
@@ -385,6 +397,35 @@ public class WebController {
 		return str;
 	}
 
+	protected ModelAndView LoginSucessModel(String username){
+		
+		
+		getLastOrderDetails();
+		getItemPricesForContext();
+		getAddress();
+		isOrderPlaced = false;
+		ModelAndView model1 = new ModelAndView("welcome");
+		
+		
+		model1.addObject("username", username);
+		model1.addObject("latestoList", lastOrderDetails);
+		model1.addObject("LatestOcost", LatestOcost);
+		model1.addObject("item_price", getPricesListInJSON());
+		model1.addObject("company_details", getCompanyDetails());
+		
+		model1.addObject("clothList", utils.getClothList())
+		.addObject("item_price", pricesList)
+
+		
+		.addObject("jsonList", new Gson().toJson(utils.getClothList()))
+				.addObject("add1", getAdd1())
+				.addObject("add2", getAdd2());
+		
+		
+		
+		return model1;
+		}
+	
 	protected ModelAndView LoginFailedModel(){
 		
 		ModelAndView model2 = new ModelAndView("mainPage");
@@ -455,13 +496,53 @@ public class WebController {
 }
 
 
-public boolean isItemCountValid(Object obj, Field field) 
-										throws IllegalArgumentException, IllegalAccessException{
+public boolean isItemCountValid(Object obj, Field field) throws IllegalArgumentException, IllegalAccessException{
 	
-	if(field.getType().equals(int.class) )
+	if(field.getType().equals(int.class))
 		if(field.getInt(obj)!=0 )
 		 return true;
 		
 		return false;
 	}
+
+public void getAddress(){
+	
+	userDetails = ctx.getBean(UserDetailsDAOImpl.class);
+	String arr = userDetails.getUserAddress(getUsername());
+	
+	String Str[] = arr.split(":");
+	setAdd1(Str[0]);
+	setAdd2(Str[1]);
+	System.out.println("Add1 : " + getAdd1() + "Add2 : " + getAdd2());
+}
+
+/**
+ * @return the add1
+ */
+public String getAdd1() {
+	return add1;
+}
+
+/**
+ * @param add1 the add1 to set
+ */
+public void setAdd1(String add1) {
+	this.add1 = add1;
+}
+
+/**
+ * @return the add2
+ */
+public String getAdd2() {
+	return add2;
+}
+
+/**
+ * @param add2 the add2 to set
+ */
+public void setAdd2(String add2) {
+	this.add2 = add2;
+}
+
+
 }

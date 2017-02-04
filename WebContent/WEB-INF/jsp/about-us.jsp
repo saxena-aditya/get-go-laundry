@@ -7,6 +7,7 @@
 	<link rel="stylesheet" type = "text/css"  href="${pageContext.request.contextPath}/resources/bootstrap/css/bootstrap.min.css" />
 		<link rel="stylesheet" type = "text/css"  href="${pageContext.request.contextPath}/resources/css/about-us.css" />
 		<link rel="stylesheet" type = "text/css"  href="${pageContext.request.contextPath}/resources/css/navbar-css.css" />
+			<link rel="stylesheet" type="text/css" href="${pageContext.request.contextPath}/resources/css/testFile.css">
 	
 </head>
 <body>
@@ -45,6 +46,6 @@
    <div class="new-div"></div>
 	
 	
-	 
+	 <%@ include file="footer.jsp" %>
 </body>
 </html>
