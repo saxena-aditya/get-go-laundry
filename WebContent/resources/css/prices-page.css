@@ -1,29 +1,28 @@
-*{
-	font-family : 'Quicksand', sans-serif;
+* {
+  font-family: "Quicksand", sans-serif;
 }
-.table-holder{
-    position : absolute;
-    left : 17%;
-    top :11%;
-    width : 1000px;
-    height :100%;
-    font-size :26px;
+.table-holder {
+  position: absolute;
+  left: 17%;
+  top: 11%;
+  width: 1000px;
+  height: 100%;
+  font-size: 26px;
+}
 
+tr,
+th {
+  text-align: center;
 }
-
-tr, th {
-    text-align :center;
+tr.td {
+  width: 100px !important;
 }
-tr.td{
-    width : 100px !important;
+td {
+  padding-bottom: 0px !important;
 }
-td{
-	
-	padding-bottom : 0px !important; 
-}
-.item-image{
-    height : 50px;
-    margin-top :-9px;
-    margin-bottom : 5px;
-    padding-top: 5px;
+.item-image {
+  height: 50px;
+  margin-top: -9px;
+  margin-bottom: 5px;
+  padding-top: 5px;
 }

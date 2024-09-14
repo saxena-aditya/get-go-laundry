@@ -1,189 +1,194 @@
-.html-envelop{
-   
-    width : 100%;
-    height : 100%;
-    margin-top : 290px
+.html-envelop {
+  width: 100%;
+  height: 100%;
+  margin-top: 290px;
 }
-.form-div{
-    border : solid 3px;
-    border-radius : 23px;
-    position :absolute;
-    top : 14%;
-    left : 78%;
-    padding : 20px 20px 20px 20px;
-    width : 243px;
-    
-    padding-top: 38px;
-    background-color : steelblue;
-    
-}
-.gly-class{
-    position :absolute;
-    padding-left : 8px;
-    padding-top : 6px;
-    font-size : 18px;
-}
-.form-div input{
-    padding-left : 35px;
-    font-size :19px;
+.form-div {
+  border: solid 3px;
+  border-radius: 23px;
+  position: absolute;
+  top: 14%;
+  left: 78%;
+  padding: 20px 20px 20px 20px;
+  width: 243px;
 
+  padding-top: 38px;
+  background-color: steelblue;
 }
-.pswd-marg{
-    margin-top : -25px
+.gly-class {
+  position: absolute;
+  padding-left: 8px;
+  padding-top: 6px;
+  font-size: 18px;
 }
-#button-div{
-    padding-left :0px;
-    
+.form-div input {
+  padding-left: 35px;
+  font-size: 19px;
 }
-#btnL{
-    margin-top : -19px;
-    width : 195px;
-    letter-spacing : 1px;
+.pswd-marg {
+  margin-top: -25px;
 }
-.note-class{
-    
-    padding-top : 2px;
-    padding-bottom : 2px;
-    border : solid 1px;
-    padding-left : 45px; 
-    background-color : white;
+#button-div {
+  padding-left: 0px;
 }
-.glyphicon-hand-down{
-    color : #333;
-    padding : 2px 2px 2px 4px;
-    margin-top : 1px;
+#btnL {
+  margin-top: -19px;
+  width: 195px;
+  letter-spacing: 1px;
 }
-#note{
-    font-size : 25px;
+.note-class {
+  padding-top: 2px;
+  padding-bottom: 2px;
+  border: solid 1px;
+  padding-left: 45px;
+  background-color: white;
 }
-#msg-div{
-    padding : 5px 5px 5px 5px;
-    color : white;
+.glyphicon-hand-down {
+  color: #333;
+  padding: 2px 2px 2px 4px;
+  margin-top: 1px;
 }
-.filper-1{
-    position: absolute !important;
-    top : 90%;
-    left :6%;
+#note {
+  font-size: 25px;
 }
-.filper-2{
-    position: absolute !important;
-    top : 90%;
-    left :37%;
+#msg-div {
+  padding: 5px 5px 5px 5px;
+  color: white;
 }
-.filper-3{
-    position: absolute !important;
-    top : 90%;
-    left :68%;
+.filper-1 {
+  position: absolute !important;
+  top: 90%;
+  left: 6%;
 }
-.cleany-clean{
-    position :absolute;
-    top :29%;
-    left :27%;
-    font-family : verdana;
+.filper-2 {
+  position: absolute !important;
+  top: 90%;
+  left: 37%;
 }
-#cmpny-name{
-    font-size :55px;
-    font-family : 'lato',sans-serif;
-    letter-spacing :4px;
-    padding-left :5px;
-    color :#000;
-    font-weight : 400;
-    
+.filper-3 {
+  position: absolute !important;
+  top: 90%;
+  left: 68%;
 }
-#cmpny-note{
-    font-size : 25px;
-    font-family : 'lato',sans-serif;
-    font-weight : 500;
-    letter-spacing :2px;
-    padding-left :12px;
-    color : #000;
+.cleany-clean {
+  position: absolute;
+  top: 29%;
+  left: 27%;
+  font-family: verdana;
 }
-#cmpny-sym{
-    position :absolute;
-    width :370px;
-    left : 6%;
-    top :15%;
+#cmpny-name {
+  font-size: 55px;
+  font-family: "lato", sans-serif;
+  letter-spacing: 4px;
+  padding-left: 5px;
+  color: #000;
+  font-weight: 400;
 }
-.middle-part{
-    position :absolute;
-    height :85%;
-    width : 100%;
-    top :8%;
+#cmpny-note {
+  font-size: 25px;
+  font-family: "lato", sans-serif;
+  font-weight: 500;
+  letter-spacing: 2px;
+  padding-left: 12px;
+  color: #000;
 }
-#background-image{
-    width : 100%;
-    height :inherit;
-    opacity : 0.69;
+#cmpny-sym {
+  position: absolute;
+  width: 370px;
+  left: 6%;
+  top: 15%;
 }
-.fliper-front, .fliper-back{
-    position :absolute ;
-    width : 289px ! important;
-    height : 299px !important;
+.middle-part {
+  position: absolute;
+  height: 85%;
+  width: 100%;
+  top: 8%;
 }
-#bubbles{
-    position :absolute;
-    opacity : 0.8;
-    height  : 299px !important;
-    width : 270px ! important;
-    padding-left :0px;
-    padding-right :0px;
+#background-image {
+  width: 100%;
+  height: inherit;
+  opacity: 0.69;
 }
-#fliper-title{
-    position :absolute;
-    color : #000;
-    font-family :verdana;
-    font-size :40px;
-    padding-top : 35%;
+.fliper-front,
+.fliper-back {
+  position: absolute;
+  width: 289px !important;
+  height: 299px !important;
 }
-.title-1{
-    padding-left :26%;
-
+#bubbles {
+  position: absolute;
+  opacity: 0.8;
+  height: 299px !important;
+  width: 270px !important;
+  padding-left: 0px;
+  padding-right: 0px;
 }
-.title-2{
-    padding-left :22%;
+#fliper-title {
+  position: absolute;
+  color: #000;
+  font-family: verdana;
+  font-size: 40px;
+  padding-top: 35%;
 }
-.title-3{
-    padding-left :26%;
-   
+.title-1 {
+  padding-left: 26%;
 }
-.footer{
-   
-    font-size : 30px;
-    font-family : verdana;
-    text-align : center;
-    padding-top : 5px;
-    background-color :white;
+.title-2 {
+  padding-left: 22%;
 }
-.carousel{
-    height : 184px;
-    margin-bottom : 80px;
-    margin-left : 40px;
-    margin-right : 40px;
+.title-3 {
+  padding-left: 26%;
 }
-.carousel-inner{
-    padding-top: 0px;
-   margin-top : 42px;
-   margin-bottom : 50px;
-
+.footer {
+  font-size: 30px;
+  font-family: verdana;
+  text-align: center;
+  padding-top: 5px;
+  background-color: white;
+}
+.carousel {
+  height: 184px;
+  margin-bottom: 80px;
+  margin-left: 40px;
+  margin-right: 40px;
+}
+.carousel-inner {
+  padding-top: 0px;
+  margin-top: 42px;
+  margin-bottom: 50px;
 }
 .carousel-indicators > li {
-   border-color : #fd0000;
+  border-color: #fd0000;
 }
-.carousel-control{
-    color:blue;
+.carousel-control {
+  color: blue;
 }
-#customer-said{
-    margin-left: 34%;
-    font-size : 2.49em;
+#customer-said {
+  margin-left: 34%;
+  font-size: 2.49em;
 }
-#services{
-    margin-top : 40px;
-    margin-bottom : 90px;
-}   
-.logo-small{font-size: 50px;}
-.power{color:#ff1515;}
-.green{color:#06a906;}
-.love{color:#ff002d;}
-.job-guarantee{color:#043d92;}
-.certified{color:#8e063e;}
-.hard-work{color:#7b5f5f;}
+#services {
+  margin-top: 40px;
+  margin-bottom: 90px;
+}
+.logo-small {
+  font-size: 50px;
+}
+.power {
+  color: #ff1515;
+}
+.green {
+  color: #06a906;
+}
+.love {
+  color: #ff002d;
+}
+.job-guarantee {
+  color: #043d92;
+}
+.certified {
+  color: #8e063e;
+}
+.hard-work {
+  color: #7b5f5f;
+}

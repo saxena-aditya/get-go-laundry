@@ -3,9 +3,9 @@ package org.com.WebController;
 import java.util.ArrayList;
 import java.util.List;
 
-import org.com.ItemPrices.ItemPrices;
-import org.com.jdbcDAO.AdminServicesDAOImpl;
-import org.com.jdbcDAO.orderDetailsDAOImpl;
+import org.com.DAOImpl.AdminServicesDAOImpl;
+import org.com.DAOImpl.orderDetailsDAOImpl;
+import org.com.DTO.ItemPrices.ItemPrices;
 import org.springframework.context.ApplicationContext;
 import org.springframework.context.support.ClassPathXmlApplicationContext;
 

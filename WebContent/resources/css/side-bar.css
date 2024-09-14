@@ -1,74 +1,73 @@
-.side-bar{
-	position : fixed;
-	background-color :;
-	font-size : 17px;
-	color : #333 !important;
-	letter-spacing :1px;
-	font-weight : 700! !important; 
-	text-align : left ;
-	padding-top : 15px;
-	padding-bottom : 5px;
-	width : 210px;
-	height : 100%;
-	top :65px;
-	border-right : white 1.5px;
-	box-shadow : 1px 0px 5px #333;
+.side-bar {
+  position: fixed;
+  background-color:;
+  font-size: 17px;
+  color: #333 !important;
+  letter-spacing: 1px;
+  font-weight: 700! !important;
+  text-align: left;
+  padding-top: 15px;
+  padding-bottom: 5px;
+  width: 210px;
+  height: 100%;
+  top: 65px;
+  border-right: white 1.5px;
+  box-shadow: 1px 0px 5px #333;
 }
 
-.top-desk{
-	position :absolute;
-	font-size :20px;
-	font-family :verdana;
-	width :100%;
-	padding-left : 0px;
-	padding-right : 0px;
-		
+.top-desk {
+  position: absolute;
+  font-size: 20px;
+  font-family: verdana;
+  width: 100%;
+  padding-left: 0px;
+  padding-right: 0px;
 }
-.drpdwn{
-	left : 84% ! important;
-	padding-top: 14px ! important;
+.drpdwn {
+  left: 84% !important;
+  padding-top: 14px !important;
 }
-.nav{
-	height: 66px ! important;
+.nav {
+  height: 66px !important;
 }
-#background-image{
-	position :absolute;
-	background-repeat :no-repeat;
-	height :inherit !important;
-	width :inherit !important;
-	opacity :0.67;
-	top : 65px;
+#background-image {
+  position: absolute;
+  background-repeat: no-repeat;
+  height: inherit !important;
+  width: inherit !important;
+  opacity: 0.67;
+  top: 65px;
 }
-ul a{
-	color : #000;
-	font-size : 17px;
-	font-weight : 700;
+ul a {
+  color: #000;
+  font-size: 17px;
+  font-weight: 700;
 }
-ul a:hover{
-	background-color :white !important;
- 	color : #000;
+ul a:hover {
+  background-color: white !important;
+  color: #000;
 }
-.side-bar > ul > li{
-	border-bottom : solid 1.7px;
-	box-shadow : 0px 0px 1px #333;
-	font-weight : normal;
-	margin-top : 8px;
+.side-bar > ul > li {
+  border-bottom: solid 1.7px;
+  box-shadow: 0px 0px 1px #333;
+  font-weight: normal;
+  margin-top: 8px;
 }
-#back-cmpny-sym{
-	position : absolute;
-	height : 87px;
-	top : -11px;
-	left : -13px;
+#back-cmpny-sym {
+  position: absolute;
+  height: 87px;
+  top: -11px;
+  left: -13px;
 }
-#back-cmpny-name{
-	position : absolute;
-	font-family : verdana;
-	font-size : 32px;
-	left : 6%; 
-	top :12%;
-	letter-spacing : 2px;
-	text-decoration : none !important;
-	color : #333;
+#back-cmpny-name {
+  position: absolute;
+  font-family: verdana;
+  font-size: 32px;
+  left: 6%;
+  top: 12%;
+  letter-spacing: 2px;
+  text-decoration: none !important;
+  color: #333;
 }
 .scroll-pre {
   height: 100px;
@@ -76,58 +75,55 @@ ul a:hover{
   background-color: inherit;
   position: fixed;
 }
-#profile-pic{
-	position :absolute;
-	background-repeat : no-repeat;
-	height : 57px;
-	width : 57px;
-	left : 78.5%;
-	top : 5px;
-	border :solid 1px;
+#profile-pic {
+  position: absolute;
+  background-repeat: no-repeat;
+  height: 57px;
+  width: 57px;
+  left: 78.5%;
+  top: 5px;
+  border: solid 1px;
 }
-.top-desk{
-	position :fixed;
-	background-color :white;
-	opacity :1;
+.top-desk {
+  position: fixed;
+  background-color: white;
+  opacity: 1;
 }
-#background-image-side-bubbles{
-	position : fixed;
-	height : inherit;
-	width :210px;
-	opacity :0.77;
-}
-
-.activate{
-	background-color : white;
-	border-radius : 4px;
-}
-#order-simple-cost{
-	font-size :20px;
-}
-.crossed-over{
-	text-decoration : line-through;
-}
-.dropdown-menu{
-	width : 150% !important;
-}
-.dropdown-menu > li > a{
- 
-	margin-left: 0px;
-	padding-top : 5px;
-	margin-bottom : 0px !important;
+#background-image-side-bubbles {
+  position: fixed;
+  height: inherit;
+  width: 210px;
+  opacity: 0.77;
 }
 
-.dropdown-menu{
-	border : solid 1.9px;
+.activate {
+  background-color: white;
+  border-radius: 4px;
 }
-.dropdown-menu > li >a:hover{
-	background-color :lightcyan !important ;
-	font-size : 19px;
-	
+#order-simple-cost {
+  font-size: 20px;
 }
-input[type=number]::-webkit-inner-spin-button, 
-input[type=number]::-webkit-outer-spin-button { 
-  -webkit-appearance: none; 
-  margin: 0; 
+.crossed-over {
+  text-decoration: line-through;
+}
+.dropdown-menu {
+  width: 150% !important;
+}
+.dropdown-menu > li > a {
+  margin-left: 0px;
+  padding-top: 5px;
+  margin-bottom: 0px !important;
+}
 
+.dropdown-menu {
+  border: solid 1.9px;
+}
+.dropdown-menu > li > a:hover {
+  background-color: lightcyan !important ;
+  font-size: 19px;
+}
+input[type="number"]::-webkit-inner-spin-button,
+input[type="number"]::-webkit-outer-spin-button {
+  -webkit-appearance: none;
+  margin: 0;
 }

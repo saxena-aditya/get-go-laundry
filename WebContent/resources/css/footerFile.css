@@ -1,40 +1,40 @@
-.body-div{
-    height :100vh;
-    background-color : lightblue;
-} 
-.footer-div{
-   background-color : rgb(67, 67, 115);
+.body-div {
+  height: 100vh;
+  background-color: lightblue;
 }
-.panel-heading{
-    text-align : center !important;
+.footer-div {
+  background-color: rgb(67, 67, 115);
 }
-.panel{
-    height :301px !important;
-    width : 270px !important;
+.panel-heading {
+  text-align: center !important;
 }
-ul{
-    margin-left : -10px;
-    list-style : none;
-    padding-top : 6px;
-    font-size : 16px;
+.panel {
+  height: 301px !important;
+  width: 270px !important;
 }
-ul > li{
-    padding-top : 3px;
-    text-align : left
+ul {
+  margin-left: -10px;
+  list-style: none;
+  padding-top: 6px;
+  font-size: 16px;
 }
-.container-cont{
-    padding-top : 60px;
-    padding-left: 120px;
+ul > li {
+  padding-top: 3px;
+  text-align: left;
 }
-.company-container{
-    height : 4 ;
+.container-cont {
+  padding-top: 60px;
+  padding-left: 120px;
 }
-.company-terms{
-    margin-top : 16px;
-    padding-top : 7px;;
-    background-color :#040310;
-    height :52px;
-    font-size : 1.em;
-    color : white;
-    text-align : center;
+.company-container {
+  height: 4;
+}
+.company-terms {
+  margin-top: 16px;
+  padding-top: 7px;
+  background-color: #040310;
+  height: 52px;
+  font-size: 1em;
+  color: white;
+  text-align: center;
 }

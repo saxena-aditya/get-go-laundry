@@ -1,4 +1,4 @@
-package org.com.getterSetterObjs;
+package org.com.DTO;
 
 public class AdminServicesGetCompanyDetails {
 	public String company_name;

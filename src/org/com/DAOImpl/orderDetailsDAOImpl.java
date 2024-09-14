@@ -1,11 +1,11 @@
-package org.com.jdbcDAO;
+package org.com.DAOImpl;
 
 import java.util.List;
 
 import javax.sql.DataSource;
 
 import org.com.DAO.orderDetailsDAO;
-import org.com.ItemPrices.ItemPrices;
+import org.com.DTO.ItemPrices.ItemPrices;
 import org.com.SQLExpressions.MySQLStatements;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.jdbc.core.BeanPropertyRowMapper;

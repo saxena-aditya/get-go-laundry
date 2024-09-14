@@ -1,197 +1,182 @@
- #contactDiv{
-    opacity:0.98;
-	position: absolute;
-	top: 0px;
-	left: 0px;
-	height: 100%;
-	width: 100%;
-	background: #a7ece7;
-	display: none;
+#contactDiv {
+  opacity: 0.98;
+  position: absolute;
+  top: 0px;
+  left: 0px;
+  height: 100%;
+  width: 100%;
+  background: #a7ece7;
+  display: none;
+}
+.totalSum {
+  color: #000;
+  padding-right: 20px;
+  margin-top: 8px;
+}
+.form-container {
+  padding-top: 45px;
+  width: inherit;
+  height: inherit;
+}
+.myForm,
+.myForm2 {
+  padding-top: 15px;
+  padding-left: 55px;
 
-}
-.totalSum{
+  color: white;
 
-	color : #000;
-	padding-right : 20px;;
-	margin-top : 8px;
+  font-size: 20px;
+  font-family: "verdana", sans-serif;
+  position: relative !important;
 }
-.form-container{
-	padding-top : 45px;
-	width : inherit;
-	height : inherit;
+label {
+  font-size: 18px !important;
 }
-.myForm, .myForm2{
-	
-	padding-top : 15px;
-	padding-left : 55px;
-	 
-	color: white;
+#wrapper {
+  position: absolute;
+  border: 0.5px solid rgb(90, 158, 181);
+  box-shadow: 0 0 15px;
+  background-color: rgba(0, 255, 111, 0.84);
 
-	
-	font-size: 20px;
- 	font-family: "verdana", sans-serif;
-	position: relative !important;
-
+  height: 550px;
+  width: 570px;
+  border-radius: 12px;
+  top: 11% !important;
+  left: 28%;
 }
-label{
-	font-size : 18px !important;
+#btnSWash {
+  position: absolute;
+  width: 50%;
+  height: 50px;
+  margin-right: 0px;
+  border: none;
+  border-radius: 0px;
 }
-#wrapper{
-	position :absolute;
-	border: 0.5px solid rgb(90, 158, 181);
-	box-shadow:0 0 15px;
-	background-color: rgba(0, 255, 111, 0.84);
-	
-	height : 550px;
-	width: 570px;
-	border-radius: 12px ;
-	top : 11% ! important;
-	left : 28%;
+#btnDWash {
+  position: absolute;
+  padding-left: 0px;
+  left: 50%;
+  margin-left: 0px;
+  width: 50%;
+  height: 50px;
+  border: none;
+  border-radius: 0px;
 }
-#btnSWash{
-
- 	position :absolute;
-	width: 50%;
-	height : 50px;
-	margin-right :0px;
-	border : none;
-	border-radius : 0px
+.lower-button {
+  position: absolute;
+  left: 30%;
+  width: 10px !important;
 }
-#btnDWash{
-
-	position :absolute;
-	padding-left :0px;
-	left : 50%;
-	margin-left :0px;
-	width : 50%;
-	height : 50px;
-	border : none;
-	border-radius : 0px 
-
+#date {
+  margin-left: 36px;
+  margin-bottom: 46px;
+  width: 200px;
 }
-.lower-button{
-//	position :absolute;
-	left : 30%;
-	widht : 10px ! important;
+select {
+  margin-left: 42px;
+  padding-top: 5px;
+  padding-bottom: 5px;
+  width: 200px;
 }
-#date{    
-	margin-left: 36px;
-    margin-bottom: 46px;
-    width: 200px;
+.userInput {
+  width: inherit;
+  margin-left: 3px;
+  margin-bottom: 20px;
 }
-select{
-	    margin-left: 42px;
-    padding-top: 5px;
-    padding-bottom: 5px;
-    width: 200px;
-}
-.userInput{
-	width: inherit;
-    margin-left: 3px;
-    margin-bottom: 20px;
-
-}
-input[type = 'number']{
-  
+input[type="number"] {
   width: 40px;
-  font: 20p, "verdana",sans-serif;
+  font: 20p, "verdana", sans-serif;
 
   padding: 3px 0 0 0;
   text-align: center;
-  color : #000;
+  color: #000;
 }
-#date, #timeSpan{
- color : #000;
- text-align : center;
-     letter-spacing: .3px;
-   
-	
+#date,
+#timeSpan {
+  color: #000;
+  text-align: center;
+  letter-spacing: 0.3px;
 }
-label{
-	
-	min-width: 9em !important;
-	margin-right: 9em;
-    text-align: right;
-    margin-left: 8px;
-    font-size :17px
+label {
+  min-width: 9em !important;
+  margin-right: 9em;
+  text-align: right;
+  margin-left: 8px;
+  font-size: 17px;
 }
-textarea:focus, input:focus {
-    text-align:center;
-    color: #000;
+textarea:focus,
+input:focus {
+  text-align: center;
+  color: #000;
 }
 .buttonl {
-	color: rgba(95, 95, 99, 0.84);
-    margin-top: 0px;
-   	border: none;
-	border-radius: 15px;
-    margin-right: 64px;
-    display: inline;
-    margin: 0 0 0 5px;
-    cursor: pointer;
-    width: 29px;
-    height: 29px;
-    margin-left: 17px;
-    margin-right: 62px;
-    float: right;
-    text-align: center;
-    background: url(../visuals/newImage.PNG) no-repeat;
-	
+  color: rgba(95, 95, 99, 0.84);
+  margin-top: 0px;
+  border: none;
+  border-radius: 15px;
+  margin-right: 64px;
+  display: inline;
+  margin: 0 0 0 5px;
+  cursor: pointer;
+  width: 29px;
+  height: 29px;
+  margin-left: 17px;
+  margin-right: 62px;
+  float: right;
+  text-align: center;
+  background: url(../visuals/newImage.PNG) no-repeat;
 }
-.button{
-	color: rgba(95, 95, 99, 0.84);
-	border: none;
-	border-radius: 15px;
-	margin-top: 0px;
+.button {
+  color: rgba(95, 95, 99, 0.84);
+  border: none;
+  border-radius: 15px;
+  margin-top: 0px;
 
-
-    margin-left: 63px;
-    display: inline;
-    margin: 0 0 0 5px;
-    cursor: pointer;
-    width: 29px;
-    height: 29px;
-    margin-right: -13;
-    margin-left: 17px;
-    float: right;
-    text-align: center;
-    background: url(../visuals/newImage.PNG) no-repeat;
-	
+  margin-left: 63px;
+  display: inline;
+  margin: 0 0 0 5px;
+  cursor: pointer;
+  width: 29px;
+  height: 29px;
+  margin-right: -13;
+  margin-left: 17px;
+  float: right;
+  text-align: center;
+  background: url(../visuals/newImage.PNG) no-repeat;
 }
-input[type=number]::-webkit-inner-spin-button, 
-input[type=number]::-webkit-outer-spin-button { 
-	  -webkit-appearance: none; 
-	  margin: 0; 
-	  -moz-appearance: textfield;
-
+input[type="number"]::-webkit-inner-spin-button,
+input[type="number"]::-webkit-outer-spin-button {
+  -webkit-appearance: none;
+  margin: 0;
+  -moz-appearance: textfield;
 }
-.buttonl:hover, .button:hover {
-    color: black;
+.buttonl:hover,
+.button:hover {
+  color: black;
 }
 
-#timespan{
-	 padding-left: 12px;
+#timespan {
+  padding-left: 12px;
 }
-.lower-submit-button{
-	position :absolute;
-	top :106%;
-	width : 50%;
-	height : 10%;
-	letter-spacing :.1px;
-	font-size :20px;
-	border : none;
-	border-radius :0px !important;
-
+.lower-submit-button {
+  position: absolute;
+  top: 106%;
+  width: 50%;
+  height: 10%;
+  letter-spacing: 0.1px;
+  font-size: 20px;
+  border: none;
+  border-radius: 0px !important;
 }
-.lower-cancel-button{
-	position : absolute;
-	width : 20%;
-	height : 10%;
-	left :75%;
-	font-size : 18px;
-	padding-top :6px;
-	letter-spacing :1px;
-	top :106%;
-	border : none;
-	border-radius :0px !important;
-
+.lower-cancel-button {
+  position: absolute;
+  width: 20%;
+  height: 10%;
+  left: 75%;
+  font-size: 18px;
+  padding-top: 6px;
+  letter-spacing: 1px;
+  top: 106%;
+  border: none;
+  border-radius: 0px !important;
 }

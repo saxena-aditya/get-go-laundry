@@ -1,4 +1,4 @@
-package org.com.getterSetterObjs;
+package org.com.DTO;
 
 public class AdminServicesOffOffer {
 
@@ -11,6 +11,4 @@ public class AdminServicesOffOffer {
 	public void setOff_percentage(int off_percentage) {
 		this.off_percentage = off_percentage;
 	}
-	
-	
 }

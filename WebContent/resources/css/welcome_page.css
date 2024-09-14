@@ -1,86 +1,104 @@
-*{font-family: 'Quicksand', verdana;}
-#para{width : 100vh !important;}
-.latest-order-container{
-    position : absolute;
-    width : inherit;
-    left : 23%;
-    top : 20%;
+* {
+  font-family: "Quicksand", verdana;
 }
-table{
-     font-size : 25px;
-     width:: 369px !important;
+#para {
+  width: 100vh !important;
 }
-.table-head, .table-details {
-    padding-bottom : 20px !important;
-    padding-top : 20px!important;
+.latest-order-container {
+  position: absolute;
+  width: inherit;
+  left: 23%;
+  top: 20%;
 }
-.cancle-order-form{
-    position :absolute;
-    top : 17%;
-    right : -139%;
-}    
-#submit-image{
-    position :absolute; 
-    height : 100%;
-    cursor : pointer;
-    left : -67px;
-    top : -9px;
+table {
+  font-size: 25px;
+  width: 369px !important;
 }
-.seeker-2:hover .cancle-order-form{display : block;}
-.cancle-order-form{display : none;}
-#para{
-    position :absolute;
-    font-size : 21px;
-    left : 267px;
-    top : 160px;
- }
- .seeker-2{
-     margin-left : -4px;
- }
-.teller{
-   position : absolute !important;
-    text-align : center;
-    font-size : 1.7em;
-    font-weight : 600;
-    width : 270px;
-    margin-bottom :0px;
-    top : 3%;
-    left : 153%;
+.table-head,
+.table-details {
+  padding-bottom: 20px !important;
+  padding-top: 20px !important;
 }
-.lower-submit-button{padding: 3px;}
-.seeker{display :flex;}
-.order-btn{
-   margin-left : 260px;
-   margin-top : 80px;
-   width : 200px;
-   font-size : 1.4em;
-   font-weight : 700;
+.cancle-order-form {
+  position: absolute;
+  top: 17%;
+  right: -139%;
 }
-#gift-ico{
-    position : absolute;
-    font-size : 4.6em;
-    color : red;
-    top : 18.5%;
-    right : 39.9%;
-    -webkit-animation-name: animate;
-    -webkit-animation-duration: 2s;
-    animation-durration: 2s;
-    animation-name: animate;
-    animation-iteration-count: infinite;
+#submit-image {
+  position: absolute;
+  height: 100%;
+  cursor: pointer;
+  left: -67px;
+  top: -9px;
 }
-.inside-banner{
-    border : solid 2px;
-    border-radius : 50px;
-    border-left : none;
-    margin-left :154px;
-    margin-top : 30px;
-    font-size : 1.7em;
-    padding : 20px 20px 20px 50px;
+.seeker-2:hover .cancle-order-form {
+  display: block;
 }
-@keyframes animate{
-    0%{transform:rotate(-25deg);}
-    50%{transform:rotate(25deg);}
-   100%{transform:rotate(-25deg);}
-   
+.cancle-order-form {
+  display: none;
+}
+#para {
+  position: absolute;
+  font-size: 21px;
+  left: 267px;
+  top: 160px;
+}
+.seeker-2 {
+  margin-left: -4px;
+}
+.teller {
+  position: absolute !important;
+  text-align: center;
+  font-size: 1.7em;
+  font-weight: 600;
+  width: 270px;
+  margin-bottom: 0px;
+  top: 3%;
+  left: 153%;
+}
+.lower-submit-button {
+  padding: 3px;
+}
+.seeker {
+  display: flex;
+}
+.order-btn {
+  margin-left: 260px;
+  margin-top: 80px;
+  width: 200px;
+  font-size: 1.4em;
+  font-weight: 700;
+}
+#gift-ico {
+  position: absolute;
+  font-size: 4.6em;
+  color: red;
+  top: 18.5%;
+  right: 39.9%;
+  -webkit-animation-name: animate;
+  -webkit-animation-duration: 2s;
+  animation-durration: 2s;
+  animation-name: animate;
+  animation-iteration-count: infinite;
+}
+.inside-banner {
+  border: solid 2px;
+  border-radius: 50px;
+  border-left: none;
+  margin-left: 154px;
+  margin-top: 30px;
+  font-size: 1.7em;
+  padding: 20px 20px 20px 50px;
+}
+@keyframes animate {
+  0% {
+    transform: rotate(-25deg);
+  }
+  50% {
+    transform: rotate(25deg);
+  }
+  100% {
+    transform: rotate(-25deg);
+  }
 }
 /*==============*/

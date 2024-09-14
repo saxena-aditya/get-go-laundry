@@ -1,6 +1,6 @@
 package org.com.DAO;
 
-import org.com.getterSetterObjs.getterRegisterDetails;
+import org.com.DTO.getterRegisterDetails;
 
 public interface addUserDAO {
 	

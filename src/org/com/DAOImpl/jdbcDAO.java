@@ -1,18 +1,15 @@
-package org.com.jdbcDAO;
-
+package org.com.DAOImpl;
 
 import javax.sql.DataSource;
 
-import org.com.DAO.CompanyDetailsDAO;
+import org.com.DAO.LoginPageDAO;
 import org.com.SQLExpressions.MySQLStatements;
-import org.com.getterSetterObjs.typeCompanyDetails;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.jdbc.core.BeanPropertyRowMapper;
 import org.springframework.jdbc.core.JdbcTemplate;
 import org.springframework.stereotype.Controller;
 
 @Controller
-public class CompanyDetailsDAOImpl  implements CompanyDetailsDAO {
+public class jdbcDAO implements LoginPageDAO{
 	MySQLStatements sql = new MySQLStatements();
 	
 	@Autowired
@@ -33,14 +30,17 @@ public class CompanyDetailsDAOImpl  implements CompanyDetailsDAO {
 	}
 	
 	@Override
-	public typeCompanyDetails getCompanyDetail() {
-		// TODO Auto-generated method stub
+	public int getCount(String user,String pass){
+	//	System.out.println("pass1 : "+pass+" user1 : "+user);
+		
 		jdbcTemplate.setDataSource(getDataSource());
-		typeCompanyDetails company_details = (typeCompanyDetails)jdbcTemplate.queryForObject(sql.GET_COMPANY_DETAILS
-				, new BeanPropertyRowMapper<typeCompanyDetails>(typeCompanyDetails.class));
+
+		return jdbcTemplate.queryForInt(sql.COUNT_USER_REG  , user,pass);
 		
 		
-		return company_details;
+		
+		
 	}
 	
+
 }

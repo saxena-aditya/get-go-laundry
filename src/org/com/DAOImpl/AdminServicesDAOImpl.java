@@ -1,19 +1,19 @@
-package org.com.jdbcDAO;
+package org.com.DAOImpl;
 
 import java.util.List;
 
 import javax.sql.DataSource;
 
 import org.com.DAO.AdminServicesDAO;
-import org.com.ItemPrices.ItemPrices;
+import org.com.DTO.AdminServicesGetCompanyDetails;
+import org.com.DTO.AdminServicesGetNewBannerText;
+import org.com.DTO.AdminServicesGetNewPerItemCosts;
+import org.com.DTO.AdminServicesMinimumOrderCost;
+import org.com.DTO.AdminServicesOffOffer;
+import org.com.DTO.TypeOrderDetails;
+import org.com.DTO.TypeUserDetails;
+import org.com.DTO.ItemPrices.ItemPrices;
 import org.com.SQLExpressions.MySQLStatements;
-import org.com.getterSetterObjs.AdminServicesGetCompanyDetails;
-import org.com.getterSetterObjs.AdminServicesGetNewBannerText;
-import org.com.getterSetterObjs.AdminServicesGetNewPerItemCosts;
-import org.com.getterSetterObjs.AdminServicesMinimumOrderCost;
-import org.com.getterSetterObjs.AdminServicesOffOffer;
-import org.com.getterSetterObjs.TypeOrderDetails;
-import org.com.getterSetterObjs.TypeUserDetails;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.jdbc.core.BeanPropertyRowMapper;
 import org.springframework.jdbc.core.JdbcTemplate;

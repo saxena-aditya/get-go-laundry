@@ -1,6 +1,6 @@
 package org.com.DAO;
 
-import org.com.getterSetterObjs.AdminServicesGetNewPerItemCosts;
+import org.com.DTO.AdminServicesGetNewPerItemCosts;
 
 public interface ItemCostIndividualMapping {
 	public AdminServicesGetNewPerItemCosts getItemCosts();

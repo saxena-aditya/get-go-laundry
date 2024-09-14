@@ -1,6 +1,6 @@
 package org.com.DAO;
 
-import org.com.getterSetterObjs.typeCompanyDetails;
+import org.com.DTO.typeCompanyDetails;
 
 public interface CompanyDetailsDAO {
 	

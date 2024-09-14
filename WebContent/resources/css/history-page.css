@@ -1,21 +1,18 @@
-*{
-	font-family: 'Quicksand', sans-serif;
-
+* {
+  font-family: "Quicksand", sans-serif;
 }
-.table-container{
-	position : absolute;
-	font-size :19px;
-	text-align :center;
-	left: 10%;
-	padding-left : 100px;
-	padding-top : 67px;
-	font-weight : 700;
-	
+.table-container {
+  position: absolute;
+  font-size: 19px;
+  text-align: center;
+  left: 10%;
+  padding-left: 100px;
+  padding-top: 67px;
+  font-weight: 700;
 }
 
 tr th {
-	text-align :center;
-	font-size : 17px;
-	font-family :verdana;
-	
+  text-align: center;
+  font-size: 17px;
+  font-family: verdana;
 }

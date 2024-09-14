@@ -1,27 +1,26 @@
-.navigation{
-    border :none !important;
-    border-radius :0px !important;
-    height : 54px;
+.navigation {
+  border: none !important;
+  border-radius: 0px !important;
+  height: 54px;
 }
-.nav-div{
-    height : 54px;
-    
+.nav-div {
+  height: 54px;
 }
-.nav-act{
-    letter-spacing :3px;
-    font-size :20px;
-    padding-right :40px;
-    font-family : Verdana;
+.nav-act {
+  letter-spacing: 3px;
+  font-size: 20px;
+  padding-right: 40px;
+  font-family: Verdana;
 }
-.cmpny-title{
-    padding-left :65px;
-    font-size :25px;
-    letter-spacing :3px;
-	font-family: 'Lato', verdana, sans-serif;
+.cmpny-title {
+  padding-left: 65px;
+  font-size: 25px;
+  letter-spacing: 3px;
+  font-family: "Lato", verdana, sans-serif;
 }
-#head-cmpny-sym{
-    position :absolute;
-    height : 70px;
-    margin-top :-9px;
-    margin-left : -29px
-}		 
+#head-cmpny-sym {
+  position: absolute;
+  height: 70px;
+  margin-top: -9px;
+  margin-left: -29px;
+}

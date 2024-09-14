@@ -1,50 +1,46 @@
-*{
-	font-family : 'Quicksand', lato, verdana, sans-serif;
+* {
+  font-family: "Quicksand", lato, verdana, sans-serif;
 }
-#order-save-image{
-   
-   margin-top : 32%;
-   margin-left : -19%;
-   font-size : 14em;
-   color : #5151ea;
-
+#order-save-image {
+  margin-top: 32%;
+  margin-left: -19%;
+  font-size: 14em;
+  color: #5151ea;
 }
-.order-display{
-   text-align : left;
-   margin-left : 15%;
-    font-family :verdana;
-    left : 38%;
-    top : 70%
+.order-display {
+  text-align: left;
+  margin-left: 15%;
+  font-family: verdana;
+  left: 38%;
+  top: 70%;
 }
-.order-view{
-    margin-left : 200px;
-    overflow-x : hidden !important;
-
+.order-view {
+  margin-left: 200px;
+  overflow-x: hidden !important;
 }
-#order-simple-cost{
-    margin-right : 120px;
-
+#order-simple-cost {
+  margin-right: 120px;
 }
-th, td{
-    text-align : center !important;
-    font-family : 'Quicksand' !important;
+th,
+td {
+  text-align: center !important;
+  font-family: "Quicksand" !important;
 }
-th{
-    font-family : 'lato', sans-serif !important;
-    font-size : 1.5em;
-   font-weight : 400;
-
+th {
+  font-family: "lato", sans-serif !important;
+  font-size: 1.5em;
+  font-weight: 400;
 }
-td{
-    font-family : 'verdana', sans-serif;
-    font-size :1.5em;
+td {
+  font-family: "verdana", sans-serif;
+  font-size: 1.5em;
 }
-.order-table{
-    margin-top : 8%;
-    margin-left : -161px;
-    padding-left : 5%;
+.order-table {
+  margin-top: 8%;
+  margin-left: -161px;
+  padding-left: 5%;
 }
 
-.banck-end-div{
-    height : 110px !important;
+.banck-end-div {
+  height: 110px !important;
 }

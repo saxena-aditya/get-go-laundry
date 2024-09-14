@@ -1,21 +1,40 @@
-package org.com.getterSetterObjs;
+package org.com.DTO;
 
-public class AdminServicesGetNewPerItemCosts {
+
+public class Ordergetter {
 	
-	public int tshirt;	
+	public int tshirt;
 	public int shirt;
-	public int pant;	
-	public int jeans;	
-	public int ccoat;	
-	public int fcoat;	
-	public int sweater;	
-	public int jacket;	
-	public int blanketL;
-	public int blanketH;	
-	public int blanketLU;	
+	public int pant;
+	public int jeans;
+	public int ccoat;
 	public int other;
+	public int fcoat;
+	public int sweater;
+	public int jacket;
+	public int blanketL;
+	public int blanketH;
+	public int blanketLU;
+	public String date = "o";
+	public String timeSpan = "o";
+	public String add1="";
+	public String add2="";
 	
 	
+	
+	
+	public String getAdd1() {
+		return add1;
+	}
+	public void setAdd1(String add1) {
+		this.add1 = add1;
+	}
+	public String getAdd2() {
+		return add2;
+	}
+	public void setAdd2(String add2) {
+		this.add2 = add2;
+	}
 	public int getTshirt() {
 		return tshirt;
 	}
@@ -45,6 +64,12 @@ public class AdminServicesGetNewPerItemCosts {
 	}
 	public void setCcoat(int ccoat) {
 		this.ccoat = ccoat;
+	}
+	public int getOther() {
+		return other;
+	}
+	public void setOther(int other) {
+		this.other = other;
 	}
 	public int getFcoat() {
 		return fcoat;
@@ -82,15 +107,20 @@ public class AdminServicesGetNewPerItemCosts {
 	public void setBlanketLU(int blanketLU) {
 		this.blanketLU = blanketLU;
 	}
-	public int getOther() {
-		return other;
+	public String getDate() {
+		return date;
 	}
-	public void setOther(int other) {
-		this.other = other;
+	public void setDate(String date) {
+		this.date = date;
 	}
-	
-	
-	
-	
+	public String getTimeSpan() {
+		return timeSpan;
+	}
+	public void setTimeSpan(String timeSpan) {
+		this.timeSpan = timeSpan;
+	}
+
+
+
 
 }

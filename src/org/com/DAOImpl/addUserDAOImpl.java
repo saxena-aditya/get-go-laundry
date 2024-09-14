@@ -1,20 +1,22 @@
-package org.com.jdbcDAO;
+package org.com.DAOImpl;
 
 import javax.sql.DataSource;
 
-import org.com.DAO.UserDetailsDAO;
+import org.com.DAO.addUserDAO;
+import org.com.DTO.getterRegisterDetails;
 import org.com.SQLExpressions.MySQLStatements;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.jdbc.core.JdbcTemplate;
 import org.springframework.stereotype.Controller;
 @Controller
-public class UserDetailsDAOImpl implements UserDetailsDAO{
+public class addUserDAOImpl implements addUserDAO{
+	
 	MySQLStatements sql = new MySQLStatements();
 	
 	@Autowired
 	private DataSource dataSource;
 	private JdbcTemplate jdbcTemplate = new JdbcTemplate();
-	
+
 	public DataSource getDataSource() {
 		return dataSource;
 	}
@@ -29,21 +31,26 @@ public class UserDetailsDAOImpl implements UserDetailsDAO{
 	}
 	
 	@Override
-	public String getUserAddress(String username) {
+	public int addNewUser(getterRegisterDetails grd) {
+		// TODO Auto-generated method stub
+		jdbcTemplate.setDataSource(getDataSource());
+		jdbcTemplate.update(sql.SAVE_USER , grd.getFirstName(),grd.getLastName(), grd.getPhone(), grd.getPass(), 
+				                   grd.getAddress1(), grd.getAddress2());
+		
+		
+		return 0;
+	}
+	@Override
+	public boolean userAlreadyPresent(String phn_number) {
 		// TODO Auto-generated method stub
 		
+		jdbcTemplate.setDataSource(getDataSource());
+		int i = jdbcTemplate.queryForInt(sql.COUNT_USER_VALIDATE , phn_number);
 		
-		Object[] inputs1 = new Object[] {username};
-		Object[] inputs2 = new Object[] {username};
-		jdbcTemplate.setDataSource(dataSource);  
-		String add1 = getJdbcTemplate().queryForObject(sql.SEE_ADD1, inputs1, String.class);
-        String add2 = getJdbcTemplate().queryForObject(sql.SEE_ADD2, inputs2, String.class);
-        
-        
-        String address = add1 + ":" + add2;
-        
-        return address;
-		
+		if(i == 0)
+			return false;
+		else
+			return true;
 	}
 
 }

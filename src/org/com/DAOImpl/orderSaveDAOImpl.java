@@ -1,4 +1,4 @@
-package org.com.jdbcDAO;
+package org.com.DAOImpl;
 
 
 import javax.sql.DataSource;
