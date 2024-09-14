@@ -30,17 +30,8 @@ public class jdbcDAO implements LoginPageDAO{
 	}
 	
 	@Override
-	public int getCount(String user,String pass){
-	//	System.out.println("pass1 : "+pass+" user1 : "+user);
-		
+	public int getCount(String user,String pass) {
 		jdbcTemplate.setDataSource(getDataSource());
-
 		return jdbcTemplate.queryForInt(sql.COUNT_USER_REG  , user,pass);
-		
-		
-		
-		
-	}
-	
-
+	}	
 }

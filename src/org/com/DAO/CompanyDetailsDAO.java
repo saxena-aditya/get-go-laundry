@@ -1,9 +1,9 @@
 package org.com.DAO;
 
-import org.com.DTO.typeCompanyDetails;
+import org.com.DTO.TypeCompanyDetails;
 
 public interface CompanyDetailsDAO {
 	
-	public typeCompanyDetails getCompanyDetail();
+	public TypeCompanyDetails getCompanyDetail();
 
 }

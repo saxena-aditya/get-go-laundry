@@ -110,5 +110,4 @@ public class AdminServicesGetNewPerItemCosts {
 	public void setOther(int other) {
 		this.other = other;
 	}
-
 }

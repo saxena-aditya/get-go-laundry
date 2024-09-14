@@ -1,6 +1,6 @@
 package org.com.DTO;
 
-public class typeCompanyDetails {
+public class TypeCompanyDetails {
 	
 	public String company_name;
 	public String company_symbol;

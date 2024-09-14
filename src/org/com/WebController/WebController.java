@@ -8,17 +8,17 @@ import java.util.Random;
 
 import javax.servlet.http.HttpSession;
 
-import org.com.DAO.orderDetailsDAO;
+import org.com.DAO.OrderDetailsDAO;
 import org.com.DAOImpl.CompanyDetailsDAOImpl;
 import org.com.DAOImpl.UserDetailsDAOImpl;
-import org.com.DAOImpl.addUserDAOImpl;
+import org.com.DAOImpl.AddUserDAOImpl;
 import org.com.DAOImpl.jdbcDAO;
-import org.com.DAOImpl.orderDetailsDAOImpl;
-import org.com.DAOImpl.orderSaveDAOImpl;
+import org.com.DAOImpl.OrderDetailsDAOImpl;
+import org.com.DAOImpl.OrderSaveDAOImpl;
 import org.com.DTO.LoginGetterandSetters;
 import org.com.DTO.Ordergetter;
-import org.com.DTO.getterRegisterDetails;
-import org.com.DTO.typeCompanyDetails;
+import org.com.DTO.GetterRegisterDetails;
+import org.com.DTO.TypeCompanyDetails;
 import org.com.DTO.ItemPrices.ItemPrices;
 import org.springframework.context.ApplicationContext;
 import org.springframework.context.support.ClassPathXmlApplicationContext;
@@ -35,9 +35,9 @@ import com.google.gson.Gson;
 @Controller
 public class WebController {
 	private jdbcDAO jdbc;
-	private addUserDAOImpl jdb;
-	private orderSaveDAOImpl saveOrder_Impl;
-	private orderDetailsDAOImpl orderList; 
+	private AddUserDAOImpl jdb;
+	private OrderSaveDAOImpl saveOrder_Impl;
+	private OrderDetailsDAOImpl orderList; 
 	private CompanyDetailsDAOImpl cmp_details;	
 	public int orderCost = 0;
 	public boolean isOrderPlaced = false;
@@ -51,28 +51,28 @@ public class WebController {
 	public String lastOrderid;
 	private String add1;
 	private String add2;
-	public orderDetailsDAO le;
+	public OrderDetailsDAO le;
 	public 	UserDetailsDAOImpl userDetails;
 	public UtilityFuctions utils = new UtilityFuctions();
 
 	List<Integer> costList = new ArrayList<>();
 	List<String> currentOrder = new ArrayList<>();
 	List<String> cOrder = new ArrayList<>();
-	List<orderDetailsDAO> lastOrderDetails = new ArrayList<>();
+	List<OrderDetailsDAO> lastOrderDetails = new ArrayList<>();
 	List<ItemPrices> pricesList = new ArrayList<>();
 	
 	ApplicationContext ctx = new ClassPathXmlApplicationContext("Spring.xml");
 	
 	// gets all the cloth prices from the database and saves them in the List(procesList)
 	public void getItemPricesForContext(){
-		orderList = ctx.getBean("orderDetailsDAOImpl", orderDetailsDAOImpl.class);	
+		orderList = ctx.getBean("orderDetailsDAOImpl", OrderDetailsDAOImpl.class);	
 		pricesList = orderList.getItemPrices();
 	}
 	
-	public typeCompanyDetails getCompanyDetails(){
+	public TypeCompanyDetails getCompanyDetails(){
 	
 		cmp_details = ctx.getBean(CompanyDetailsDAOImpl.class);
-		typeCompanyDetails c_details = cmp_details.getCompanyDetail();
+		TypeCompanyDetails c_details = cmp_details.getCompanyDetail();
 		
 	return c_details;		
 	
@@ -81,13 +81,13 @@ public class WebController {
 	private void getLastOrderDetails(){
 		
 		// an instance of the bean that will connect to the database is included here!!		
-		orderList = ctx.getBean("orderDetailsDAOImpl", orderDetailsDAOImpl.class);	
+		orderList = ctx.getBean("orderDetailsDAOImpl", OrderDetailsDAOImpl.class);	
 
 		lastOrderDetails = orderList.latestOrder(getUsername());
 		if (lastOrderDetails.size() == 0)
 			System.out.println("Sorry not Latest orders! ");
 		else{
-			for (orderDetailsDAO temp : lastOrderDetails) {
+			for (OrderDetailsDAO temp : lastOrderDetails) {
 				LatestOcost = orderList.orderCost(temp.getOrder_id());
 					
 			}
@@ -161,7 +161,7 @@ public class WebController {
 	@RequestMapping(value = "order_cancel" )
 	protected ModelAndView order_cancel(){
 		ModelAndView model = new ModelAndView("welcome");
-		saveOrder_Impl = ctx.getBean(orderSaveDAOImpl.class);
+		saveOrder_Impl = ctx.getBean(OrderSaveDAOImpl.class);
 
 		saveOrder_Impl.deleteOrder(getUsername());
 		getLastOrderDetails();
@@ -191,9 +191,9 @@ public class WebController {
 	
 	
 	@RequestMapping(value = "formSubmission", method = RequestMethod.POST)
-	protected ModelAndView ForForm(@ModelAttribute("registerUser") getterRegisterDetails reg){
+	protected ModelAndView ForForm(@ModelAttribute("registerUser") GetterRegisterDetails reg){
 		
-		jdb = ctx.getBean("addUserDAOImpl", addUserDAOImpl.class);
+		jdb = ctx.getBean("addUserDAOImpl", AddUserDAOImpl.class);
 		ModelAndView model_success = new ModelAndView("mainPage");
 		ModelAndView model_fail = new ModelAndView("registerPage");
 	
@@ -227,7 +227,7 @@ public class WebController {
 		//orderCost = calculateOrderCost(odr, item);
 		System.out.println( "order is = "+ odr.getAdd1() + "\n" + odr.getAdd2());
 		
-		saveOrder_Impl = ctx.getBean(orderSaveDAOImpl.class);
+		saveOrder_Impl = ctx.getBean(OrderSaveDAOImpl.class);
 		
 		if(saveOrder_Impl.firstOrder(getUsername()))
 				placed_Order.addObject("isFirstOrder", "yes");
@@ -302,8 +302,8 @@ public class WebController {
 		  **/
 		
 	//	getLists();
-		orderList = ctx.getBean("orderDetailsDAOImpl", orderDetailsDAOImpl.class);	
-		List<orderDetailsDAO> oList = orderList.findOrder(getUsername());
+		orderList = ctx.getBean("orderDetailsDAOImpl", OrderDetailsDAOImpl.class);	
+		List<OrderDetailsDAO> oList = orderList.findOrder(getUsername());
 		
 		
 		
@@ -314,7 +314,7 @@ public class WebController {
 		
 		List<Integer> costList = new ArrayList<Integer>();
 		
-		for (orderDetailsDAO temp : oList) {
+		for (OrderDetailsDAO temp : oList) {
 			cost = orderList.orderCost(temp.getOrder_id());
 			costList.add(cost);		
 		}

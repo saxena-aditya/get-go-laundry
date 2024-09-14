@@ -4,7 +4,7 @@ package org.com.DAOImpl;
 import javax.sql.DataSource;
 
 import org.com.DAO.CompanyDetailsDAO;
-import org.com.DTO.typeCompanyDetails;
+import org.com.DTO.TypeCompanyDetails;
 import org.com.SQLExpressions.MySQLStatements;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.jdbc.core.BeanPropertyRowMapper;
@@ -33,11 +33,11 @@ public class CompanyDetailsDAOImpl  implements CompanyDetailsDAO {
 	}
 	
 	@Override
-	public typeCompanyDetails getCompanyDetail() {
+	public TypeCompanyDetails getCompanyDetail() {
 		// TODO Auto-generated method stub
 		jdbcTemplate.setDataSource(getDataSource());
-		typeCompanyDetails company_details = (typeCompanyDetails)jdbcTemplate.queryForObject(sql.GET_COMPANY_DETAILS
-				, new BeanPropertyRowMapper<typeCompanyDetails>(typeCompanyDetails.class));
+		TypeCompanyDetails company_details = (TypeCompanyDetails)jdbcTemplate.queryForObject(sql.GET_COMPANY_DETAILS
+				, new BeanPropertyRowMapper<TypeCompanyDetails>(TypeCompanyDetails.class));
 		
 		
 		return company_details;

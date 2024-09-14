@@ -1,10 +1,10 @@
 package org.com.DAO;
 
-import org.com.DTO.getterRegisterDetails;
+import org.com.DTO.GetterRegisterDetails;
 
-public interface addUserDAO {
+public interface AddUserDAO {
 	
-	public int addNewUser(getterRegisterDetails grd);
+	public int addNewUser(GetterRegisterDetails grd);
 	public boolean userAlreadyPresent(String phn_number);
 	
 }

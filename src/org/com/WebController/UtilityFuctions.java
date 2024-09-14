@@ -4,20 +4,20 @@ import java.util.ArrayList;
 import java.util.List;
 
 import org.com.DAOImpl.AdminServicesDAOImpl;
-import org.com.DAOImpl.orderDetailsDAOImpl;
+import org.com.DAOImpl.OrderDetailsDAOImpl;
 import org.com.DTO.ItemPrices.ItemPrices;
 import org.springframework.context.ApplicationContext;
 import org.springframework.context.support.ClassPathXmlApplicationContext;
 
 public class UtilityFuctions {
-	public orderDetailsDAOImpl cloth_list;
+	public OrderDetailsDAOImpl cloth_list;
 	public AdminServicesDAOImpl admin;
 	ApplicationContext ctx = new ClassPathXmlApplicationContext("Spring.xml");
 
 	
 	public List<ItemPrices> getClothList(){
 		List<ItemPrices> clothList = new ArrayList<>();
-		cloth_list = ctx.getBean(orderDetailsDAOImpl.class);
+		cloth_list = ctx.getBean(OrderDetailsDAOImpl.class);
 		clothList = cloth_list.getItemPrices();
 		
 		return clothList;

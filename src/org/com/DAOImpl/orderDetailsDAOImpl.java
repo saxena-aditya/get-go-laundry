@@ -4,7 +4,7 @@ import java.util.List;
 
 import javax.sql.DataSource;
 
-import org.com.DAO.orderDetailsDAO;
+import org.com.DAO.OrderDetailsDAO;
 import org.com.DTO.ItemPrices.ItemPrices;
 import org.com.SQLExpressions.MySQLStatements;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -13,7 +13,7 @@ import org.springframework.jdbc.core.JdbcTemplate;
 import org.springframework.stereotype.Controller;
 
 @Controller
-public class orderDetailsDAOImpl {
+public class OrderDetailsDAOImpl {
 	MySQLStatements sql = new MySQLStatements();
 	
 	@Autowired
@@ -35,12 +35,12 @@ public class orderDetailsDAOImpl {
 	
 	
 	
-	public List<orderDetailsDAO> findOrder(String Username){
+	public List<OrderDetailsDAO> findOrder(String Username){
 
 		
 		jdbcTemplate.setDataSource(getDataSource());
-		List<orderDetailsDAO> Olist  = getJdbcTemplate().query(sql.TOTAL_ORDERS,
-				new BeanPropertyRowMapper<orderDetailsDAO>(orderDetailsDAO.class), Username);
+		List<OrderDetailsDAO> Olist  = getJdbcTemplate().query(sql.TOTAL_ORDERS,
+				new BeanPropertyRowMapper<OrderDetailsDAO>(OrderDetailsDAO.class), Username);
 		
 
 		return Olist;
@@ -53,12 +53,12 @@ public class orderDetailsDAOImpl {
 		return cost;
 	}
 	
-	public List<orderDetailsDAO> latestOrder(String Username) {
+	public List<OrderDetailsDAO> latestOrder(String Username) {
 		// TODO Auto-generated method stub
 		
 		jdbcTemplate.setDataSource(getDataSource());
-		List<orderDetailsDAO> latestoList  = getJdbcTemplate().query(sql.LAST_ORDER,
-				new BeanPropertyRowMapper<orderDetailsDAO>(orderDetailsDAO.class), Username);
+		List<OrderDetailsDAO> latestoList  = getJdbcTemplate().query(sql.LAST_ORDER,
+				new BeanPropertyRowMapper<OrderDetailsDAO>(OrderDetailsDAO.class), Username);
 		
 			return latestoList;
 	}

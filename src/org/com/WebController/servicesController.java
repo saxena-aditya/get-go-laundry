@@ -11,7 +11,7 @@ import javax.servlet.http.HttpSession;
 
 import org.com.DAOImpl.AdminServicesDAOImpl;
 import org.com.DAOImpl.CompanyDetailsDAOImpl;
-import org.com.DAOImpl.orderDetailsDAOImpl;
+import org.com.DAOImpl.OrderDetailsDAOImpl;
 import org.com.DTO.AdminServicesGetCompanyDetails;
 import org.com.DTO.AdminServicesGetNewBannerText;
 import org.com.DTO.AdminServicesGetNewPerItemCosts;
@@ -36,13 +36,13 @@ import com.org.testClasses.PersonListContainer;
 
 
 @Controller
-public class servicesController {
+public class ServicesController {
 	public WebController webControllerServices = new WebController();
 	ApplicationContext ctx = new ClassPathXmlApplicationContext("Spring.xml");
 	public AdminServicesDAOImpl services = ctx.getBean(AdminServicesDAOImpl.class);
 	public UtilityFuctions utils = new UtilityFuctions();
 	public CompanyDetailsDAOImpl companyInfo;
-	public orderDetailsDAOImpl cloth_list;
+	public OrderDetailsDAOImpl cloth_list;
 	
 	
 	

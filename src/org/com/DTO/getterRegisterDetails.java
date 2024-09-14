@@ -1,6 +1,6 @@
 package org.com.DTO;
 
-public class getterRegisterDetails {
+public class GetterRegisterDetails {
 	public String firstName;
 	public String lastName;
 	public String phone;
@@ -56,7 +56,7 @@ public class getterRegisterDetails {
 		this.pass = pass;
 	}
 
-	getterRegisterDetails() {
+	GetterRegisterDetails() {
 		setFirstName(firstName);
 		setLastName(lastName);
 		setPass(pass);
