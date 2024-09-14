@@ -9,7 +9,7 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
 import org.com.DAOImpl.AdminServicesDAOImpl;
 import org.com.DAOImpl.CompanyDetailsDAOImpl;
-import org.com.DAOImpl.OrderDetailsDAOImpl;
+import org.com.DAOImpl.OrderDetailDAOImpl;
 import org.com.DTO.AdminServicesGetCompanyDetails;
 import org.com.DTO.AdminServicesGetNewBannerText;
 import org.com.DTO.AdminServicesGetNewPerItemCosts;
@@ -38,7 +38,7 @@ public class ServicesController {
   );
   public UtilityFuctions utils = new UtilityFuctions();
   public CompanyDetailsDAOImpl companyInfo;
-  public OrderDetailsDAOImpl cloth_list;
+  public OrderDetailDAOImpl cloth_list;
 
   @RequestMapping(value = "queryByOrderID", method = RequestMethod.POST)
   protected ModelAndView queryByOrderID(@RequestParam String order_id) {

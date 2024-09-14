@@ -3,20 +3,20 @@ package org.com.WebController;
 import java.util.ArrayList;
 import java.util.List;
 import org.com.DAOImpl.AdminServicesDAOImpl;
-import org.com.DAOImpl.OrderDetailsDAOImpl;
+import org.com.DAOImpl.OrderDetailDAOImpl;
 import org.com.DTO.ItemPrices.ItemPrices;
 import org.springframework.context.ApplicationContext;
 import org.springframework.context.support.ClassPathXmlApplicationContext;
 
 public class UtilityFuctions {
 
-  public OrderDetailsDAOImpl cloth_list;
+  public OrderDetailDAOImpl cloth_list;
   public AdminServicesDAOImpl admin;
   ApplicationContext ctx = new ClassPathXmlApplicationContext("Spring.xml");
 
   public List<ItemPrices> getClothList() {
     List<ItemPrices> clothList = new ArrayList<>();
-    cloth_list = ctx.getBean(OrderDetailsDAOImpl.class);
+    cloth_list = ctx.getBean(OrderDetailDAOImpl.class);
     clothList = cloth_list.getItemPrices();
 
     return clothList;

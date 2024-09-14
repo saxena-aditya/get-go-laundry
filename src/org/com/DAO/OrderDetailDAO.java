@@ -1,6 +1,6 @@
 package org.com.DAO;
 
-public class OrderDetailsDAO {
+public class OrderDetailDAO {
 
   String order_id;
   String cloth_code;

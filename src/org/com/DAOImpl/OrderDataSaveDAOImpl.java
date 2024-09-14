@@ -8,7 +8,7 @@ import org.springframework.jdbc.core.JdbcTemplate;
 import org.springframework.stereotype.Controller;
 
 @Controller
-public class OrderSaveDAOImpl implements SaveOrderDAO {
+public class OrderDataSaveDAOImpl implements SaveOrderDAO {
 
   MySQLStatements sql = new MySQLStatements();
   private int count = 1;

@@ -6,11 +6,11 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.Random;
 import javax.servlet.http.HttpSession;
-import org.com.DAO.OrderDetailsDAO;
+import org.com.DAO.OrderDetailDAO;
 import org.com.DAOImpl.AddUserDAOImpl;
 import org.com.DAOImpl.CompanyDetailsDAOImpl;
-import org.com.DAOImpl.OrderDetailsDAOImpl;
-import org.com.DAOImpl.OrderSaveDAOImpl;
+import org.com.DAOImpl.OrderDetailDAOImpl;
+import org.com.DAOImpl.OrderDataSaveDAOImpl;
 import org.com.DAOImpl.UserDetailsDAOImpl;
 import org.com.DAOImpl.jdbcDAO;
 import org.com.DTO.GetterRegisterDetails;
@@ -32,8 +32,8 @@ public class WebController {
 
   private jdbcDAO jdbc;
   private AddUserDAOImpl jdb;
-  private OrderSaveDAOImpl saveOrder_Impl;
-  private OrderDetailsDAOImpl orderList;
+  private OrderDataSaveDAOImpl saveOrder_Impl;
+  private OrderDetailDAOImpl orderList;
   private CompanyDetailsDAOImpl cmp_details;
   public int orderCost = 0;
   public boolean isOrderPlaced = false;
@@ -47,21 +47,21 @@ public class WebController {
   public String lastOrderid;
   private String add1;
   private String add2;
-  public OrderDetailsDAO le;
+  public OrderDetailDAO le;
   public UserDetailsDAOImpl userDetails;
   public UtilityFuctions utils = new UtilityFuctions();
 
   List<Integer> costList = new ArrayList<>();
   List<String> currentOrder = new ArrayList<>();
   List<String> cOrder = new ArrayList<>();
-  List<OrderDetailsDAO> lastOrderDetails = new ArrayList<>();
+  List<OrderDetailDAO> lastOrderDetails = new ArrayList<>();
   List<ItemPrices> pricesList = new ArrayList<>();
 
   ApplicationContext ctx = new ClassPathXmlApplicationContext("Spring.xml");
 
   // gets all the cloth prices from the database and saves them in the List(procesList)
   public void getItemPricesForContext() {
-    orderList = ctx.getBean("orderDetailsDAOImpl", OrderDetailsDAOImpl.class);
+    orderList = ctx.getBean("orderDetailsDAOImpl", OrderDetailDAOImpl.class);
     pricesList = orderList.getItemPrices();
   }
 
@@ -74,14 +74,14 @@ public class WebController {
 
   private void getLastOrderDetails() {
     // an instance of the bean that will connect to the database is included here!!
-    orderList = ctx.getBean("orderDetailsDAOImpl", OrderDetailsDAOImpl.class);
+    orderList = ctx.getBean("orderDetailsDAOImpl", OrderDetailDAOImpl.class);
 
     lastOrderDetails = orderList.latestOrder(getUsername());
     if (lastOrderDetails.size() == 0) System.out.println(
       "Sorry not Latest orders! "
     );
     else {
-      for (OrderDetailsDAO temp : lastOrderDetails) {
+      for (OrderDetailDAO temp : lastOrderDetails) {
         LatestOcost = orderList.orderCost(temp.getOrder_id());
       }
     }
@@ -155,7 +155,7 @@ public class WebController {
   @RequestMapping(value = "order_cancel")
   protected ModelAndView order_cancel() {
     ModelAndView model = new ModelAndView("welcome");
-    saveOrder_Impl = ctx.getBean(OrderSaveDAOImpl.class);
+    saveOrder_Impl = ctx.getBean(OrderDataSaveDAOImpl.class);
 
     saveOrder_Impl.deleteOrder(getUsername());
     getLastOrderDetails();
@@ -220,7 +220,7 @@ public class WebController {
     //orderCost = calculateOrderCost(odr, item);
     System.out.println("order is = " + odr.getAdd1() + "\n" + odr.getAdd2());
 
-    saveOrder_Impl = ctx.getBean(OrderSaveDAOImpl.class);
+    saveOrder_Impl = ctx.getBean(OrderDataSaveDAOImpl.class);
 
     if (saveOrder_Impl.firstOrder(getUsername())) placed_Order.addObject(
       "isFirstOrder",
@@ -300,8 +300,8 @@ public class WebController {
      **/
 
     //	getLists();
-    orderList = ctx.getBean("orderDetailsDAOImpl", OrderDetailsDAOImpl.class);
-    List<OrderDetailsDAO> oList = orderList.findOrder(getUsername());
+    orderList = ctx.getBean("orderDetailsDAOImpl", OrderDetailDAOImpl.class);
+    List<OrderDetailDAO> oList = orderList.findOrder(getUsername());
 
     if (oList.size() == 0) {
       //do something
@@ -309,7 +309,7 @@ public class WebController {
 
     List<Integer> costList = new ArrayList<Integer>();
 
-    for (OrderDetailsDAO temp : oList) {
+    for (OrderDetailDAO temp : oList) {
       cost = orderList.orderCost(temp.getOrder_id());
       costList.add(cost);
     }
