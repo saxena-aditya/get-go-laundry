@@ -1,18 +1,16 @@
 package org.com.DAOImpl;
 
 import java.util.List;
-
 import javax.sql.DataSource;
-
 import org.com.DAO.AdminServicesDAO;
 import org.com.DTO.AdminServicesGetCompanyDetails;
 import org.com.DTO.AdminServicesGetNewBannerText;
 import org.com.DTO.AdminServicesGetNewPerItemCosts;
 import org.com.DTO.AdminServicesMinimumOrderCost;
 import org.com.DTO.AdminServicesOffOffer;
+import org.com.DTO.ItemPrices.ItemPrices;
 import org.com.DTO.TypeOrderDetails;
 import org.com.DTO.TypeUserDetails;
-import org.com.DTO.ItemPrices.ItemPrices;
 import org.com.SQLExpressions.MySQLStatements;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.jdbc.core.BeanPropertyRowMapper;
@@ -20,147 +18,188 @@ import org.springframework.jdbc.core.JdbcTemplate;
 import org.springframework.stereotype.Controller;
 
 @Controller
-public class AdminServicesDAOImpl implements AdminServicesDAO{
+public class AdminServicesDAOImpl implements AdminServicesDAO {
 
-MySQLStatements sql = new MySQLStatements();
-	
-	@Autowired
-	private DataSource dataSource;
-	private JdbcTemplate jdbcTemplate = new JdbcTemplate();
-	
+  MySQLStatements sql = new MySQLStatements();
 
-	public DataSource getDataSource() {
-		return dataSource;
-	}
-	public void setDataSource(DataSource dataSource) {
-		this.dataSource = dataSource;
-	}
-	public JdbcTemplate getJdbcTemplate() {
-		return jdbcTemplate;
-	}
-	public void setJdbcTemplate(JdbcTemplate jdbcTemplate) {
-		this.jdbcTemplate = jdbcTemplate;
-	}
-	
-	@Override
-	public void updateBannerText(AdminServicesGetNewBannerText bannerText) {
-		
-		jdbcTemplate.setDataSource(getDataSource());
-		jdbcTemplate.update(sql.UPDATE_BANNER_TEXT, bannerText.getBanner_text());
-		
-	}
+  @Autowired
+  private DataSource dataSource;
 
-	@Override
-	public void updateCompanyDetails(AdminServicesGetCompanyDetails companyDetails) {
-		
-		jdbcTemplate.setDataSource(getDataSource());
-		jdbcTemplate.update(sql.UPDATE_COMPANY_DETAILS, companyDetails.getCompany_name(), companyDetails.getCompany_symbol());
-		
-	}
+  private JdbcTemplate jdbcTemplate = new JdbcTemplate();
 
-	@Override
-	public void updatePerItemCost(AdminServicesGetNewPerItemCosts perItemCosts) {
-		
-		jdbcTemplate.setDataSource(getDataSource());
-		jdbcTemplate.update(sql.UPDATE_ITEM_PRICES, perItemCosts.getShirt(), perItemCosts.getTshirt(), perItemCosts.getPant(),
-								 perItemCosts.getJeans(), perItemCosts.getCcoat(), perItemCosts.getFcoat(),
-								 perItemCosts.getJacket(), perItemCosts.getSweater(), perItemCosts.getBlanketL(),
-								 perItemCosts.getBlanketH(), perItemCosts.getBlanketLU(), perItemCosts.getOther());
-	}
+  public DataSource getDataSource() {
+    return dataSource;
+  }
 
-	@Override
-	public void updateOffPercentage(AdminServicesOffOffer offPercentage) {
-		
-		jdbcTemplate.setDataSource(getDataSource());
-		jdbcTemplate.update(sql.UPDATE_OFF_PERCENTAGE, offPercentage.getOff_percentage());
-		
-	
-	}
-	@Override
-	public void updateMinimumOrderCost(AdminServicesMinimumOrderCost minimumOrderCost) {
-		
-		jdbcTemplate.setDataSource(getDataSource());
-		jdbcTemplate.update(sql.UPDATE_MINIMUM_ORDER_COST, minimumOrderCost.getMinimum_order_cost());
-		
-	}
-	@Override
-	public int getTotalNumberOfOrders() {
-		// TODO Auto-generated method stub
-		jdbcTemplate.setDataSource(getDataSource());
-		
-		return jdbcTemplate.queryForInt(sql.TOTAL_ORDERS_MADE);
-	}
-	@Override
-	public int getTotalProcessingOrders() {
-		// TODO Auto-generated method stub
-		jdbcTemplate.setDataSource(getDataSource());
-		return jdbcTemplate.queryForInt(sql.TOTAL_PROCESSING_ORDERS);
-	}
-	@Override
-	public int getTotalUsers() {
-		// TODO Auto-generated method stub
-		jdbcTemplate.setDataSource(getDataSource());
-		return jdbcTemplate.queryForInt(sql.ALL_USERS);
-	}
-	@Override
-	public int getTotalOrderCost() {
-		// TODO Auto-generated method stub
-		jdbcTemplate.setDataSource(getDataSource());
-		return jdbcTemplate.queryForInt(sql.TOTAL_COST_UPTILL_NOW);
-	}
-	@Override
-	public int getTotalProcessingOrderCost() {
-		// TODO Auto-generated method stub
-		jdbcTemplate.setDataSource(getDataSource());
-		return jdbcTemplate.queryForInt(sql.TOTAL_PROCESSING_ORDER_COST);
-	}
-	@Override
-	public int getTotalServedOrders() {
-		// TODO Auto-generated method stub
-		jdbcTemplate.setDataSource(getDataSource());
-		return jdbcTemplate.queryForInt(sql.ORDER_SERVED);
-	}
-	@Override
-	public TypeUserDetails getUserDetails(String phone) {
-		// TODO Auto-generated method stub
-		jdbcTemplate.setDataSource(getDataSource());
-		return  getJdbcTemplate().queryForObject(sql.USER_DETAILS,
-				new BeanPropertyRowMapper<TypeUserDetails>(TypeUserDetails.class), phone); 
-		
-	}
-	@Override
-	public List<TypeUserDetails> getUserDetailsList(String phone) {
-		// TODO Auto-generated method stub
-		jdbcTemplate.setDataSource(getDataSource());
-		return  getJdbcTemplate().query(sql.USER_DETAILS,
-				new BeanPropertyRowMapper<TypeUserDetails>(TypeUserDetails.class), phone); 
-		
-	}
-	@Override
-	public List<TypeOrderDetails> getOrderDetails(String order_id) {
-		// TODO Auto-generated method stub
-		jdbcTemplate.setDataSource(getDataSource());
-		return getJdbcTemplate().query(sql.ORDER_DETAILS,
-				new BeanPropertyRowMapper<TypeOrderDetails>(TypeOrderDetails.class), order_id);
-	}
-	@Override
-	public List<TypeOrderDetails> getOdersByStage(String stage) {
-		// TODO Auto-generated method stub
-		jdbcTemplate.setDataSource(getDataSource());
-		return getJdbcTemplate().query(sql.OREDER_BY_STAGE,
-				new BeanPropertyRowMapper<TypeOrderDetails>(TypeOrderDetails.class), stage);
-	}
-	
-	
-	public List<TypeOrderDetails> getOdersByStageDistinct(String stage) {
-		// TODO Auto-generated method stub
-		jdbcTemplate.setDataSource(getDataSource());
-		return getJdbcTemplate().query(sql.ORDERS_BY_STAGE_DISTINCT,
-				new BeanPropertyRowMapper<TypeOrderDetails>(TypeOrderDetails.class), stage);
-	}
-	
-	
-	
-	
+  public void setDataSource(DataSource dataSource) {
+    this.dataSource = dataSource;
+  }
 
+  public JdbcTemplate getJdbcTemplate() {
+    return jdbcTemplate;
+  }
+
+  public void setJdbcTemplate(JdbcTemplate jdbcTemplate) {
+    this.jdbcTemplate = jdbcTemplate;
+  }
+
+  @Override
+  public void updateBannerText(AdminServicesGetNewBannerText bannerText) {
+    jdbcTemplate.setDataSource(getDataSource());
+    jdbcTemplate.update(sql.UPDATE_BANNER_TEXT, bannerText.getBanner_text());
+  }
+
+  @Override
+  public void updateCompanyDetails(
+    AdminServicesGetCompanyDetails companyDetails
+  ) {
+    jdbcTemplate.setDataSource(getDataSource());
+    jdbcTemplate.update(
+      sql.UPDATE_COMPANY_DETAILS,
+      companyDetails.getCompany_name(),
+      companyDetails.getCompany_symbol()
+    );
+  }
+
+  @Override
+  public void updatePerItemCost(AdminServicesGetNewPerItemCosts perItemCosts) {
+    jdbcTemplate.setDataSource(getDataSource());
+    jdbcTemplate.update(
+      sql.UPDATE_ITEM_PRICES,
+      perItemCosts.getShirt(),
+      perItemCosts.getTshirt(),
+      perItemCosts.getPant(),
+      perItemCosts.getJeans(),
+      perItemCosts.getCcoat(),
+      perItemCosts.getFcoat(),
+      perItemCosts.getJacket(),
+      perItemCosts.getSweater(),
+      perItemCosts.getBlanketL(),
+      perItemCosts.getBlanketH(),
+      perItemCosts.getBlanketLU(),
+      perItemCosts.getOther()
+    );
+  }
+
+  @Override
+  public void updateOffPercentage(AdminServicesOffOffer offPercentage) {
+    jdbcTemplate.setDataSource(getDataSource());
+    jdbcTemplate.update(
+      sql.UPDATE_OFF_PERCENTAGE,
+      offPercentage.getOff_percentage()
+    );
+  }
+
+  @Override
+  public void updateMinimumOrderCost(
+    AdminServicesMinimumOrderCost minimumOrderCost
+  ) {
+    jdbcTemplate.setDataSource(getDataSource());
+    jdbcTemplate.update(
+      sql.UPDATE_MINIMUM_ORDER_COST,
+      minimumOrderCost.getMinimum_order_cost()
+    );
+  }
+
+  @Override
+  public int getTotalNumberOfOrders() {
+    // TODO Auto-generated method stub
+    jdbcTemplate.setDataSource(getDataSource());
+
+    return jdbcTemplate.queryForInt(sql.TOTAL_ORDERS_MADE);
+  }
+
+  @Override
+  public int getTotalProcessingOrders() {
+    // TODO Auto-generated method stub
+    jdbcTemplate.setDataSource(getDataSource());
+    return jdbcTemplate.queryForInt(sql.TOTAL_PROCESSING_ORDERS);
+  }
+
+  @Override
+  public int getTotalUsers() {
+    // TODO Auto-generated method stub
+    jdbcTemplate.setDataSource(getDataSource());
+    return jdbcTemplate.queryForInt(sql.ALL_USERS);
+  }
+
+  @Override
+  public int getTotalOrderCost() {
+    // TODO Auto-generated method stub
+    jdbcTemplate.setDataSource(getDataSource());
+    return jdbcTemplate.queryForInt(sql.TOTAL_COST_UPTILL_NOW);
+  }
+
+  @Override
+  public int getTotalProcessingOrderCost() {
+    // TODO Auto-generated method stub
+    jdbcTemplate.setDataSource(getDataSource());
+    return jdbcTemplate.queryForInt(sql.TOTAL_PROCESSING_ORDER_COST);
+  }
+
+  @Override
+  public int getTotalServedOrders() {
+    // TODO Auto-generated method stub
+    jdbcTemplate.setDataSource(getDataSource());
+    return jdbcTemplate.queryForInt(sql.ORDER_SERVED);
+  }
+
+  @Override
+  public TypeUserDetails getUserDetails(String phone) {
+    // TODO Auto-generated method stub
+    jdbcTemplate.setDataSource(getDataSource());
+    return getJdbcTemplate()
+      .queryForObject(
+        sql.USER_DETAILS,
+        new BeanPropertyRowMapper<TypeUserDetails>(TypeUserDetails.class),
+        phone
+      );
+  }
+
+  @Override
+  public List<TypeUserDetails> getUserDetailsList(String phone) {
+    // TODO Auto-generated method stub
+    jdbcTemplate.setDataSource(getDataSource());
+    return getJdbcTemplate()
+      .query(
+        sql.USER_DETAILS,
+        new BeanPropertyRowMapper<TypeUserDetails>(TypeUserDetails.class),
+        phone
+      );
+  }
+
+  @Override
+  public List<TypeOrderDetails> getOrderDetails(String order_id) {
+    // TODO Auto-generated method stub
+    jdbcTemplate.setDataSource(getDataSource());
+    return getJdbcTemplate()
+      .query(
+        sql.ORDER_DETAILS,
+        new BeanPropertyRowMapper<TypeOrderDetails>(TypeOrderDetails.class),
+        order_id
+      );
+  }
+
+  @Override
+  public List<TypeOrderDetails> getOdersByStage(String stage) {
+    // TODO Auto-generated method stub
+    jdbcTemplate.setDataSource(getDataSource());
+    return getJdbcTemplate()
+      .query(
+        sql.OREDER_BY_STAGE,
+        new BeanPropertyRowMapper<TypeOrderDetails>(TypeOrderDetails.class),
+        stage
+      );
+  }
+
+  public List<TypeOrderDetails> getOdersByStageDistinct(String stage) {
+    // TODO Auto-generated method stub
+    jdbcTemplate.setDataSource(getDataSource());
+    return getJdbcTemplate()
+      .query(
+        sql.ORDERS_BY_STAGE_DISTINCT,
+        new BeanPropertyRowMapper<TypeOrderDetails>(TypeOrderDetails.class),
+        stage
+      );
+  }
 }

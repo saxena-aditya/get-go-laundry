@@ -1,7 +1,6 @@
 package org.com.DAOImpl;
 
 import javax.sql.DataSource;
-
 import org.com.DAO.AddUserDAO;
 import org.com.DTO.GetterRegisterDetails;
 import org.com.SQLExpressions.MySQLStatements;
@@ -12,48 +11,53 @@ import org.springframework.stereotype.Controller;
 @Controller
 public class AddUserDAOImpl implements AddUserDAO {
 
-	MySQLStatements sql = new MySQLStatements();
+  MySQLStatements sql = new MySQLStatements();
 
-	@Autowired
-	private DataSource dataSource;
-	private JdbcTemplate jdbcTemplate = new JdbcTemplate();
+  @Autowired
+  private DataSource dataSource;
 
-	public DataSource getDataSource() {
-		return dataSource;
-	}
+  private JdbcTemplate jdbcTemplate = new JdbcTemplate();
 
-	public void setDataSource(DataSource dataSource) {
-		this.dataSource = dataSource;
-	}
+  public DataSource getDataSource() {
+    return dataSource;
+  }
 
-	public JdbcTemplate getJdbcTemplate() {
-		return jdbcTemplate;
-	}
+  public void setDataSource(DataSource dataSource) {
+    this.dataSource = dataSource;
+  }
 
-	public void setJdbcTemplate(JdbcTemplate jdbcTemplate) {
-		this.jdbcTemplate = jdbcTemplate;
-	}
+  public JdbcTemplate getJdbcTemplate() {
+    return jdbcTemplate;
+  }
 
-	@Override
-	public int addNewUser(GetterRegisterDetails grd) {
-		// TODO Auto-generated method stub
-		jdbcTemplate.setDataSource(getDataSource());
-		jdbcTemplate.update(sql.SAVE_USER, grd.getFirstName(), grd.getLastName(), grd.getPhone(), grd.getPass(),
-				grd.getAddress1(), grd.getAddress2());
+  public void setJdbcTemplate(JdbcTemplate jdbcTemplate) {
+    this.jdbcTemplate = jdbcTemplate;
+  }
 
-		return 0;
-	}
+  @Override
+  public int addNewUser(GetterRegisterDetails grd) {
+    // TODO Auto-generated method stub
+    jdbcTemplate.setDataSource(getDataSource());
+    jdbcTemplate.update(
+      sql.SAVE_USER,
+      grd.getFirstName(),
+      grd.getLastName(),
+      grd.getPhone(),
+      grd.getPass(),
+      grd.getAddress1(),
+      grd.getAddress2()
+    );
 
-	@Override
-	public boolean userAlreadyPresent(String phn_number) {
-		// TODO Auto-generated method stub
-		jdbcTemplate.setDataSource(getDataSource());
-		int i = jdbcTemplate.queryForInt(sql.COUNT_USER_VALIDATE, phn_number);
+    return 0;
+  }
 
-		if (i == 0)
-			return false;
-		else
-			return true;
-	}
+  @Override
+  public boolean userAlreadyPresent(String phn_number) {
+    // TODO Auto-generated method stub
+    jdbcTemplate.setDataSource(getDataSource());
+    int i = jdbcTemplate.queryForInt(sql.COUNT_USER_VALIDATE, phn_number);
 
+    if (i == 0) return false;
+    else return true;
+  }
 }

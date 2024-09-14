@@ -2,112 +2,112 @@ package org.com.DTO;
 
 public class AdminServicesGetNewPerItemCosts {
 
-	public int tshirt;
-	public int shirt;
-	public int pant;
-	public int jeans;
-	public int ccoat;
-	public int fcoat;
-	public int sweater;
-	public int jacket;
-	public int blanketL;
-	public int blanketH;
-	public int blanketLU;
-	public int other;
+  public int tshirt;
+  public int shirt;
+  public int pant;
+  public int jeans;
+  public int ccoat;
+  public int fcoat;
+  public int sweater;
+  public int jacket;
+  public int blanketL;
+  public int blanketH;
+  public int blanketLU;
+  public int other;
 
-	public int getTshirt() {
-		return tshirt;
-	}
+  public int getTshirt() {
+    return tshirt;
+  }
 
-	public void setTshirt(int tshirt) {
-		this.tshirt = tshirt;
-	}
+  public void setTshirt(int tshirt) {
+    this.tshirt = tshirt;
+  }
 
-	public int getShirt() {
-		return shirt;
-	}
+  public int getShirt() {
+    return shirt;
+  }
 
-	public void setShirt(int shirt) {
-		this.shirt = shirt;
-	}
+  public void setShirt(int shirt) {
+    this.shirt = shirt;
+  }
 
-	public int getPant() {
-		return pant;
-	}
+  public int getPant() {
+    return pant;
+  }
 
-	public void setPant(int pant) {
-		this.pant = pant;
-	}
+  public void setPant(int pant) {
+    this.pant = pant;
+  }
 
-	public int getJeans() {
-		return jeans;
-	}
+  public int getJeans() {
+    return jeans;
+  }
 
-	public void setJeans(int jeans) {
-		this.jeans = jeans;
-	}
+  public void setJeans(int jeans) {
+    this.jeans = jeans;
+  }
 
-	public int getCcoat() {
-		return ccoat;
-	}
+  public int getCcoat() {
+    return ccoat;
+  }
 
-	public void setCcoat(int ccoat) {
-		this.ccoat = ccoat;
-	}
+  public void setCcoat(int ccoat) {
+    this.ccoat = ccoat;
+  }
 
-	public int getFcoat() {
-		return fcoat;
-	}
+  public int getFcoat() {
+    return fcoat;
+  }
 
-	public void setFcoat(int fcoat) {
-		this.fcoat = fcoat;
-	}
+  public void setFcoat(int fcoat) {
+    this.fcoat = fcoat;
+  }
 
-	public int getSweater() {
-		return sweater;
-	}
+  public int getSweater() {
+    return sweater;
+  }
 
-	public void setSweater(int sweater) {
-		this.sweater = sweater;
-	}
+  public void setSweater(int sweater) {
+    this.sweater = sweater;
+  }
 
-	public int getJacket() {
-		return jacket;
-	}
+  public int getJacket() {
+    return jacket;
+  }
 
-	public void setJacket(int jacket) {
-		this.jacket = jacket;
-	}
+  public void setJacket(int jacket) {
+    this.jacket = jacket;
+  }
 
-	public int getBlanketL() {
-		return blanketL;
-	}
+  public int getBlanketL() {
+    return blanketL;
+  }
 
-	public void setBlanketL(int blanketL) {
-		this.blanketL = blanketL;
-	}
+  public void setBlanketL(int blanketL) {
+    this.blanketL = blanketL;
+  }
 
-	public int getBlanketH() {
-		return blanketH;
-	}
+  public int getBlanketH() {
+    return blanketH;
+  }
 
-	public void setBlanketH(int blanketH) {
-		this.blanketH = blanketH;
-	}
+  public void setBlanketH(int blanketH) {
+    this.blanketH = blanketH;
+  }
 
-	public int getBlanketLU() {
-		return blanketLU;
-	}
+  public int getBlanketLU() {
+    return blanketLU;
+  }
 
-	public void setBlanketLU(int blanketLU) {
-		this.blanketLU = blanketLU;
-	}
+  public void setBlanketLU(int blanketLU) {
+    this.blanketLU = blanketLU;
+  }
 
-	public int getOther() {
-		return other;
-	}
+  public int getOther() {
+    return other;
+  }
 
-	public void setOther(int other) {
-		this.other = other;
-	}
+  public void setOther(int other) {
+    this.other = other;
+  }
 }

@@ -1,5 +1,3 @@
 {
-    "recommendations": [
-        "dotdevru.prettier-java"
-    ]
+  "recommendations": ["dotdevru.prettier-java"]
 }

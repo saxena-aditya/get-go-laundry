@@ -1,7 +1,7 @@
 {
-    "java.format.settings.url": ".vscode/java-formatter.xml",
-    "[java]": {
-        "editor.insertSpaces": false,
-        "editor.tabSize": 2
-    }
+  "java.format.settings.url": ".vscode/java-formatter.xml",
+  "[java]": {
+    "editor.insertSpaces": false,
+    "editor.tabSize": 2
+  }
 }
